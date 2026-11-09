@@ -1,0 +1,209 @@
+source_file_id,precinct_id,office,contest_party,vote_for,contest_votes,parsed_sum,delta,n_candidates,reason
+2022-PRIMARY-PRECINCT,01,County Sheriff,R,1,247,279,-32,2,checksum-fail
+2022-PRIMARY-PRECINCT,01,Center Township Board,R,3,571,571,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,01,D) U.S. Rep District 4,,1,14,5,9,2,checksum-fail
+2022-PRIMARY-PRECINCT,02,U.S. Rep District 4,R,1,111,244,-133,4,checksum-fail
+2022-PRIMARY-PRECINCT,02,County Sheriff,R,1,144,141,3,2,checksum-fail
+2022-PRIMARY-PRECINCT,02,Co Council District 2.,R,1,121,87,34,2,checksum-fail
+2022-PRIMARY-PRECINCT,02,Center Township Board,R,3,325,325,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,02,U.S. Rep District 4,D,1,10,4,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,03,County Sheriff,R,1,119,30,89,2,checksum-fail
+2022-PRIMARY-PRECINCT,03,Center Township Board,R,3,289,289,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,03,U.S. Rep District 4,D,1,12,0,12,2,checksum-fail
+2022-PRIMARY-PRECINCT,03,7 100.00% Erin M. Brewster,,1,13,0,13,1,checksum-fail
+2022-PRIMARY-PRECINCT,04,Public Question,,1,144,45,99,2,checksum-fail
+2022-PRIMARY-PRECINCT,04,Public Question (2),,1,144,44,100,2,checksum-fail
+2022-PRIMARY-PRECINCT,04,County Sheriff,R,1,128,45,83,2,checksum-fail
+2022-PRIMARY-PRECINCT,04,Center Township Board,R,3,279,276,3,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,04,U.S. Rep District 4,D,1,8,0,8,2,checksum-fail
+2022-PRIMARY-PRECINCT,05,Public Question,,1,387,346,41,2,checksum-fail
+2022-PRIMARY-PRECINCT,05,Public Question (2),,1,384,376,8,2,checksum-fail
+2022-PRIMARY-PRECINCT,05,County Sheriff,R,1,353,352,1,2,checksum-fail
+2022-PRIMARY-PRECINCT,05,Co Commissioner Dist 1,R,1,291,85,206,2,checksum-fail
+2022-PRIMARY-PRECINCT,05,Center Township Board,R,3,781,781,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,05,U.S. Rep District 4,D,1,22,3,19,2,checksum-fail
+2022-PRIMARY-PRECINCT,06,Center Township Board,R,3,340,340,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,06,U.S. Rep District 4,D,1,15,0,15,2,checksum-fail
+2022-PRIMARY-PRECINCT,06,Erin M. Brewster,,1,15,3,12,4,checksum-fail
+2022-PRIMARY-PRECINCT,07,Center Township Trustee,R,1,167,98,69,3,checksum-fail
+2022-PRIMARY-PRECINCT,07,Center Township Board,R,3,417,409,8,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,07,U.S. Rep District 4,D,1,22,3,19,2,checksum-fail
+2022-PRIMARY-PRECINCT,08,County Sheriff,R,1,70,38,32,2,checksum-fail
+2022-PRIMARY-PRECINCT,08,Co Commissioner Dist 1,R,1,58,4,54,2,checksum-fail
+2022-PRIMARY-PRECINCT,08,Center Township Board,R,3,150,150,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,08,U.S. Rep District 4,D,1,6,4,2,2,checksum-fail
+2022-PRIMARY-PRECINCT,08,5 Erin M. Brewster,,1,5,1,4,3,checksum-fail
+2022-PRIMARY-PRECINCT,08,D) Center Township Board,,3,0,0,0,1,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,09,County Sheriff,R,1,265,198,67,2,checksum-fail
+2022-PRIMARY-PRECINCT,09,Co Commissioner Dist 1,R,1,219,167,52,2,checksum-fail
+2022-PRIMARY-PRECINCT,09,Center Township Board,R,3,648,648,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,09,U.S. Rep District 4,D,1,14,0,14,2,checksum-fail
+2022-PRIMARY-PRECINCT,10,Public Question (2),,1,224,218,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,10,State Rep District 41,R,1,177,175,2,3,checksum-fail
+2022-PRIMARY-PRECINCT,10,County Sheriff,R,1,192,70,122,2,checksum-fail
+2022-PRIMARY-PRECINCT,10,Center Township Board,R,3,463,463,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,10,U.S. Rep District 4,D,1,19,0,19,2,checksum-fail
+2022-PRIMARY-PRECINCT,10,Center Township Board,D,3,0,0,0,1,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,11,Public Question (2),,1,226,81,145,2,checksum-fail
+2022-PRIMARY-PRECINCT,11,County Sheriff,R,1,211,84,127,2,checksum-fail
+2022-PRIMARY-PRECINCT,11,Center Township Board,R,3,468,468,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,11,U.S. Rep District 4,D,1,10,0,10,2,checksum-fail
+2022-PRIMARY-PRECINCT,12,County Sheriff,R,1,298,102,196,2,checksum-fail
+2022-PRIMARY-PRECINCT,12,Co Commissioner Dist 1,R,1,246,240,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,12,Center Township Board,R,3,722,722,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,12,U.S. Rep District 4,D,1,25,0,25,2,checksum-fail
+2022-PRIMARY-PRECINCT,13,Public Question (2),,1,109,65,44,2,checksum-fail
+2022-PRIMARY-PRECINCT,13,County Sheriff,R,1,95,0,95,2,checksum-fail
+2022-PRIMARY-PRECINCT,13,Co Commissioner Dist 1,R,1,70,104,-34,2,checksum-fail
+2022-PRIMARY-PRECINCT,13,Center Township Board,R,3,206,206,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,13,U.S. Rep District 4,D,1,9,0,9,2,checksum-fail
+2022-PRIMARY-PRECINCT,14,Public Question,,1,229,159,70,2,checksum-fail
+2022-PRIMARY-PRECINCT,14,Public Question (2),,1,225,67,158,2,checksum-fail
+2022-PRIMARY-PRECINCT,14,County Sheriff,R,1,204,58,146,2,checksum-fail
+2022-PRIMARY-PRECINCT,14,Co Council District 2,R,1,175,158,17,2,checksum-fail
+2022-PRIMARY-PRECINCT,14,Center Township Board,R,3,471,470,1,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,14,U.S. Rep District 4,D,1,17,0,17,2,checksum-fail
+2022-PRIMARY-PRECINCT,15,Public Question (2),,1,68,41,27,2,checksum-fail
+2022-PRIMARY-PRECINCT,15,Co Commissioner Dist 1,R,1,53,22,31,2,checksum-fail
+2022-PRIMARY-PRECINCT,15,Center Township Board,R,3,144,144,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,15,U.S. Rep District 4,D,1,5,2,3,2,checksum-fail
+2022-PRIMARY-PRECINCT,16,Public Question,,1,39,0,39,2,checksum-fail
+2022-PRIMARY-PRECINCT,16,Public Question (2),,1,39,0,39,2,checksum-fail
+2022-PRIMARY-PRECINCT,16,County Sheriff,R,1,36,0,36,2,checksum-fail
+2022-PRIMARY-PRECINCT,16,Co Commissioner Dist 1,R,1,29,7,22,2,checksum-fail
+2022-PRIMARY-PRECINCT,16,Center Township Board,R,3,74,74,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,17,Public Question (2),,1,165,164,1,2,checksum-fail
+2022-PRIMARY-PRECINCT,17,County Sheriff,R,1,138,46,92,2,checksum-fail
+2022-PRIMARY-PRECINCT,17,Co Commissioner Dist 1,R,1,124,43,81,2,checksum-fail
+2022-PRIMARY-PRECINCT,17,Center Township Board,R,3,303,303,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,17,U.S. Rep District 4,D,1,14,0,14,2,checksum-fail
+2022-PRIMARY-PRECINCT,18,County Sheriff,R,1,161,94,67,2,checksum-fail
+2022-PRIMARY-PRECINCT,18,Clinton Township Board,R,3,276,276,0,3,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,18,State Conv Delegate Dist 3,R,7,900,878,22,28,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,18,56% Roger D. Day,,1,55,0,55,1,checksum-fail
+2022-PRIMARY-PRECINCT,18,100.00% Greg A. Woods,,1,8,0,8,2,checksum-fail
+2022-PRIMARY-PRECINCT,19,County Sheriff,R,1,157,42,115,2,checksum-fail
+2022-PRIMARY-PRECINCT,19,Co Commissioner Dist 1,R,1,142,48,94,2,checksum-fail
+2022-PRIMARY-PRECINCT,19,State Conv Delegate Dist 2,R,9,1128,897,231,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,19,(DI U.S. Rep District 4,,1,16,0,16,2,checksum-fail
+2022-PRIMARY-PRECINCT,20,Co Council District 1,R,,100,100,0,1,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,20,State Cony Delegate Dist 2,R,9,816,654,162,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,20,U.S. Rep District 4,D,1,28,12,16,2,checksum-fail
+2022-PRIMARY-PRECINCT,21,Co Commissioner Dist 1,R,1,93,26,67,2,checksum-fail
+2022-PRIMARY-PRECINCT,21,State Conv Delegate Dist 2,R,9,691,656,35,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,21,U.S. Rep District 4,D,1,21,0,21,2,checksum-fail
+2022-PRIMARY-PRECINCT,22,State Rep District 25,R,1,90,54,36,4,checksum-fail
+2022-PRIMARY-PRECINCT,22,Circuit Court Clerk,R,,70,70,0,1,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,22,State Conv Delegate Dist 2,R,9,678,628,50,47,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,22,U.S. Rep District 4,D,1,20,2,18,2,checksum-fail
+2022-PRIMARY-PRECINCT,23,State Rep District 25,R,1,91,78,13,4,checksum-fail
+2022-PRIMARY-PRECINCT,23,County Sheriff,R,1,92,43,49,2,checksum-fail
+2022-PRIMARY-PRECINCT,23,State Conv Delegate Dist 2,R,9,646,501,145,47,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,23,(DI U.S. Rep District 4,,1,15,0,15,2,checksum-fail
+2022-PRIMARY-PRECINCT,24,State Conv Delegate Dist 2,R,9,1134,420,714,36,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,24,100.00% J.D. Ford,,1,28,0,28,6,checksum-fail
+2022-PRIMARY-PRECINCT,25,Go Commissioner Dist 1,R,1,157,42,115,2,checksum-fail
+2022-PRIMARY-PRECINCT,25,State Conv Delegate Dist 2,R,9,1246,1139,107,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,25,U.S. Rep District 4,D,1,23,0,23,2,checksum-fail
+2022-PRIMARY-PRECINCT,25,100.00% J.D. Ford,,1,23,0,23,6,checksum-fail
+2022-PRIMARY-PRECINCT,26,County Sheriff,R,1,193,110,83,2,checksum-fail
+2022-PRIMARY-PRECINCT,26,Co Commissioner Dist 1,R,1,165,118,47,2,checksum-fail
+2022-PRIMARY-PRECINCT,26,State Cony Delegate Dist 2,R,9,1279,849,430,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,26,(DI U.S. Rep District 4,,1,25,19,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,27,Co Commissioner Dist 1,R,1,169,321,-152,3,checksum-fail
+2022-PRIMARY-PRECINCT,27,State Conv Delegate Dist 2,R,9,1318,960,358,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,27,U.S. Rep District 4,D,1,27,0,27,2,checksum-fail
+2022-PRIMARY-PRECINCT,28,County Sheriff,R,1,220,211,9,2,checksum-fail
+2022-PRIMARY-PRECINCT,28,Co Commissioner Dist 1,R,1,200,57,143,2,checksum-fail
+2022-PRIMARY-PRECINCT,28,State Conv Delegate Dist 2,R,9,1528,861,667,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,28,J.D. Ford,,1,38,36,2,7,checksum-fail
+2022-PRIMARY-PRECINCT,29,State Conv Delegate Dist 2,R,9,898,878,20,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,30,County Sheriff,R,1,146,117,29,2,checksum-fail
+2022-PRIMARY-PRECINCT,30,State Conv Delegate Dist 2,R,9,896,311,585,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,30,Erin M. Brewster,,1,31,60,-29,2,checksum-fail
+2022-PRIMARY-PRECINCT,31,State Rep District 25,R,1,149,267,-118,5,checksum-fail
+2022-PRIMARY-PRECINCT,31,State Conv Delegate Dist 2,R,9,1077,777,300,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,32,Co Commissioner Dist 1,R,1,122,116,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,32,State Conv Delegate Dist 2,R,9,931,794,137,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,32,U.S. Rep District 4,D,1,24,3,21,2,checksum-fail
+2022-PRIMARY-PRECINCT,33,State Rep District 25,R,1,90,74,16,4,checksum-fail
+2022-PRIMARY-PRECINCT,33,State Conv Delegate Dist 2,R,9,631,577,54,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,33,U.S. Rep District 4,D,1,14,4,10,2,checksum-fail
+2022-PRIMARY-PRECINCT,34,State Rep District 25,R,1,154,127,27,4,checksum-fail
+2022-PRIMARY-PRECINCT,34,County Sheriff,R,1,161,111,50,2,checksum-fail
+2022-PRIMARY-PRECINCT,34,State Conv Delegate Dist 2,R,9,1048,863,185,45,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,35,State Cony Delegate Dist 2,R,9,854,744,110,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,35,D) U.S. Rep District 4,,1,24,0,24,2,checksum-fail
+2022-PRIMARY-PRECINCT,36,State Rep District 25,R,1,91,78,13,4,checksum-fail
+2022-PRIMARY-PRECINCT,36,State Cony Delegate Dist 2,R,9,702,398,304,47,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,36,DI U.S. Rep District 4,,1,22,0,22,2,checksum-fail
+2022-PRIMARY-PRECINCT,37,State Rep District 25,R,1,124,115,9,4,checksum-fail
+2022-PRIMARY-PRECINCT,37,County Sheriff,R,1,126,99,27,2,checksum-fail
+2022-PRIMARY-PRECINCT,37,State Conv Delegate Dist 2,R,9,804,713,91,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,37,U.S. Rep District 4,D,1,25,0,25,4,checksum-fail
+2022-PRIMARY-PRECINCT,38,State Conv Delegate Dist 2,R,9,788,684,104,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,38,U.S. Rep District 4,D,1,40,0,40,8,checksum-fail
+2022-PRIMARY-PRECINCT,39,Co Council District 2,R,1,102,100,2,2,checksum-fail
+2022-PRIMARY-PRECINCT,39,Harrison Township Board,R,3,133,133,0,2,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,39,State Conv Delegate Dist 3,R,1,605,612,-7,28,checksum-fail
+2022-PRIMARY-PRECINCT,39,67% Roger D. Day,,1,66,0,66,1,checksum-fail
+2022-PRIMARY-PRECINCT,39,State Rep District 28,D,1,7,3,4,2,checksum-fail
+2022-PRIMARY-PRECINCT,40,County Sheriff,R,1,178,167,11,2,checksum-fail
+2022-PRIMARY-PRECINCT,40,Co Commissioner Dist 1,R,1,159,0,159,2,checksum-fail
+2022-PRIMARY-PRECINCT,40,Co Council District 2,R,1,170,153,17,2,checksum-fail
+2022-PRIMARY-PRECINCT,40,Jackson Township Board,R,3,337,336,1,3,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,40,State Conv Delegate Dist 3,R,7,980,905,75,30,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,40,State Rep District 28,D,1,3,0,3,4,checksum-fail
+2022-PRIMARY-PRECINCT,40,3 100.00% Erin M. Brewster,,1,3,0,3,1,checksum-fail
+2022-PRIMARY-PRECINCT,41,County Sheriff,R,1,106,105,1,2,checksum-fail
+2022-PRIMARY-PRECINCT,41,Jackson Township Board,R,3,243,243,0,3,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,41,State Cony Delegate Dist 3,R,1,633,641,-8,30,checksum-fail
+2022-PRIMARY-PRECINCT,42,Co Commissioner Dist 1,R,1,82,18,64,1,checksum-fail
+2022-PRIMARY-PRECINCT,42,Jackson Township Board,R,3,203,203,0,3,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,42,State Conv Delegate Dist 3,R,7,505,513,-8,30,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,42,Jackson Township Board,D,3,0,0,0,1,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,43,State Rep District 41,R,1,272,158,114,3,checksum-fail
+2022-PRIMARY-PRECINCT,43,County Sheriff,R,1,296,35,261,2,checksum-fail
+2022-PRIMARY-PRECINCT,43,Jefferson Township Trustee,R,1,276,272,4,2,checksum-fail
+2022-PRIMARY-PRECINCT,43,Jefferson Township Board,R,3,696,696,0,5,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,43,State Conv Delegate Dist 3,R,7,1661,1613,48,27,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,43,85.71% Roger D. Day,,1,6,1,5,1,checksum-fail
+2022-PRIMARY-PRECINCT,44,Marion Township Board,R,3,178,178,0,4,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,44,State Conv Delegate Dist 3,R,7,378,379,-1,30,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,45,County Sheriff,R,1,75,73,2,2,checksum-fail
+2022-PRIMARY-PRECINCT,45,Co Commissioner Dist 1,R,1,68,13,55,2,checksum-fail
+2022-PRIMARY-PRECINCT,45,Marion Township Board,R,3,199,199,0,4,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,45,State Conv Delegate Dist 3,R,7,394,368,26,27,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,45,United States Senator,D,1,11,19,-8,3,checksum-fail
+2022-PRIMARY-PRECINCT,46,Public Question (2),,1,262,256,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,46,County Sheriff,R,1,240,0,240,2,checksum-fail
+2022-PRIMARY-PRECINCT,46,Co Council District 2,R,1,212,67,145,2,checksum-fail
+2022-PRIMARY-PRECINCT,46,State Conv Delegate Dist 3,R,7,1310,1279,31,33,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,47,State Rep District 41,R,1,122,82,40,3,checksum-fail
+2022-PRIMARY-PRECINCT,47,Sugar Creek Township Board,R,3,154,154,0,2,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,47,83.33% Roger D. Day,,1,10,2,8,1,checksum-fail
+2022-PRIMARY-PRECINCT,47,100.00%,,1,15,0,15,2,checksum-fail
+2022-PRIMARY-PRECINCT,48,Sugar Creek Township Board,R,3,202,197,5,2,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,48,State Cony Delegate Dist 3,R,7,994,932,62,29,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,48,Co Commissioner Dist 1,D,1,3,0,3,4,checksum-fail
+2022-PRIMARY-PRECINCT,49,Co Commissioner Dist 1,R,1,125,117,8,2,checksum-fail
+2022-PRIMARY-PRECINCT,49,State Conv Delegate Dist 2,R,9,981,872,109,47,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,49,U.S. Rep District 4,D,1,20,3,17,2,checksum-fail
+2022-PRIMARY-PRECINCT,50,Co Commissioner Dist 1,R,1,200,194,6,2,checksum-fail
+2022-PRIMARY-PRECINCT,50,State Conv Delegate Dist 2,R,9,1497,1422,75,48,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,50,U.S. Rep District 4,D,1,20,0,20,2,checksum-fail
+2022-PRIMARY-PRECINCT,51,County Sheriff,R,1,224,33,191,2,checksum-fail
+2022-PRIMARY-PRECINCT,51,Washington Township Board,R,3,490,490,0,3,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,51,70.00% Roger D. Day,,1,7,3,4,1,checksum-fail
+2022-PRIMARY-PRECINCT,51,3 10 100.00% Greg A. Woods,,1,10,0,10,1,checksum-fail
+2022-PRIMARY-PRECINCT,52,Public Question,,1,308,238,70,2,checksum-fail
+2022-PRIMARY-PRECINCT,52,Public Question (2),,1,305,298,7,2,checksum-fail
+2022-PRIMARY-PRECINCT,52,State Rep District 25,R,1,229,86,143,4,checksum-fail
+2022-PRIMARY-PRECINCT,52,County Sheriff,R,1,241,237,4,2,checksum-fail
+2022-PRIMARY-PRECINCT,52,Co Commissioner Dist 1,R,1,212,208,4,2,checksum-fail
+2022-PRIMARY-PRECINCT,52,State Conv Delegate Dist 3,R,7,1100,997,103,27,unverifiable-votefor-n
+2022-PRIMARY-PRECINCT,52,68.09% Roger D. Day,,1,32,15,17,4,checksum-fail
+2022-PRIMARY-PRECINCT,53,Public Question,,1,257,248,9,2,checksum-fail
+2022-PRIMARY-PRECINCT,53,Public Question (2),,1,255,64,191,2,checksum-fail
+2022-PRIMARY-PRECINCT,53,State Rep District 25,R,1,196,195,1,4,checksum-fail
+2022-PRIMARY-PRECINCT,53,State Conv Delegate Dist 3,R,7,983,901,82,26,unverifiable-votefor-n

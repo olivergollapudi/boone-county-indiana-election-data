@@ -1,0 +1,134 @@
+source_file_id,precinct_id,office,contest_party,vote_for,contest_votes,parsed_sum,delta,n_candidates,reason
+2008-GENERAL-PRECINCT,02,President of the US,,1,797,796,1,4,checksum-fail
+2008-GENERAL-PRECINCT,02,Attorney General,,,753,753,0,3,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,02,County Council At-Large,,3,2148,2148,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,03,Governor And Lieutenant Governor,,1,306,301,5,3,checksum-fail
+2008-GENERAL-PRECINCT,03,County Council At-Large,,3,860,860,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,04,United States Rep District 4,,1,330,329,1,3,checksum-fail
+2008-GENERAL-PRECINCT,04,County Recorder,,1,249,420,-171,2,checksum-fail
+2008-GENERAL-PRECINCT,04,County Council At-Large,,3,908,908,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,05,President of the US,,1,595,586,9,3,checksum-fail
+2008-GENERAL-PRECINCT,05,County Council At-Large,,3,1643,1643,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,06,County Commissioner District 3,,1,340,213,127,2,checksum-fail
+2008-GENERAL-PRECINCT,06,County Council At-Large,,3,971,971,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,07,Governor And Lieutenant Governor,,1,289,284,5,3,checksum-fail
+2008-GENERAL-PRECINCT,07,County Auditor,,1,213,358,-145,2,checksum-fail
+2008-GENERAL-PRECINCT,07,County Treasurer,,1,276,160,116,2,checksum-fail
+2008-GENERAL-PRECINCT,07,County Coroner,,1,217,366,-149,2,checksum-fail
+2008-GENERAL-PRECINCT,07,County Commissioner District 3,,1,277,300,-23,2,checksum-fail
+2008-GENERAL-PRECINCT,07,County Council At-Large,,3,795,795,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,08,Superintendent of Public Inst,,1,494,445,49,3,checksum-fail
+2008-GENERAL-PRECINCT,08,United States Rep District 4,,1,509,231,278,3,checksum-fail
+2008-GENERAL-PRECINCT,08,County Council At-Large,,3,1459,1459,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,09,President of the US,,1,835,833,2,3,checksum-fail
+2008-GENERAL-PRECINCT,09,Governor And Lieutenant Governor,,1,834,830,4,4,checksum-fail
+2008-GENERAL-PRECINCT,09,ounty Corone,,,683,683,0,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,09,County Council At-Large,,3,2321,2321,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,10,County Council At-Large,,3,1895,1895,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,11,President of the US,,1,648,641,7,3,checksum-fail
+2008-GENERAL-PRECINCT,11,County Council At-Large,,3,1779,1779,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,12,County Commissioner District 2,,1,361,412,-51,2,checksum-fail
+2008-GENERAL-PRECINCT,12,County Commissioner District 3,,1,370,457,-87,2,checksum-fail
+2008-GENERAL-PRECINCT,12,County Council At-Large,,3,1054,1054,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,13,President of the US,,1,494,493,1,3,checksum-fail
+2008-GENERAL-PRECINCT,13,County Council At-Large,,3,1319,1319,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,14,Superintendent of Public Inst,,1,374,407,-33,3,checksum-fail
+2008-GENERAL-PRECINCT,14,County Commissioner District 3,,1,382,156,226,2,checksum-fail
+2008-GENERAL-PRECINCT,14,County Council At-Large,,3,1107,999,108,5,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,15,County Council At-Large,,3,324,324,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,16,President of the US,,1,482,480,2,4,checksum-fail
+2008-GENERAL-PRECINCT,16,Governor And Lieutenant Governor,,1,485,471,14,2,checksum-fail
+2008-GENERAL-PRECINCT,16,tate Representative District 2,,,476,476,0,3,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,16,County Council At-Large,,3,1388,1388,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,17,President of the US,,1,873,871,2,3,checksum-fail
+2008-GENERAL-PRECINCT,17,County Coroner,,1,729,264,465,2,checksum-fail
+2008-GENERAL-PRECINCT,17,County Commissioner District 3,,1,804,298,506,2,checksum-fail
+2008-GENERAL-PRECINCT,17,County Council At-Large,,3,2397,2217,180,5,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,18,County Council At-Large,,3,863,863,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,19,President of the US,,1,569,565,4,4,checksum-fail
+2008-GENERAL-PRECINCT,19,Governor And Lieutenant Governor,,1,566,564,2,4,checksum-fail
+2008-GENERAL-PRECINCT,19,County Council At-Large,,3,1527,1527,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,20,Governor And Lieutenant Governor,,1,450,444,6,3,checksum-fail
+2008-GENERAL-PRECINCT,20,County Coroner,,1,353,351,2,2,checksum-fail
+2008-GENERAL-PRECINCT,20,County Commissioner District 3,,,414,414,0,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,20,County Council At-Large,,3,1171,778,393,4,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,21,County Council At-Large,,3,1167,1167,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,22,President of the US,,1,223,222,1,4,checksum-fail
+2008-GENERAL-PRECINCT,22,County Council At-Large,,3,617,565,52,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,23,Governor And Lieutenant Governor,,1,846,837,9,3,checksum-fail
+2008-GENERAL-PRECINCT,23,State Representative District 28,,,803,803,0,3,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,23,County Council At-Large,,3,2310,2310,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,24,County Commissioner District 3,,,720,720,0,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,24,County Council At-Large,,3,2104,1945,159,5,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,25,County Treasurer,,1,338,459,-121,2,checksum-fail
+2008-GENERAL-PRECINCT,25,County Council At-Large,,3,991,991,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,26,County Council At-Large,,3,2063,2063,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,27,President of the US,,1,555,554,1,4,checksum-fail
+2008-GENERAL-PRECINCT,27,County Commissioner District 3,,,510,510,0,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,27,County Council At-Large,,3,1518,1518,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,28,President of the US,,1,596,595,1,4,checksum-fail
+2008-GENERAL-PRECINCT,28,Governor And Lieutenant Governor,,1,584,969,-385,3,checksum-fail
+2008-GENERAL-PRECINCT,28,Attorney General,,1,570,714,-144,3,checksum-fail
+2008-GENERAL-PRECINCT,28,Superintendent of Public Inst,,1,550,684,-134,3,checksum-fail
+2008-GENERAL-PRECINCT,28,State Representative District 87,,1,559,714,-155,2,checksum-fail
+2008-GENERAL-PRECINCT,28,VOTE FOR,,,463,926,-463,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,28,County Council At-Large,,3,1570,1570,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,29,President of the US,,1,1047,1042,5,4,checksum-fail
+2008-GENERAL-PRECINCT,29,County Council At-Large,,3,2717,2717,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,30,President of the US,,1,994,987,7,4,checksum-fail
+2008-GENERAL-PRECINCT,30,County Coroner,,1,803,802,1,2,checksum-fail
+2008-GENERAL-PRECINCT,30,County Commissioner District 3,,1,896,1190,-294,2,checksum-fail
+2008-GENERAL-PRECINCT,30,County Council At-Large,,3,2637,2637,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,31,County Council At-Large,,3,1042,1042,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,32,President of the US,,1,374,251,123,3,checksum-fail
+2008-GENERAL-PRECINCT,32,Governor And Lieutenant Governor,,1,368,373,-5,4,checksum-fail
+2008-GENERAL-PRECINCT,32,Attorney General,,1,355,436,-81,3,checksum-fail
+2008-GENERAL-PRECINCT,32,Superintendent of Public Inst,,1,348,498,-150,3,checksum-fail
+2008-GENERAL-PRECINCT,32,State Representative District 87,,1,352,516,-164,2,checksum-fail
+2008-GENERAL-PRECINCT,32,Judge of the Sup Court No. i,,1,277,491,-214,2,checksum-fail
+2008-GENERAL-PRECINCT,32,County Commissioner District 3,,1,342,440,-98,2,checksum-fail
+2008-GENERAL-PRECINCT,32,County Council At-Large,,3,1031,1031,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,33,Governor And Lieutenant Governor,,1,601,600,1,3,checksum-fail
+2008-GENERAL-PRECINCT,33,Judge of the Sup Court No. 1,,1,470,792,-322,2,checksum-fail
+2008-GENERAL-PRECINCT,33,County Council At-Large,,3,1601,1254,347,5,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,34,State Representative District 87,,1,861,1300,-439,2,checksum-fail
+2008-GENERAL-PRECINCT,34,Judge of the Sup Court No. 2,,1,743,1263,-520,2,checksum-fail
+2008-GENERAL-PRECINCT,34,County Council At-Large,,3,2411,2411,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,35,County Council At-Large,,3,763,763,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,36,President of the US,,1,378,373,5,3,checksum-fail
+2008-GENERAL-PRECINCT,36,State Representative District 28,,,360,360,0,3,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,36,County Council At-Large,,3,1027,1027,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,37,County Council At-Large,,3,1253,1253,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,38,President of the US,,1,402,443,-41,3,checksum-fail
+2008-GENERAL-PRECINCT,38,County Council At-Large,,3,1081,1081,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,39,President of the US,,1,302,299,3,4,checksum-fail
+2008-GENERAL-PRECINCT,39,ounty Commissioner District,,,284,93,191,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,39,County Council At-Large,,3,821,821,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,40,State Representative District 28,,1,693,179,514,3,checksum-fail
+2008-GENERAL-PRECINCT,40,County Council At-Large,,3,1981,1638,343,5,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,41,County Council At-Large,,3,955,955,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,42,County Commissioner District 3,,1,311,367,-56,2,checksum-fail
+2008-GENERAL-PRECINCT,42,County Council At-Large,,3,901,802,99,5,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,43,President of the US,,1,557,547,10,3,checksum-fail
+2008-GENERAL-PRECINCT,43,Superintendent of Public Inst,,1,511,507,4,3,checksum-fail
+2008-GENERAL-PRECINCT,43,United States Rep District 4,,1,533,634,-101,3,checksum-fail
+2008-GENERAL-PRECINCT,43,tate Representative District 2,,,516,516,0,3,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,43,County Commissioner District 2,,1,508,141,367,2,checksum-fail
+2008-GENERAL-PRECINCT,43,County Council At-Large,,3,1484,1484,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,43,Supreme Court Justice - Dickson,,1,378,375,3,2,checksum-fail
+2008-GENERAL-PRECINCT,44,Governor And Lieutenant Governor,,1,438,437,1,4,checksum-fail
+2008-GENERAL-PRECINCT,44,County Commissioner District 3,,,420,420,0,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,44,County Council At-Large,,3,1198,1198,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,45,County Treasurer,,1,444,369,75,2,checksum-fail
+2008-GENERAL-PRECINCT,45,County Council At-Large,,3,1254,1254,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,46,County Coroner,,,381,381,0,2,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,46,County Council At-Large,,3,1325,1325,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,47,County Coroner,,1,612,438,174,2,checksum-fail
+2008-GENERAL-PRECINCT,47,County Council At-Large,,3,2051,2051,0,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,48,lited States Rep District,,,682,682,0,3,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,48,County Commissioner District 2,,1,659,780,-121,2,checksum-fail
+2008-GENERAL-PRECINCT,48,County Commissioner District 3,,1,660,898,-238,2,checksum-fail
+2008-GENERAL-PRECINCT,48,County Council At-Large,,3,1905,1889,16,6,unverifiable-votefor-n
+2008-GENERAL-PRECINCT,48,Supreme Court Justice - Shepard,,1,488,635,-147,2,checksum-fail
+2008-GENERAL-PRECINCT,49,Judge of the Sup Court No. 1,,1,775,158,617,2,checksum-fail
+2008-GENERAL-PRECINCT,49,County Commissioner District 3,,,2617,3526,-909,9,unverifiable-votefor-n

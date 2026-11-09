@@ -1,50 +1,83 @@
-# Boone County, Indiana — Precinct-Level Election Results (2012–2024)
+# Boone County, Indiana — Precinct-Level Election Results, 2008–2026
 
-A clean, normalized dataset of precinct-level election returns for **Boone County, Indiana** (county seat: Lebanon;
-not to be confused with Boone counties in other states), on a consistent **53-precinct** frame. Returns come from [OpenElections](https://github.com/openelections/openelections-data-in);
-precinct names are matched to the state's [IndianaMap](https://indianamap.org) GIS naming. Presidential totals
-and turnout were validated against the Boone County Clerk's figures and match exactly (see
-[METHODOLOGY.md](METHODOLOGY.md)).
+Precinct-level election results for **Boone County, Indiana**, parsed from the Boone County
+Clerk's official result reports. Covers every election the Clerk publishes from 2008
+onward: primaries, generals, odd-year municipal elections, and specials, at every level
+the Clerk reports (federal, state, county, municipal, township, school board, judicial
+retention, and public questions).
 
-## Why this exists
+Every number comes from a Clerk PDF in this repository and was extracted by a script in
+this repository. Nothing was typed by hand, estimated, or taken from another source.
 
-Across years, the same precinct is spelled many ways (`Center 1`, `01-Center 01`, `CENTER 01`, `Center 01`),
-which makes multi-year precinct analysis painful. This repo fixes that: every row uses one canonical
-precinct name, so elections can be compared precinct by precinct.
+## At a glance
 
-## What's here
-
-| File (in `data/`) | Contents |
+| | |
 |---|---|
-| `boone_precinct_master_long.csv` | **Master file.** Tidy long format, one row per precinct × election × office × candidate (12,698 rows) |
-| `boone_<office>_by_precinct.csv` | Wide pivots (precinct × candidate-year): President, Governor, U.S. Senate, U.S. House, State Senate, State House, Attorney General |
-| `boone_turnout_over_time.csv` | Per-precinct turnout: 2012, 2014, 2016, 2018, 2020, 2024 |
-| `boone_presidential_over_time.csv` | County presidential totals and D/R shares, 2012–2024 |
-| `Boone_Precinct_Master.xlsx` | Everything above in one workbook, with a provenance sheet |
+| Source | Boone County Clerk, "Election Results History" (`boonecounty.in.gov/offices/clerk/election-results-history/`) |
+| Elections | 28 (2008 primary through 2026 primary) |
+| Result rows | 51,879 (one row per election × contest × precinct × candidate) |
+| Turnout rows | 1,245 (one row per election × precinct) |
+| Validation | 20,670 single-winner contests checked; 0 failures |
 
-**Elections covered:** general elections 2012, 2014, 2016, 2018, 2020, 2024; primaries 2018 and 2020.
+## Files
 
-### Master file columns
+| File | What it is |
+|---|---|
+| `boone_county_election_results.xlsx` | The assembled database: README, Results_Long, Turnout_Long, Precincts, Source_Provenance, Validation, Coverage_Inventory |
+| `results_long_all.csv` | Results for the 25 text-based (embedded) elections |
+| `results_long_2008-general-precinct-geom-clean.csv`, `results_long_2022-primary-precinct-geom-clean.csv` | Results for the two scanned elections. Only contests that reconcile exactly are included |
+| `omitted_*.csv` | Contests from the scanned elections that could not be reconstructed exactly, so they were left out. Each one is listed with its reported total |
+| `turnout_long.csv` | Per-precinct registered voters, ballots cast, turnout %, and ballot-type counts |
+| `precinct_crosswalk.csv` | Current precincts with their town and county council district |
+| `*.pdf` | The Clerk's source reports (`*-precinct.pdf` = precinct breakdown, `*-summary.pdf` = countywide summary) |
+| `*-appleboxes.json`, `*-applelines.json` | Cached OCR output for the scanned reports, so the pipeline can be rerun without macOS |
+| `*.py` | The pipeline (see below) |
+| `METHODOLOGY.md` | How the data was built and validated, in plain English |
+| `PARSING_STRATEGY.md` | Technical spec of the report formats and how the parser handles each one |
 
-`year, election_date, election_type, precinct, office, district, candidate, party, votes`
+The column definitions are in the workbook's README tab and in `METHODOLOGY.md` §2.
 
-Non-candidate rows (e.g., `Registered Voters`, `Ballots Cast`) appear under `office`.
+## How it was validated
+
+Each Clerk report prints a total for every contest (`VOTES=`). A contest is included only
+if its candidate totals add up exactly to that printed total. For the six elections where
+the Clerk also publishes a separate countywide summary, the precinct rows were also summed
+and checked against that summary, candidate by candidate, with zero mismatches.
+Multi-seat contests can't use the single-winner check. See `METHODOLOGY.md` for how they
+were handled.
 
 ## Known gaps
 
-Not available at precinct level from OpenElections, and deliberately not invented: 2008 and 2010 generals,
-the 2022 general, primaries other than 2018 and 2020, and reliable straight-ticket counts (the 2024
-straight-ticket figures don't reconcile with the clerk's). Details in [METHODOLOGY.md](METHODOLOGY.md).
+- **2008 primary:** the Clerk published only a countywide summary, so this election is
+  countywide only.
+- **2008 general and 2022 primary:** the source reports are scans. Contests that could
+  not be reconstructed exactly are excluded and listed in `omitted_*.csv`.
+- **2020:** the Clerk's reports print registered voters and turnout % as zero. Ballots
+  cast are still recorded.
+- **2026 general:** not yet included. It will be added after the county certifies results.
 
-## Reproducing
+## Rebuild from source
 
-The full process (exact source files, precinct-name normalization rules, validation) is documented in
-[METHODOLOGY.md](METHODOLOGY.md).
+Requires Python 3.11+.
 
-## Sources and credit
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python3 parse_all.py         # parse the 25 text-based elections -> results_long_all.csv
+python3 reconcile_all.py     # cross-check against countywide summaries (expect 0 mismatches)
+python3 geometry_parse.py 2008-general-precinct   # rebuild scanned tables from cached OCR boxes
+python3 geometry_parse.py 2022-primary-precinct
+python3 finalize_ocr.py 2008-general-precinct     # keep only reconciling contests
+python3 finalize_ocr.py 2022-primary-precinct
+python3 add_center1.py       # add 2008 precinct Center 1, which the Clerk published separately
+python3 extract_turnout.py   # -> turnout_long.csv
+python3 build_workbook.py    # -> boone_county_election_results.xlsx
+```
 
-- Election returns: [OpenElections](https://openelections.net) (official county/state canvasses, transcribed)
-- Precinct naming: [IndianaMap](https://indianamap.org)
-- Validation: Boone County Clerk
+Rerunning OCR from the PDFs (`dump_boxes.py`) requires macOS because it uses Apple
+Vision. Every other step runs on any platform from the cached JSON files.
 
-Compiled by Oliver Gollapudi.
+## License and citation
+
+A license has not been chosen yet. Until one is added, please contact the maintainer
+before reusing the data.

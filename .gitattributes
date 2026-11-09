@@ -1,0 +1,5 @@
+# Treat source documents and workbooks as binary: no text diffs, no line-ending changes.
+*.pdf  binary
+*.xlsx binary
+# Keep CSV line endings exactly as written by the pipeline.
+*.csv  -text
