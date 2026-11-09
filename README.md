@@ -9,6 +9,11 @@ retention, and public questions).
 Every number comes from a Clerk PDF in `source_pdfs/` and was extracted by a script in
 `scripts/`. Nothing was typed by hand, estimated, or taken from another source.
 
+It also includes a **normalized** layer: every election's results re-expressed on the
+current (2021-enacted) Indiana House, Indiana Senate and U.S. House districts, so each
+district's history can be compared on today's lines. That layer is kept separate from
+the master (`data/normalized/`) and documented in METHODOLOGY.md §7.
+
 ## At a glance
 
 | | |
@@ -22,11 +27,13 @@ Every number comes from a Clerk PDF in `source_pdfs/` and was extracted by a scr
 ## Files
 
 ```
-data/          the published database (start here)
-source_pdfs/   the Clerk's original reports — every row traces back to one of these
-ocr_cache/     cached OCR output for the two scanned reports
-scripts/       the pipeline that turns source_pdfs/ into data/
-docs/          technical notes
+data/              the published database (start here)
+data/normalized/   results on today's districts (analysis layer)
+source_pdfs/       the Clerk's original reports — every row traces back to one of these
+source_geo/        precinct maps and Census blocks used for normalization (Boone only)
+ocr_cache/         cached OCR output for the two scanned reports
+scripts/           the pipeline that turns source_pdfs/ into data/
+docs/              technical notes
 ```
 
 | File | What it is |
@@ -37,13 +44,18 @@ docs/          technical notes
 | `data/omitted_*.csv` | Contests from the scanned elections that could not be reconstructed exactly, so they were left out. Each one is listed with its reported total |
 | `data/turnout_long.csv` | Per-precinct registered voters, ballots cast, turnout %, and ballot-type counts |
 | `data/precinct_crosswalk.csv` | Current precincts with their town and county council district |
+| `data/normalized/results_by_current_district.csv` | Every election's results on today's House, Senate and congressional districts (Boone County's portion) |
+| `data/normalized/precinct_district_shares.csv` | How each precinct was split across today's districts |
+| `data/normalized/normalization_validation.csv` | The five normalization checks and their results |
+| `data/normalized/current_districts.geojson` | Today's district outlines within Boone County |
+| `source_geo/` | Boone precinct maps (2000–2024, from IndianaMap) and Census 2010/2020 blocks, with `SOURCES.csv` provenance |
 | `source_pdfs/*.pdf` | The Clerk's source reports (`*-precinct.pdf` = precinct breakdown, `*-summary.pdf` = countywide summary) |
 | `ocr_cache/*.json` | Cached OCR output for the scanned reports, so the pipeline can be rerun without macOS |
 | `scripts/*.py` | The pipeline (see below). `scripts/paths.py` defines the folder layout |
 | `METHODOLOGY.md` | How the data was built and validated, in plain English |
 | `docs/PARSING_STRATEGY.md` | Technical spec of the report formats and how the parser handles each one |
 
-The column definitions are in the workbook's README tab and in `METHODOLOGY.md` §2.
+Every column of every table is defined in [DATA_DICTIONARY.md](DATA_DICTIONARY.md).
 
 ## How it was validated
 
@@ -53,6 +65,24 @@ the Clerk also publishes a separate countywide summary, the precinct rows were a
 and checked against that summary, candidate by candidate, with zero mismatches.
 Multi-seat contests can't use the single-winner check. See `METHODOLOGY.md` for how they
 were handled.
+
+The normalized layer has its own checks, and `scripts/normalize.py` refuses to write
+output if any fail: every vote is conserved (allocated + set aside = source, for every
+election, contest and candidate), and the district printed on each precinct's own ballot
+matches the map for all 630 checks from 2022 onward.
+
+## Known issues (being fixed)
+
+- **Labels in the two scanned elections (2008 general, 2022 primary).** Some contests
+  there add up correctly but have a missing candidate name, a printed percentage that
+  disagrees with the vote count, or a vote count misread as the office title (roughly 8%
+  and 25% of included contests). A label check that removes them is being finalized.
+  Until then, don't draw candidate-level conclusions from these two elections; their
+  normalized rows are marked `data_quality = ocr_labels_unverified`.
+- **2008 general is not yet reproducible from the current code.** The published file
+  came from an earlier version of `geometry_parse.py`; rerunning today's code gives the
+  same candidate totals for nearly all rows but different vote-method splits on about 90
+  rows and 3 extra rows. This will be resolved with the label fix.
 
 ## Known gaps
 
@@ -80,7 +110,11 @@ python3 scripts/finalize_ocr.py 2022-primary-precinct
 python3 scripts/extract_turnout.py   # -> data/turnout_long.csv
 python3 scripts/add_center1.py       # add 2008 precinct Center 1, which the Clerk published separately
 python3 scripts/build_workbook.py    # -> data/boone_county_election_results.xlsx
+python3 scripts/normalize.py         # -> data/normalized/ (stops if any check fails)
 ```
+
+`scripts/prepare_geo.py` rebuilds `source_geo/` from the IndianaMap layers and Census
+downloads; it only needs to run if those inputs change.
 
 `add_center1.py` must come after `finalize_ocr.py` and `extract_turnout.py`, because
 those two rewrite the files it adds to. Intermediate files go to `build/`, which is not

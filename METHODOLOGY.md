@@ -296,7 +296,18 @@ written to be read.
   reconstructed, validated, and folded into 2008 general as precinct 01 (via
   `add_center1.py`), so 2008 general is complete at all 49 precincts.
 
-None of these affect the correctness of what *is* in the file; they define its edges.
+- **Known issue — OCR labels (fix in progress).** The checksum proves a contest's
+  *numbers* add up; it does not prove *who* each number belongs to. A later audit found
+  that some OCR contests in 2008 general (about 8%) and 2022 primary (about 25%) pass the
+  checksum but have a blank candidate name, a printed percentage that disagrees with the
+  vote count, or a vote count read as the office title. A second "label" gate that
+  excludes those contests is being finalized. Until it lands, every row from these two
+  elections is marked `data_quality = ocr_labels_unverified` in the normalized outputs,
+  and they should not be used for candidate-level conclusions. The 25 text-based
+  precinct elections pass the same label rules with zero failures (21,185 contests).
+
+The first five items define the file's edges; the last is an open defect, disclosed here
+until it is fixed.
 
 ---
 
@@ -307,3 +318,107 @@ Every included contest passes the report's own internal arithmetic, and six elec
 additionally agree with a second independent document — all with zero discrepancies.
 Anything that couldn't meet that bar was excluded and written down rather than guessed,
 so the master contains only defensible, reconciling data.
+
+---
+
+## 7. Normalization onto today's districts (`data/normalized/`)
+
+### What it answers
+
+"How did the area that makes up a district *today* vote in past elections?" Boone
+County's precinct results are re-expressed on the Indiana House, Indiana Senate and U.S.
+House districts enacted in 2021, so a district's history can be read even for years
+before it existed in its current form. This is an analysis layer built on top of the
+master; it never changes the master.
+
+Run: `python3 scripts/normalize.py` (inputs: `data/` results and `source_geo/`).
+
+### Inputs
+
+- **Results:** the precinct rows of Results_Long (the three `results_long_*.csv` files).
+- **Precinct maps:** IndianaMap voting-district layers for 2010, 2020, 2023 and 2024,
+  clipped to Boone County by `scripts/prepare_geo.py`. The 2020, 2023 and 2024 shapes are
+  identical. The 2024 layer records each precinct's House, Senate and Congressional
+  district; dissolving it by those codes gives today's district outlines.
+- **Population:** Census 2010 and 2020 blocks with voting-age population (P.L. 94-171).
+- Every input's origin and sha256 fingerprint is in `source_geo/SOURCES.csv`.
+
+### Method, step by step
+
+1. **Pick the precinct map for each election.** There is no precinct map for every
+   year, so each election uses the closest one available, and every output row says
+   which (`geometry_basis`):
+
+   | Elections | Precinct shapes | `geometry_basis` |
+   |---|---|---|
+   | 2020–2026 | 2024 layer | `as_of_election` |
+   | 2012–2018 | 2020 layer | `assumed_2020_shapes` |
+   | 2010–2011 | 2010 layer | `as_of_election` |
+   | 2008 | 2010 layer | `assumed_2010_shapes` |
+
+   *Assumption:* in 2012–2018 Boone used the same 53 precinct names as in 2020, and in
+   2008 the 2010 names; we assume the shapes were the same too. Same names do not
+   guarantee same boundaries, which is why these rows are labeled.
+
+2. **Match precinct names.** Reported names are normalized ("Center 01", "CENTER 1" and
+   "Worth1" all match their map name). Three exceptions are handled by an explicit,
+   commented list in the script, not by guessing: "Genter 4" in the 2008 scan is an OCR
+   typo for Center 4; "Worth 1" in 2010–2011 is called "WORTH" on the 2010 Census map; and
+   the 2010 map's three "EAGLE 10/13/19 WHITESTOWN" pieces are merged into their parent
+   precincts, which the Clerk reported as one precinct each.
+
+3. **Split each precinct across today's districts by where its adults live.** Each Census
+   block is assigned to the precinct and to the district it overlaps most. A precinct's
+   share in a district = voting-age population of its blocks in that district ÷ its total
+   voting-age population. The 2010 map uses 2010 blocks; the 2020 and 2024 maps use 2020
+   blocks. (If a precinct had no adults, land-area shares would be used and labeled
+   `area_fallback`; this did not occur.)
+
+4. **Allocate votes.** Each precinct's votes for each candidate are multiplied by its
+   shares and summed by district. Results are fractional where a precinct was split and
+   are kept to 4 decimals; nothing is rounded inside the calculation.
+
+### How much estimation is actually involved
+
+Very little. In every map year, all but two precincts lie wholly (≥95% of adults)
+inside one current district, so their votes move as a whole. The two exceptions are both
+on the 2010 map, so they affect only 2008–2011:
+
+| 2010-map precinct | District type | Split by adults (by land area) |
+|---|---|---|
+| Center 6 | Indiana House | 61% HD-41 / 39% HD-25 (68% / 32%) |
+| Eagle 10 | Indiana Senate | 81% SD-29 / 19% SD-7 (66% / 34%) |
+
+For 2020–2026 the allocation is exact by construction: each precinct sits entirely inside
+one district of each type (check V4 below).
+
+### Validation (the script refuses to write output if any check fails)
+
+| Check | What it proves | Result |
+|---|---|---|
+| V1 | Every precinct's shares sum to 1 for each district type | PASS (471 pairs) |
+| V2 | Every reported precinct matched a map shape (or is listed as set aside) | PASS (1,238 of 1,238 matched; 0 set aside) |
+| V3 | For every election × contest × candidate and every district type, allocated votes + set-aside votes = Results_Long | PASS (2,863 × 3; largest difference 6×10⁻¹⁴ votes) |
+| V4 | Each 2024 precinct lies 100% inside the districts its own map record names | PASS (53 × 3) |
+| V5 | The district number printed on each precinct's own ballot (State Rep, State Senate, U.S. Rep) matches the map, 2022 onward | PASS (630 checks, 0 mismatches) |
+
+V5 is the strongest: the Clerk's ballots and IndianaMap's district codes are independent
+sources, and they agree for every precinct. Results are in
+`data/normalized/normalization_validation.csv`.
+
+### Assumptions and limitations
+
+- **Assumed geometry (2008, 2012–2018).** Same precinct name is taken to mean same shape.
+  Rows are labeled; a future source of historical precinct maps would remove this.
+- **Population weights are a model.** Within the two split precincts, voters are
+  assumed to be distributed like adults counted by the Census, and to vote alike across
+  the split. Columns `votes_from_split_precincts` and `votes_from_straddling` show how
+  much of each figure depends on this.
+- **Contest coverage.** Local contests are not on every precinct's ballot. For each
+  district, `contest_coverage` is the share of the district's precincts (weighted by the
+  part of each precinct inside the district) where that contest appeared. A district
+  total with coverage below 1 describes only part of the district.
+- **OCR elections.** 2008 general and 2022 primary rows carry
+  `data_quality = ocr_labels_unverified` (see §5).
+- **2026 is provisional** until the county certifies; rows carry `provisional = True`.
+- **County council districts** are not included: no map of them is available.

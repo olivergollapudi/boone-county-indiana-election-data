@@ -1,0 +1,476 @@
+vintage,precinct_key,district_type,district,share,share_area,vap_in_part,weight_basis,straddles
+2010,CENTER 1,in_house,25,0.005128,0.003001,6,vap_2010,False
+2010,CENTER 1,in_house,41,0.994872,0.996999,1164,vap_2010,False
+2010,CENTER 10,in_house,41,1.0,1.0,1379,vap_2010,False
+2010,CENTER 11,in_house,41,1.0,1.0,1056,vap_2010,False
+2010,CENTER 12,in_house,41,1.0,0.974769,517,vap_2010,False
+2010,CENTER 13,in_house,41,1.0,1.0,1065,vap_2010,False
+2010,CENTER 14,in_house,41,1.0,1.0,555,vap_2010,False
+2010,CENTER 15,in_house,41,1.0,1.0,132,vap_2010,False
+2010,CENTER 16,in_house,25,1.0,0.994894,180,vap_2010,False
+2010,CENTER 2,in_house,41,1.0,1.0,1466,vap_2010,False
+2010,CENTER 3,in_house,41,1.0,1.0,843,vap_2010,False
+2010,CENTER 4,in_house,41,1.0,0.976187,737,vap_2010,False
+2010,CENTER 5,in_house,25,1.0,0.995881,815,vap_2010,False
+2010,CENTER 6,in_house,25,0.392045,0.316513,138,vap_2010,True
+2010,CENTER 6,in_house,41,0.607955,0.683485,214,vap_2010,True
+2010,CENTER 7,in_house,41,1.0,0.999977,635,vap_2010,False
+2010,CENTER 8,in_house,25,0.00598,0.44257,9,vap_2010,False
+2010,CENTER 8,in_house,41,0.99402,0.55743,1496,vap_2010,False
+2010,CENTER 9,in_house,41,1.0,0.966259,1245,vap_2010,False
+2010,CLINTON,in_house,41,1.0,0.999999,668,vap_2010,False
+2010,EAGLE 1,in_house,25,1.0,1.0,945,vap_2010,False
+2010,EAGLE 10,in_house,25,1.0,1.0,1148,vap_2010,False
+2010,EAGLE 11,in_house,25,1.0,1.0,641,vap_2010,False
+2010,EAGLE 12,in_house,25,1.0,1.0,768,vap_2010,False
+2010,EAGLE 13,in_house,25,1.0,1.0,1420,vap_2010,False
+2010,EAGLE 14,in_house,25,1.0,1.0,1174,vap_2010,False
+2010,EAGLE 15,in_house,25,1.0,1.0,448,vap_2010,False
+2010,EAGLE 16,in_house,25,1.0,1.0,528,vap_2010,False
+2010,EAGLE 17,in_house,25,1.0,1.0,816,vap_2010,False
+2010,EAGLE 18,in_house,25,1.0,1.0,1216,vap_2010,False
+2010,EAGLE 19,in_house,25,1.0,1.0,599,vap_2010,False
+2010,EAGLE 2,in_house,25,1.0,1.0,394,vap_2010,False
+2010,EAGLE 3,in_house,25,1.0,1.0,714,vap_2010,False
+2010,EAGLE 4,in_house,25,1.0,1.0,625,vap_2010,False
+2010,EAGLE 5,in_house,25,1.0,1.0,544,vap_2010,False
+2010,EAGLE 6,in_house,25,1.0,0.999967,341,vap_2010,False
+2010,EAGLE 7,in_house,25,1.0,1.0,975,vap_2010,False
+2010,EAGLE 8,in_house,25,1.0,1.0,941,vap_2010,False
+2010,EAGLE 9,in_house,25,1.0,1.0,568,vap_2010,False
+2010,HARRISON,in_house,28,1.0,0.999999,537,vap_2010,False
+2010,JACKSON 1,in_house,28,1.0,1.0,742,vap_2010,False
+2010,JACKSON 2,in_house,28,1.0,1.0,715,vap_2010,False
+2010,JACKSON 3,in_house,28,1.0,1.0,540,vap_2010,False
+2010,JEFFERSON,in_house,41,1.0,1.0,1051,vap_2010,False
+2010,MARION 1,in_house,24,1.0,1.0,504,vap_2010,False
+2010,MARION 2,in_house,24,1.0,1.0,462,vap_2010,False
+2010,PERRY,in_house,25,1.0,1.0,862,vap_2010,False
+2010,SUGAR CREEK 1,in_house,41,1.0,1.0,808,vap_2010,False
+2010,SUGAR CREEK 2,in_house,41,1.0,1.0,872,vap_2010,False
+2010,UNION 1,in_house,24,1.0,1.0,702,vap_2010,False
+2010,UNION 2,in_house,24,1.0,0.999988,971,vap_2010,False
+2010,WASHINGTON,in_house,41,1.0,0.999991,1038,vap_2010,False
+2010,WORTH,in_house,25,1.0,1.0,1207,vap_2010,False
+2010,WORTH 2,in_house,25,1.0,0.999987,587,vap_2010,False
+2010,CENTER 1,in_senate,7,1.0,1.0,1170,vap_2010,False
+2010,CENTER 10,in_senate,7,1.0,1.0,1379,vap_2010,False
+2010,CENTER 11,in_senate,7,1.0,1.0,1056,vap_2010,False
+2010,CENTER 12,in_senate,7,1.0,1.0,517,vap_2010,False
+2010,CENTER 13,in_senate,7,1.0,1.0,1065,vap_2010,False
+2010,CENTER 14,in_senate,7,1.0,1.0,555,vap_2010,False
+2010,CENTER 15,in_senate,7,1.0,1.0,132,vap_2010,False
+2010,CENTER 16,in_senate,7,1.0,1.0,180,vap_2010,False
+2010,CENTER 2,in_senate,7,1.0,1.0,1466,vap_2010,False
+2010,CENTER 3,in_senate,7,1.0,1.0,843,vap_2010,False
+2010,CENTER 4,in_senate,7,1.0,1.0,737,vap_2010,False
+2010,CENTER 5,in_senate,7,1.0,1.0,815,vap_2010,False
+2010,CENTER 6,in_senate,7,1.0,1.0,352,vap_2010,False
+2010,CENTER 7,in_senate,7,1.0,1.0,635,vap_2010,False
+2010,CENTER 8,in_senate,7,1.0,1.0,1505,vap_2010,False
+2010,CENTER 9,in_senate,7,1.0,1.0,1245,vap_2010,False
+2010,CLINTON,in_senate,7,1.0,1.0,668,vap_2010,False
+2010,EAGLE 1,in_senate,29,1.0,1.0,945,vap_2010,False
+2010,EAGLE 10,in_senate,29,0.805749,0.660274,925,vap_2010,True
+2010,EAGLE 10,in_senate,7,0.194251,0.339726,223,vap_2010,True
+2010,EAGLE 11,in_senate,29,1.0,1.0,641,vap_2010,False
+2010,EAGLE 12,in_senate,29,1.0,1.0,768,vap_2010,False
+2010,EAGLE 13,in_senate,7,1.0,0.999999,1420,vap_2010,False
+2010,EAGLE 14,in_senate,29,1.0,1.0,1174,vap_2010,False
+2010,EAGLE 15,in_senate,29,1.0,1.0,448,vap_2010,False
+2010,EAGLE 16,in_senate,29,1.0,1.0,528,vap_2010,False
+2010,EAGLE 17,in_senate,29,1.0,1.0,816,vap_2010,False
+2010,EAGLE 18,in_senate,29,1.0,1.0,1216,vap_2010,False
+2010,EAGLE 19,in_senate,7,1.0,1.0,599,vap_2010,False
+2010,EAGLE 2,in_senate,29,1.0,1.0,394,vap_2010,False
+2010,EAGLE 3,in_senate,29,1.0,1.0,714,vap_2010,False
+2010,EAGLE 4,in_senate,29,1.0,1.0,625,vap_2010,False
+2010,EAGLE 5,in_senate,29,1.0,1.0,544,vap_2010,False
+2010,EAGLE 6,in_senate,29,1.0,0.999967,341,vap_2010,False
+2010,EAGLE 7,in_senate,29,1.0,1.0,975,vap_2010,False
+2010,EAGLE 8,in_senate,29,1.0,1.0,941,vap_2010,False
+2010,EAGLE 9,in_senate,29,1.0,1.0,568,vap_2010,False
+2010,HARRISON,in_senate,7,1.0,1.0,537,vap_2010,False
+2010,JACKSON 1,in_senate,7,1.0,1.0,742,vap_2010,False
+2010,JACKSON 2,in_senate,7,1.0,1.0,715,vap_2010,False
+2010,JACKSON 3,in_senate,7,1.0,1.0,540,vap_2010,False
+2010,JEFFERSON,in_senate,7,1.0,1.0,1051,vap_2010,False
+2010,MARION 1,in_senate,7,1.0,1.0,504,vap_2010,False
+2010,MARION 2,in_senate,7,1.0,1.0,462,vap_2010,False
+2010,PERRY,in_senate,7,1.0,1.0,862,vap_2010,False
+2010,SUGAR CREEK 1,in_senate,7,1.0,1.0,808,vap_2010,False
+2010,SUGAR CREEK 2,in_senate,7,1.0,1.0,872,vap_2010,False
+2010,UNION 1,in_senate,7,1.0,1.0,702,vap_2010,False
+2010,UNION 2,in_senate,7,1.0,1.0,971,vap_2010,False
+2010,WASHINGTON,in_senate,7,1.0,1.0,1038,vap_2010,False
+2010,WORTH,in_senate,7,1.0,1.0,1207,vap_2010,False
+2010,WORTH 2,in_senate,7,1.0,1.0,587,vap_2010,False
+2010,CENTER 1,us_house,4,1.0,1.0,1170,vap_2010,False
+2010,CENTER 10,us_house,4,1.0,1.0,1379,vap_2010,False
+2010,CENTER 11,us_house,4,1.0,1.0,1056,vap_2010,False
+2010,CENTER 12,us_house,4,1.0,1.0,517,vap_2010,False
+2010,CENTER 13,us_house,4,1.0,1.0,1065,vap_2010,False
+2010,CENTER 14,us_house,4,1.0,1.0,555,vap_2010,False
+2010,CENTER 15,us_house,4,1.0,1.0,132,vap_2010,False
+2010,CENTER 16,us_house,4,1.0,1.0,180,vap_2010,False
+2010,CENTER 2,us_house,4,1.0,1.0,1466,vap_2010,False
+2010,CENTER 3,us_house,4,1.0,1.0,843,vap_2010,False
+2010,CENTER 4,us_house,4,1.0,1.0,737,vap_2010,False
+2010,CENTER 5,us_house,4,1.0,1.0,815,vap_2010,False
+2010,CENTER 6,us_house,4,1.0,1.0,352,vap_2010,False
+2010,CENTER 7,us_house,4,1.0,1.0,635,vap_2010,False
+2010,CENTER 8,us_house,4,1.0,1.0,1505,vap_2010,False
+2010,CENTER 9,us_house,4,1.0,1.0,1245,vap_2010,False
+2010,CLINTON,us_house,4,1.0,1.0,668,vap_2010,False
+2010,EAGLE 1,us_house,4,1.0,1.0,945,vap_2010,False
+2010,EAGLE 10,us_house,4,1.0,1.0,1148,vap_2010,False
+2010,EAGLE 11,us_house,4,1.0,1.0,641,vap_2010,False
+2010,EAGLE 12,us_house,4,1.0,1.0,768,vap_2010,False
+2010,EAGLE 13,us_house,4,1.0,1.0,1420,vap_2010,False
+2010,EAGLE 14,us_house,4,1.0,1.0,1174,vap_2010,False
+2010,EAGLE 15,us_house,4,1.0,1.0,448,vap_2010,False
+2010,EAGLE 16,us_house,4,1.0,1.0,528,vap_2010,False
+2010,EAGLE 17,us_house,4,1.0,1.0,816,vap_2010,False
+2010,EAGLE 18,us_house,4,1.0,1.0,1216,vap_2010,False
+2010,EAGLE 19,us_house,4,1.0,1.0,599,vap_2010,False
+2010,EAGLE 2,us_house,4,1.0,1.0,394,vap_2010,False
+2010,EAGLE 3,us_house,4,1.0,1.0,714,vap_2010,False
+2010,EAGLE 4,us_house,4,1.0,1.0,625,vap_2010,False
+2010,EAGLE 5,us_house,4,1.0,1.0,544,vap_2010,False
+2010,EAGLE 6,us_house,4,1.0,1.0,341,vap_2010,False
+2010,EAGLE 7,us_house,4,1.0,1.0,975,vap_2010,False
+2010,EAGLE 8,us_house,4,1.0,1.0,941,vap_2010,False
+2010,EAGLE 9,us_house,4,1.0,1.0,568,vap_2010,False
+2010,HARRISON,us_house,4,1.0,1.0,537,vap_2010,False
+2010,JACKSON 1,us_house,4,1.0,1.0,742,vap_2010,False
+2010,JACKSON 2,us_house,4,1.0,1.0,715,vap_2010,False
+2010,JACKSON 3,us_house,4,1.0,1.0,540,vap_2010,False
+2010,JEFFERSON,us_house,4,1.0,1.0,1051,vap_2010,False
+2010,MARION 1,us_house,4,1.0,1.0,504,vap_2010,False
+2010,MARION 2,us_house,4,1.0,1.0,462,vap_2010,False
+2010,PERRY,us_house,4,1.0,1.0,862,vap_2010,False
+2010,SUGAR CREEK 1,us_house,4,1.0,1.0,808,vap_2010,False
+2010,SUGAR CREEK 2,us_house,4,1.0,1.0,872,vap_2010,False
+2010,UNION 1,us_house,4,1.0,1.0,702,vap_2010,False
+2010,UNION 2,us_house,4,1.0,1.0,971,vap_2010,False
+2010,WASHINGTON,us_house,4,1.0,1.0,1038,vap_2010,False
+2010,WORTH,us_house,4,1.0,1.0,1207,vap_2010,False
+2010,WORTH 2,us_house,4,1.0,1.0,587,vap_2010,False
+2020,CENTER 1,in_house,41,1.0,1.0,803,vap_2020,False
+2020,CENTER 10,in_house,41,1.0,1.0,1011,vap_2020,False
+2020,CENTER 11,in_house,41,1.0,1.0,1104,vap_2020,False
+2020,CENTER 12,in_house,41,1.0,1.0,897,vap_2020,False
+2020,CENTER 13,in_house,41,1.0,1.0,882,vap_2020,False
+2020,CENTER 14,in_house,41,1.0,1.0,778,vap_2020,False
+2020,CENTER 15,in_house,41,1.0,1.0,132,vap_2020,False
+2020,CENTER 16,in_house,25,1.0,1.0,185,vap_2020,False
+2020,CENTER 17,in_house,41,1.0,1.0,1191,vap_2020,False
+2020,CENTER 2,in_house,41,1.0,1.0,943,vap_2020,False
+2020,CENTER 3,in_house,41,1.0,1.0,1140,vap_2020,False
+2020,CENTER 4,in_house,41,1.0,1.0,894,vap_2020,False
+2020,CENTER 5,in_house,25,1.0,1.0,999,vap_2020,False
+2020,CENTER 6,in_house,41,1.0,1.0,871,vap_2020,False
+2020,CENTER 7,in_house,41,1.0,1.0,1011,vap_2020,False
+2020,CENTER 8,in_house,41,1.0,1.0,998,vap_2020,False
+2020,CENTER 9,in_house,41,1.0,1.0,874,vap_2020,False
+2020,CLINTON,in_house,41,1.0,1.0,693,vap_2020,False
+2020,EAGLE 1,in_house,25,1.0,1.0,939,vap_2020,False
+2020,EAGLE 10,in_house,25,1.0,1.0,1618,vap_2020,False
+2020,EAGLE 11,in_house,25,1.0,1.0,680,vap_2020,False
+2020,EAGLE 12,in_house,25,1.0,1.0,829,vap_2020,False
+2020,EAGLE 13,in_house,25,1.0,1.0,1789,vap_2020,False
+2020,EAGLE 14,in_house,25,1.0,1.0,1023,vap_2020,False
+2020,EAGLE 15,in_house,25,1.0,1.0,520,vap_2020,False
+2020,EAGLE 16,in_house,25,1.0,1.0,968,vap_2020,False
+2020,EAGLE 17,in_house,25,1.0,1.0,1004,vap_2020,False
+2020,EAGLE 18,in_house,25,1.0,1.0,766,vap_2020,False
+2020,EAGLE 19,in_house,25,1.0,1.0,1458,vap_2020,False
+2020,EAGLE 2,in_house,25,1.0,1.0,721,vap_2020,False
+2020,EAGLE 20,in_house,25,1.0,1.0,2016,vap_2020,False
+2020,EAGLE 3,in_house,25,1.0,1.0,769,vap_2020,False
+2020,EAGLE 4,in_house,25,1.0,1.0,1490,vap_2020,False
+2020,EAGLE 5,in_house,25,1.0,1.0,698,vap_2020,False
+2020,EAGLE 6,in_house,25,1.0,1.0,1558,vap_2020,False
+2020,EAGLE 7,in_house,25,1.0,1.0,1108,vap_2020,False
+2020,EAGLE 8,in_house,25,1.0,1.0,1059,vap_2020,False
+2020,EAGLE 9,in_house,25,1.0,1.0,1173,vap_2020,False
+2020,HARRISON,in_house,28,1.0,1.0,561,vap_2020,False
+2020,JACKSON 1,in_house,28,1.0,1.0,754,vap_2020,False
+2020,JACKSON 2,in_house,28,1.0,1.0,761,vap_2020,False
+2020,JACKSON 3,in_house,28,1.0,1.0,549,vap_2020,False
+2020,JEFFERSON,in_house,41,1.0,1.0,1116,vap_2020,False
+2020,MARION 1,in_house,24,1.0,1.0,486,vap_2020,False
+2020,MARION 2,in_house,24,1.0,1.0,489,vap_2020,False
+2020,PERRY,in_house,25,1.0,1.0,1281,vap_2020,False
+2020,SUGAR CREEK 1,in_house,41,1.0,1.0,798,vap_2020,False
+2020,SUGAR CREEK 2,in_house,41,1.0,1.0,869,vap_2020,False
+2020,UNION 1,in_house,24,1.0,1.0,1272,vap_2020,False
+2020,UNION 2,in_house,24,1.0,1.0,1035,vap_2020,False
+2020,WASHINGTON,in_house,41,1.0,1.0,1060,vap_2020,False
+2020,WORTH 1,in_house,25,1.0,1.0,2389,vap_2020,False
+2020,WORTH 2,in_house,25,1.0,1.0,1053,vap_2020,False
+2020,CENTER 1,in_senate,7,1.0,1.0,803,vap_2020,False
+2020,CENTER 10,in_senate,7,1.0,1.0,1011,vap_2020,False
+2020,CENTER 11,in_senate,7,1.0,1.0,1104,vap_2020,False
+2020,CENTER 12,in_senate,7,1.0,1.0,897,vap_2020,False
+2020,CENTER 13,in_senate,7,1.0,1.0,882,vap_2020,False
+2020,CENTER 14,in_senate,7,1.0,1.0,778,vap_2020,False
+2020,CENTER 15,in_senate,7,1.0,1.0,132,vap_2020,False
+2020,CENTER 16,in_senate,7,1.0,1.0,185,vap_2020,False
+2020,CENTER 17,in_senate,7,1.0,1.0,1191,vap_2020,False
+2020,CENTER 2,in_senate,7,1.0,1.0,943,vap_2020,False
+2020,CENTER 3,in_senate,7,1.0,1.0,1140,vap_2020,False
+2020,CENTER 4,in_senate,7,1.0,1.0,894,vap_2020,False
+2020,CENTER 5,in_senate,7,1.0,1.0,999,vap_2020,False
+2020,CENTER 6,in_senate,7,1.0,1.0,871,vap_2020,False
+2020,CENTER 7,in_senate,7,1.0,1.0,1011,vap_2020,False
+2020,CENTER 8,in_senate,7,1.0,1.0,998,vap_2020,False
+2020,CENTER 9,in_senate,7,1.0,1.0,874,vap_2020,False
+2020,CLINTON,in_senate,7,1.0,1.0,693,vap_2020,False
+2020,EAGLE 1,in_senate,29,1.0,1.0,939,vap_2020,False
+2020,EAGLE 10,in_senate,29,1.0,1.0,1618,vap_2020,False
+2020,EAGLE 11,in_senate,29,1.0,1.0,680,vap_2020,False
+2020,EAGLE 12,in_senate,29,1.0,1.0,829,vap_2020,False
+2020,EAGLE 13,in_senate,7,1.0,1.0,1789,vap_2020,False
+2020,EAGLE 14,in_senate,29,1.0,1.0,1023,vap_2020,False
+2020,EAGLE 15,in_senate,29,1.0,1.0,520,vap_2020,False
+2020,EAGLE 16,in_senate,29,1.0,1.0,968,vap_2020,False
+2020,EAGLE 17,in_senate,29,1.0,1.0,1004,vap_2020,False
+2020,EAGLE 18,in_senate,29,1.0,1.0,766,vap_2020,False
+2020,EAGLE 19,in_senate,7,1.0,1.0,1458,vap_2020,False
+2020,EAGLE 2,in_senate,29,1.0,1.0,721,vap_2020,False
+2020,EAGLE 20,in_senate,7,1.0,1.0,2016,vap_2020,False
+2020,EAGLE 3,in_senate,29,1.0,1.0,769,vap_2020,False
+2020,EAGLE 4,in_senate,29,1.0,1.0,1490,vap_2020,False
+2020,EAGLE 5,in_senate,29,1.0,1.0,698,vap_2020,False
+2020,EAGLE 6,in_senate,29,1.0,1.0,1558,vap_2020,False
+2020,EAGLE 7,in_senate,29,1.0,1.0,1108,vap_2020,False
+2020,EAGLE 8,in_senate,29,1.0,1.0,1059,vap_2020,False
+2020,EAGLE 9,in_senate,29,1.0,1.0,1173,vap_2020,False
+2020,HARRISON,in_senate,7,1.0,1.0,561,vap_2020,False
+2020,JACKSON 1,in_senate,7,1.0,1.0,754,vap_2020,False
+2020,JACKSON 2,in_senate,7,1.0,1.0,761,vap_2020,False
+2020,JACKSON 3,in_senate,7,1.0,1.0,549,vap_2020,False
+2020,JEFFERSON,in_senate,7,1.0,1.0,1116,vap_2020,False
+2020,MARION 1,in_senate,7,1.0,1.0,486,vap_2020,False
+2020,MARION 2,in_senate,7,1.0,1.0,489,vap_2020,False
+2020,PERRY,in_senate,7,1.0,1.0,1281,vap_2020,False
+2020,SUGAR CREEK 1,in_senate,7,1.0,1.0,798,vap_2020,False
+2020,SUGAR CREEK 2,in_senate,7,1.0,1.0,869,vap_2020,False
+2020,UNION 1,in_senate,7,1.0,1.0,1272,vap_2020,False
+2020,UNION 2,in_senate,7,1.0,1.0,1035,vap_2020,False
+2020,WASHINGTON,in_senate,7,1.0,1.0,1060,vap_2020,False
+2020,WORTH 1,in_senate,7,1.0,1.0,2389,vap_2020,False
+2020,WORTH 2,in_senate,7,1.0,1.0,1053,vap_2020,False
+2020,CENTER 1,us_house,4,1.0,1.0,803,vap_2020,False
+2020,CENTER 10,us_house,4,1.0,1.0,1011,vap_2020,False
+2020,CENTER 11,us_house,4,1.0,1.0,1104,vap_2020,False
+2020,CENTER 12,us_house,4,1.0,1.0,897,vap_2020,False
+2020,CENTER 13,us_house,4,1.0,1.0,882,vap_2020,False
+2020,CENTER 14,us_house,4,1.0,1.0,778,vap_2020,False
+2020,CENTER 15,us_house,4,1.0,1.0,132,vap_2020,False
+2020,CENTER 16,us_house,4,1.0,1.0,185,vap_2020,False
+2020,CENTER 17,us_house,4,1.0,1.0,1191,vap_2020,False
+2020,CENTER 2,us_house,4,1.0,1.0,943,vap_2020,False
+2020,CENTER 3,us_house,4,1.0,1.0,1140,vap_2020,False
+2020,CENTER 4,us_house,4,1.0,1.0,894,vap_2020,False
+2020,CENTER 5,us_house,4,1.0,1.0,999,vap_2020,False
+2020,CENTER 6,us_house,4,1.0,1.0,871,vap_2020,False
+2020,CENTER 7,us_house,4,1.0,1.0,1011,vap_2020,False
+2020,CENTER 8,us_house,4,1.0,1.0,998,vap_2020,False
+2020,CENTER 9,us_house,4,1.0,1.0,874,vap_2020,False
+2020,CLINTON,us_house,4,1.0,1.0,693,vap_2020,False
+2020,EAGLE 1,us_house,4,1.0,1.0,939,vap_2020,False
+2020,EAGLE 10,us_house,4,1.0,1.0,1618,vap_2020,False
+2020,EAGLE 11,us_house,4,1.0,1.0,680,vap_2020,False
+2020,EAGLE 12,us_house,4,1.0,1.0,829,vap_2020,False
+2020,EAGLE 13,us_house,4,1.0,1.0,1789,vap_2020,False
+2020,EAGLE 14,us_house,4,1.0,1.0,1023,vap_2020,False
+2020,EAGLE 15,us_house,4,1.0,1.0,520,vap_2020,False
+2020,EAGLE 16,us_house,4,1.0,1.0,968,vap_2020,False
+2020,EAGLE 17,us_house,4,1.0,1.0,1004,vap_2020,False
+2020,EAGLE 18,us_house,4,1.0,1.0,766,vap_2020,False
+2020,EAGLE 19,us_house,4,1.0,1.0,1458,vap_2020,False
+2020,EAGLE 2,us_house,4,1.0,1.0,721,vap_2020,False
+2020,EAGLE 20,us_house,4,1.0,1.0,2016,vap_2020,False
+2020,EAGLE 3,us_house,4,1.0,1.0,769,vap_2020,False
+2020,EAGLE 4,us_house,4,1.0,1.0,1490,vap_2020,False
+2020,EAGLE 5,us_house,4,1.0,1.0,698,vap_2020,False
+2020,EAGLE 6,us_house,4,1.0,1.0,1558,vap_2020,False
+2020,EAGLE 7,us_house,4,1.0,1.0,1108,vap_2020,False
+2020,EAGLE 8,us_house,4,1.0,1.0,1059,vap_2020,False
+2020,EAGLE 9,us_house,4,1.0,1.0,1173,vap_2020,False
+2020,HARRISON,us_house,4,1.0,1.0,561,vap_2020,False
+2020,JACKSON 1,us_house,4,1.0,1.0,754,vap_2020,False
+2020,JACKSON 2,us_house,4,1.0,1.0,761,vap_2020,False
+2020,JACKSON 3,us_house,4,1.0,1.0,549,vap_2020,False
+2020,JEFFERSON,us_house,4,1.0,1.0,1116,vap_2020,False
+2020,MARION 1,us_house,4,1.0,1.0,486,vap_2020,False
+2020,MARION 2,us_house,4,1.0,1.0,489,vap_2020,False
+2020,PERRY,us_house,4,1.0,1.0,1281,vap_2020,False
+2020,SUGAR CREEK 1,us_house,4,1.0,1.0,798,vap_2020,False
+2020,SUGAR CREEK 2,us_house,4,1.0,1.0,869,vap_2020,False
+2020,UNION 1,us_house,4,1.0,1.0,1272,vap_2020,False
+2020,UNION 2,us_house,4,1.0,1.0,1035,vap_2020,False
+2020,WASHINGTON,us_house,4,1.0,1.0,1060,vap_2020,False
+2020,WORTH 1,us_house,4,1.0,1.0,2389,vap_2020,False
+2020,WORTH 2,us_house,4,1.0,1.0,1053,vap_2020,False
+2024,CENTER 1,in_house,41,1.0,1.0,803,vap_2020,False
+2024,CENTER 10,in_house,41,1.0,1.0,1011,vap_2020,False
+2024,CENTER 11,in_house,41,1.0,1.0,1104,vap_2020,False
+2024,CENTER 12,in_house,41,1.0,1.0,897,vap_2020,False
+2024,CENTER 13,in_house,41,1.0,1.0,882,vap_2020,False
+2024,CENTER 14,in_house,41,1.0,1.0,778,vap_2020,False
+2024,CENTER 15,in_house,41,1.0,1.0,132,vap_2020,False
+2024,CENTER 16,in_house,25,1.0,1.0,185,vap_2020,False
+2024,CENTER 17,in_house,41,1.0,1.0,1191,vap_2020,False
+2024,CENTER 2,in_house,41,1.0,1.0,943,vap_2020,False
+2024,CENTER 3,in_house,41,1.0,1.0,1140,vap_2020,False
+2024,CENTER 4,in_house,41,1.0,1.0,894,vap_2020,False
+2024,CENTER 5,in_house,25,1.0,1.0,999,vap_2020,False
+2024,CENTER 6,in_house,41,1.0,1.0,871,vap_2020,False
+2024,CENTER 7,in_house,41,1.0,1.0,1011,vap_2020,False
+2024,CENTER 8,in_house,41,1.0,1.0,998,vap_2020,False
+2024,CENTER 9,in_house,41,1.0,1.0,874,vap_2020,False
+2024,CLINTON,in_house,41,1.0,1.0,693,vap_2020,False
+2024,EAGLE 1,in_house,25,1.0,1.0,939,vap_2020,False
+2024,EAGLE 10,in_house,25,1.0,1.0,1618,vap_2020,False
+2024,EAGLE 11,in_house,25,1.0,1.0,680,vap_2020,False
+2024,EAGLE 12,in_house,25,1.0,1.0,829,vap_2020,False
+2024,EAGLE 13,in_house,25,1.0,1.0,1789,vap_2020,False
+2024,EAGLE 14,in_house,25,1.0,1.0,1023,vap_2020,False
+2024,EAGLE 15,in_house,25,1.0,1.0,520,vap_2020,False
+2024,EAGLE 16,in_house,25,1.0,1.0,968,vap_2020,False
+2024,EAGLE 17,in_house,25,1.0,1.0,1004,vap_2020,False
+2024,EAGLE 18,in_house,25,1.0,1.0,766,vap_2020,False
+2024,EAGLE 19,in_house,25,1.0,1.0,1458,vap_2020,False
+2024,EAGLE 2,in_house,25,1.0,1.0,721,vap_2020,False
+2024,EAGLE 20,in_house,25,1.0,1.0,2016,vap_2020,False
+2024,EAGLE 3,in_house,25,1.0,1.0,769,vap_2020,False
+2024,EAGLE 4,in_house,25,1.0,1.0,1490,vap_2020,False
+2024,EAGLE 5,in_house,25,1.0,1.0,698,vap_2020,False
+2024,EAGLE 6,in_house,25,1.0,1.0,1558,vap_2020,False
+2024,EAGLE 7,in_house,25,1.0,1.0,1108,vap_2020,False
+2024,EAGLE 8,in_house,25,1.0,1.0,1059,vap_2020,False
+2024,EAGLE 9,in_house,25,1.0,1.0,1173,vap_2020,False
+2024,HARRISON,in_house,28,1.0,1.0,561,vap_2020,False
+2024,JACKSON 1,in_house,28,1.0,1.0,754,vap_2020,False
+2024,JACKSON 2,in_house,28,1.0,1.0,761,vap_2020,False
+2024,JACKSON 3,in_house,28,1.0,1.0,549,vap_2020,False
+2024,JEFFERSON,in_house,41,1.0,1.0,1116,vap_2020,False
+2024,MARION 1,in_house,24,1.0,1.0,486,vap_2020,False
+2024,MARION 2,in_house,24,1.0,1.0,489,vap_2020,False
+2024,PERRY,in_house,25,1.0,1.0,1281,vap_2020,False
+2024,SUGAR CREEK 1,in_house,41,1.0,1.0,798,vap_2020,False
+2024,SUGAR CREEK 2,in_house,41,1.0,1.0,869,vap_2020,False
+2024,UNION 1,in_house,24,1.0,1.0,1272,vap_2020,False
+2024,UNION 2,in_house,24,1.0,1.0,1035,vap_2020,False
+2024,WASHINGTON,in_house,41,1.0,1.0,1060,vap_2020,False
+2024,WORTH 1,in_house,25,1.0,1.0,2389,vap_2020,False
+2024,WORTH 2,in_house,25,1.0,1.0,1053,vap_2020,False
+2024,CENTER 1,in_senate,7,1.0,1.0,803,vap_2020,False
+2024,CENTER 10,in_senate,7,1.0,1.0,1011,vap_2020,False
+2024,CENTER 11,in_senate,7,1.0,1.0,1104,vap_2020,False
+2024,CENTER 12,in_senate,7,1.0,1.0,897,vap_2020,False
+2024,CENTER 13,in_senate,7,1.0,1.0,882,vap_2020,False
+2024,CENTER 14,in_senate,7,1.0,1.0,778,vap_2020,False
+2024,CENTER 15,in_senate,7,1.0,1.0,132,vap_2020,False
+2024,CENTER 16,in_senate,7,1.0,1.0,185,vap_2020,False
+2024,CENTER 17,in_senate,7,1.0,1.0,1191,vap_2020,False
+2024,CENTER 2,in_senate,7,1.0,1.0,943,vap_2020,False
+2024,CENTER 3,in_senate,7,1.0,1.0,1140,vap_2020,False
+2024,CENTER 4,in_senate,7,1.0,1.0,894,vap_2020,False
+2024,CENTER 5,in_senate,7,1.0,1.0,999,vap_2020,False
+2024,CENTER 6,in_senate,7,1.0,1.0,871,vap_2020,False
+2024,CENTER 7,in_senate,7,1.0,1.0,1011,vap_2020,False
+2024,CENTER 8,in_senate,7,1.0,1.0,998,vap_2020,False
+2024,CENTER 9,in_senate,7,1.0,1.0,874,vap_2020,False
+2024,CLINTON,in_senate,7,1.0,1.0,693,vap_2020,False
+2024,EAGLE 1,in_senate,29,1.0,1.0,939,vap_2020,False
+2024,EAGLE 10,in_senate,29,1.0,1.0,1618,vap_2020,False
+2024,EAGLE 11,in_senate,29,1.0,1.0,680,vap_2020,False
+2024,EAGLE 12,in_senate,29,1.0,1.0,829,vap_2020,False
+2024,EAGLE 13,in_senate,7,1.0,1.0,1789,vap_2020,False
+2024,EAGLE 14,in_senate,29,1.0,1.0,1023,vap_2020,False
+2024,EAGLE 15,in_senate,29,1.0,1.0,520,vap_2020,False
+2024,EAGLE 16,in_senate,29,1.0,1.0,968,vap_2020,False
+2024,EAGLE 17,in_senate,29,1.0,1.0,1004,vap_2020,False
+2024,EAGLE 18,in_senate,29,1.0,1.0,766,vap_2020,False
+2024,EAGLE 19,in_senate,7,1.0,1.0,1458,vap_2020,False
+2024,EAGLE 2,in_senate,29,1.0,1.0,721,vap_2020,False
+2024,EAGLE 20,in_senate,7,1.0,1.0,2016,vap_2020,False
+2024,EAGLE 3,in_senate,29,1.0,1.0,769,vap_2020,False
+2024,EAGLE 4,in_senate,29,1.0,1.0,1490,vap_2020,False
+2024,EAGLE 5,in_senate,29,1.0,1.0,698,vap_2020,False
+2024,EAGLE 6,in_senate,29,1.0,1.0,1558,vap_2020,False
+2024,EAGLE 7,in_senate,29,1.0,1.0,1108,vap_2020,False
+2024,EAGLE 8,in_senate,29,1.0,1.0,1059,vap_2020,False
+2024,EAGLE 9,in_senate,29,1.0,1.0,1173,vap_2020,False
+2024,HARRISON,in_senate,7,1.0,1.0,561,vap_2020,False
+2024,JACKSON 1,in_senate,7,1.0,1.0,754,vap_2020,False
+2024,JACKSON 2,in_senate,7,1.0,1.0,761,vap_2020,False
+2024,JACKSON 3,in_senate,7,1.0,1.0,549,vap_2020,False
+2024,JEFFERSON,in_senate,7,1.0,1.0,1116,vap_2020,False
+2024,MARION 1,in_senate,7,1.0,1.0,486,vap_2020,False
+2024,MARION 2,in_senate,7,1.0,1.0,489,vap_2020,False
+2024,PERRY,in_senate,7,1.0,1.0,1281,vap_2020,False
+2024,SUGAR CREEK 1,in_senate,7,1.0,1.0,798,vap_2020,False
+2024,SUGAR CREEK 2,in_senate,7,1.0,1.0,869,vap_2020,False
+2024,UNION 1,in_senate,7,1.0,1.0,1272,vap_2020,False
+2024,UNION 2,in_senate,7,1.0,1.0,1035,vap_2020,False
+2024,WASHINGTON,in_senate,7,1.0,1.0,1060,vap_2020,False
+2024,WORTH 1,in_senate,7,1.0,1.0,2389,vap_2020,False
+2024,WORTH 2,in_senate,7,1.0,1.0,1053,vap_2020,False
+2024,CENTER 1,us_house,4,1.0,1.0,803,vap_2020,False
+2024,CENTER 10,us_house,4,1.0,1.0,1011,vap_2020,False
+2024,CENTER 11,us_house,4,1.0,1.0,1104,vap_2020,False
+2024,CENTER 12,us_house,4,1.0,1.0,897,vap_2020,False
+2024,CENTER 13,us_house,4,1.0,1.0,882,vap_2020,False
+2024,CENTER 14,us_house,4,1.0,1.0,778,vap_2020,False
+2024,CENTER 15,us_house,4,1.0,1.0,132,vap_2020,False
+2024,CENTER 16,us_house,4,1.0,1.0,185,vap_2020,False
+2024,CENTER 17,us_house,4,1.0,1.0,1191,vap_2020,False
+2024,CENTER 2,us_house,4,1.0,1.0,943,vap_2020,False
+2024,CENTER 3,us_house,4,1.0,1.0,1140,vap_2020,False
+2024,CENTER 4,us_house,4,1.0,1.0,894,vap_2020,False
+2024,CENTER 5,us_house,4,1.0,1.0,999,vap_2020,False
+2024,CENTER 6,us_house,4,1.0,1.0,871,vap_2020,False
+2024,CENTER 7,us_house,4,1.0,1.0,1011,vap_2020,False
+2024,CENTER 8,us_house,4,1.0,1.0,998,vap_2020,False
+2024,CENTER 9,us_house,4,1.0,1.0,874,vap_2020,False
+2024,CLINTON,us_house,4,1.0,1.0,693,vap_2020,False
+2024,EAGLE 1,us_house,4,1.0,1.0,939,vap_2020,False
+2024,EAGLE 10,us_house,4,1.0,1.0,1618,vap_2020,False
+2024,EAGLE 11,us_house,4,1.0,1.0,680,vap_2020,False
+2024,EAGLE 12,us_house,4,1.0,1.0,829,vap_2020,False
+2024,EAGLE 13,us_house,4,1.0,1.0,1789,vap_2020,False
+2024,EAGLE 14,us_house,4,1.0,1.0,1023,vap_2020,False
+2024,EAGLE 15,us_house,4,1.0,1.0,520,vap_2020,False
+2024,EAGLE 16,us_house,4,1.0,1.0,968,vap_2020,False
+2024,EAGLE 17,us_house,4,1.0,1.0,1004,vap_2020,False
+2024,EAGLE 18,us_house,4,1.0,1.0,766,vap_2020,False
+2024,EAGLE 19,us_house,4,1.0,1.0,1458,vap_2020,False
+2024,EAGLE 2,us_house,4,1.0,1.0,721,vap_2020,False
+2024,EAGLE 20,us_house,4,1.0,1.0,2016,vap_2020,False
+2024,EAGLE 3,us_house,4,1.0,1.0,769,vap_2020,False
+2024,EAGLE 4,us_house,4,1.0,1.0,1490,vap_2020,False
+2024,EAGLE 5,us_house,4,1.0,1.0,698,vap_2020,False
+2024,EAGLE 6,us_house,4,1.0,1.0,1558,vap_2020,False
+2024,EAGLE 7,us_house,4,1.0,1.0,1108,vap_2020,False
+2024,EAGLE 8,us_house,4,1.0,1.0,1059,vap_2020,False
+2024,EAGLE 9,us_house,4,1.0,1.0,1173,vap_2020,False
+2024,HARRISON,us_house,4,1.0,1.0,561,vap_2020,False
+2024,JACKSON 1,us_house,4,1.0,1.0,754,vap_2020,False
+2024,JACKSON 2,us_house,4,1.0,1.0,761,vap_2020,False
+2024,JACKSON 3,us_house,4,1.0,1.0,549,vap_2020,False
+2024,JEFFERSON,us_house,4,1.0,1.0,1116,vap_2020,False
+2024,MARION 1,us_house,4,1.0,1.0,486,vap_2020,False
+2024,MARION 2,us_house,4,1.0,1.0,489,vap_2020,False
+2024,PERRY,us_house,4,1.0,1.0,1281,vap_2020,False
+2024,SUGAR CREEK 1,us_house,4,1.0,1.0,798,vap_2020,False
+2024,SUGAR CREEK 2,us_house,4,1.0,1.0,869,vap_2020,False
+2024,UNION 1,us_house,4,1.0,1.0,1272,vap_2020,False
+2024,UNION 2,us_house,4,1.0,1.0,1035,vap_2020,False
+2024,WASHINGTON,us_house,4,1.0,1.0,1060,vap_2020,False
+2024,WORTH 1,us_house,4,1.0,1.0,2389,vap_2020,False
+2024,WORTH 2,us_house,4,1.0,1.0,1053,vap_2020,False

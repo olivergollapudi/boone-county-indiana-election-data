@@ -1,0 +1,6 @@
+check,scope,result,detail
+V1 shares sum to 1,471 precinct x district-type pairs,PASS,
+V4 2024 precincts nest in their own districts,53 precincts x 3 types,PASS,
+V2 every reported precinct matched or set aside,1238 election-precincts,PASS,0 set aside: 
+V3 votes conserved (allocated + set aside = Results_Long),"2863 election x contest x candidate, x 3 district types",PASS,largest difference 5.68e-14 votes; 0 failures
+"V5 ballot district = GIS district (text elections, 2022+)",630 precinct x district contests checked,PASS,0 text mismatches; 0 in OCR elections (reported only)
