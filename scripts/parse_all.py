@@ -2,7 +2,7 @@
 """
 parse_all.py - unified, profile-detecting parser for ALL embedded precinct files
 ---------------------------------------------------------------------------------
-Implements the axis-detection strategy from PARSING_STRATEGY.md. For each
+Implements the axis-detection strategy from docs/PARSING_STRATEGY.md. For each
 `*-precinct.pdf` it auto-detects the format per-line (vote columns, precinct-header
 style, contest-header order, candidate-party position) and emits the long-format
 spine. Skips the two fully-scanned files (handled later by the OCR pipeline).
@@ -13,10 +13,8 @@ That table is the accuracy proof - read it before trusting any file.
 
 Does NOT touch the master workbook. Output path can be overridden with env BOONE_OUT.
 
-Run:
-    cd ~/Documents/"Boone County Data"
-    source .venv/bin/activate
-    python3 parse_all.py
+Run (from the repository root):
+    python3 scripts/parse_all.py
 """
 
 import csv, os, re, sys, glob
@@ -28,8 +26,9 @@ try:
 except ImportError:
     sys.exit("Missing dependency. Run:  pip install pdfplumber")
 
-FOLDER = Path(__file__).resolve().parent
-OUT    = Path(os.environ.get("BOONE_OUT", FOLDER / "results_long_all.csv"))
+from paths import PDF_DIR, DATA_DIR
+
+OUT    = Path(os.environ.get("BOONE_OUT", DATA_DIR / "results_long_all.csv"))
 
 # fully scanned -> OCR pipeline, not here
 SKIP = {"2008-general-precinct.pdf", "2022-primary-precinct.pdf",
@@ -193,7 +192,7 @@ def checksum(rows):
 
 
 def main():
-    files = [Path(f) for f in sorted(glob.glob(str(FOLDER / "*-precinct.pdf")))
+    files = [Path(f) for f in sorted(glob.glob(str(PDF_DIR / "*-precinct.pdf")))
              if Path(f).name not in SKIP]
     all_rows = []
     print(f"{'file':30}{'rows':>7}{'prec':>6}{'contests':>9}{'vf1-bad':>8}  scheme")

@@ -25,15 +25,19 @@ total present = total - others; total missing = sum of splits; UNOPPOSED lone
 candidate at ~100% = the contest VOTES= (recovers an OCR-dropped column); binary
 YES/NO where one side lacks a TOTAL token = VOTES= - the trustworthy side.
 
-Writes results_long_<stem>-geom.csv and prints the within-contest checksum.
-Run:  python3 geometry_parse.py 2008-general-precinct
-      python3 geometry_parse.py 2022-primary-precinct
+Reads ocr_cache/<stem>-appleboxes.json. Writes build/results_long_<stem>-geom.csv
+(an intermediate; finalize_ocr.py turns it into the published -geom-clean.csv) and
+prints the within-contest checksum.
+Run (from the repository root):
+      python3 scripts/geometry_parse.py 2008-general-precinct
+      python3 scripts/geometry_parse.py 2022-primary-precinct
 """
 
 import sys, csv, json, re
 from pathlib import Path
 from collections import defaultdict
 import parse_all as P
+from paths import OCR_DIR, build_path
 
 XREF = 0.47                 # reference x for skew straightening (near the % column)
 ROW_GAP = 0.006             # corrected-y gap that starts a new row
@@ -150,7 +154,7 @@ def parse_candidate(row, split_xs, total_x):
 
 
 def parse_file(stem):
-    boxes = json.loads(Path(f"{stem}-appleboxes.json").read_text())
+    boxes = json.loads((OCR_DIR / f"{stem}-appleboxes.json").read_text())
     source_id = stem.upper()
     era = P.era_for(stem[:4])
     # scheme label from the ballot legend (provenance only)
@@ -280,7 +284,7 @@ def main():
     print(f"CONTEST checksum: {npass}/{ncheck} pass ({100*npass/max(ncheck,1):.1f}%)  FAIL={len(fails)}")
     for (pid, off, cp), (s, cv, vf) in sorted(fails.items(), key=lambda kv: -abs(kv[1][1]-kv[1][0]))[:25]:
         print(f"   p{pid:>3} {cp:>2} sum={s:>5} VOTES={cv:>5} d={cv-s:>5}  {off[:42]}")
-    out = Path(f"results_long_{stem}-geom.csv")
+    out = build_path(f"results_long_{stem}-geom.csv")
     cols = ["source_file_id","precinct_id","precinct_name","office","contest_party","party",
             "party_raw","vote_for","contest_votes","candidate","column_scheme","split1",
             "split2","split3","total","pct","granularity","redistricting_era","recovered"]

@@ -13,20 +13,21 @@ and assigns a category:
 
 A page is "scanned" if it yields < 50 extractable characters.
 
-Run:
-    cd ~/Documents/"Boone County Data"
-    source .venv/bin/activate
-    python3 categorize.py
+Run (from the repository root):
+    python3 scripts/categorize.py
 """
 
 import glob, warnings
+from pathlib import Path
 import pdfplumber
+from paths import PDF_DIR
 warnings.filterwarnings("ignore")
 
 print(f"{'file':32}{'pages':>6}{'scanned':>8}{'text':>6}  category")
 print("-" * 70)
-for f in sorted(glob.glob("*.pdf")):
-    with pdfplumber.open(f) as doc:
+for path in sorted(glob.glob(str(PDF_DIR / "*.pdf"))):
+    f = Path(path).name                    # print just the file name, as before
+    with pdfplumber.open(path) as doc:
         n = len(doc.pages)
         scanned = sum(1 for p in doc.pages if len(p.extract_text() or "") < 50)
     text = n - scanned

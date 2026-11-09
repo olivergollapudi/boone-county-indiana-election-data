@@ -11,21 +11,28 @@ results and the turnout row to the existing clean CSVs.
 Idempotent: any existing 2008-GENERAL precinct-01 rows are removed first, so re-running
 does not double-count.
 
-Prereq: run  python3 dump_boxes.py 2008-general-precinct-Center1.pdf 0 2   first.
-Then:   python3 add_center1.py   ->  then rebuild with build_workbook.py
+ORDER MATTERS: run this AFTER finalize_ocr.py (which rewrites the 2008 clean CSV) and
+AFTER extract_turnout.py (which rewrites turnout_long.csv); otherwise those scripts drop
+the precinct-01 rows this one adds.
+
+Prereq (OCR cache, already in ocr_cache/):
+        python3 scripts/dump_boxes.py 2008-general-precinct-Center1.pdf 0 2
+Run (from the repository root):
+        python3 scripts/add_center1.py   ->  then python3 scripts/build_workbook.py
 """
 
 import csv, json, re
 from pathlib import Path
 from collections import OrderedDict
 import geometry_parse as G
+from paths import OCR_DIR, DATA_DIR
 
 STEM   = "2008-general-precinct-Center1"
 SID    = "2008-GENERAL-PRECINCT"          # relabel so it joins the 2008 general election
 PREC   = "01"
-CLEAN  = Path("results_long_2008-general-precinct-geom-clean.csv")
-TURN   = Path("turnout_long.csv")
-BOXES  = Path(f"{STEM}-appleboxes.json")
+CLEAN  = DATA_DIR / "results_long_2008-general-precinct-geom-clean.csv"
+TURN   = DATA_DIR / "turnout_long.csv"
+BOXES  = OCR_DIR / f"{STEM}-appleboxes.json"
 
 
 def num(v):
@@ -72,7 +79,7 @@ def parse_turnout_from_boxes(path):
 
 def main():
     if not BOXES.exists():
-        raise SystemExit(f"Missing {BOXES.name} — run: python3 dump_boxes.py {STEM}.pdf 0 2")
+        raise SystemExit(f"Missing {BOXES.name} — run: python3 scripts/dump_boxes.py {STEM}.pdf 0 2")
 
     # ---------- RESULTS ----------
     rows = G.parse_file(STEM)

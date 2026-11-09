@@ -11,20 +11,22 @@ Policy (the validation standard described in METHODOLOGY.md):
     log with its VOTES= target and the parsed shortfall, so it can be approximated
     in the analysis layer later. Nothing wrong ever enters the source of truth.
 
-Outputs (for stem, e.g. 2008-general-precinct):
+Input:  build/results_long_<stem>-geom.csv (from geometry_parse.py)
+Outputs (for stem, e.g. 2008-general-precinct), both in data/:
   results_long_<stem>-geom-clean.csv   - only rows in reconciling contests  -> INGEST
   omitted_<stem>.csv                   - one row per omitted contest         -> GAP LOG
 
-Run:
-    python3 finalize_ocr.py 2008-general-precinct
+Run (from the repository root):
+    python3 scripts/finalize_ocr.py 2008-general-precinct
 """
 
 import sys, csv
 from pathlib import Path
 from collections import defaultdict, OrderedDict
+from paths import DATA_DIR, BUILD_DIR
 
 stem = sys.argv[1] if len(sys.argv) > 1 else "2008-general-precinct"
-src = Path(f"results_long_{stem}-geom.csv")
+src = BUILD_DIR / f"results_long_{stem}-geom.csv"
 rows = list(csv.DictReader(open(src)))
 
 def num(v):
@@ -55,12 +57,12 @@ for (pid, office, cp), rs in contests.items():
                         "n_candidates": len(rs), "reason": reason})
 
 # write clean ingestable csv (same schema as input)
-clean_path = Path(f"results_long_{stem}-geom-clean.csv")
+clean_path = DATA_DIR / f"results_long_{stem}-geom-clean.csv"
 with open(clean_path, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=rows[0].keys()); w.writeheader(); w.writerows(clean_rows)
 
 # write omitted gap log
-omit_path = Path(f"omitted_{stem}.csv")
+omit_path = DATA_DIR / f"omitted_{stem}.csv"
 with open(omit_path, "w", newline="") as f:
     cols = ["source_file_id","precinct_id","office","contest_party","vote_for",
             "contest_votes","parsed_sum","delta","n_candidates","reason"]

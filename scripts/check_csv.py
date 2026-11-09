@@ -11,18 +11,18 @@ Same checksum definition the parser/reconciler use: for each contest keyed by
 (precinct_id, office, contest_party) with vote_for==1 and a known contest_votes,
 sum(total) must equal contest_votes.
 
-Usage:
-    python3 check_csv.py                      # checks the two corrected OCR CSVs by default
-    python3 check_csv.py results_long_all.csv # or any file(s) you name
-    python3 check_csv.py a.csv b.csv
+Usage (from the repository root):
+    python3 scripts/check_csv.py                           # the two raw OCR parses in build/
+    python3 scripts/check_csv.py data/results_long_all.csv # or any file(s) you name
 """
 
 import sys, csv
 from collections import defaultdict
+from paths import BUILD_DIR
 
 DEFAULTS = [
-    "results_long_2008-general-precinct-corrected.csv",
-    "results_long_2022-primary-precinct-corrected.csv",
+    str(BUILD_DIR / "results_long_2008-general-precinct-geom.csv"),
+    str(BUILD_DIR / "results_long_2022-primary-precinct-geom.csv"),
 ]
 
 

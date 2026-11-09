@@ -13,10 +13,8 @@ here - they rely on the within-contest checksum already enforced by parse_all.py
 Reuses parse_all.py's patterns. Reads results_long_all.csv (override via env
 BOONE_OUT). Modifies nothing.
 
-Run:
-    cd ~/Documents/"Boone County Data"
-    source .venv/bin/activate
-    python3 reconcile_all.py
+Run (from the repository root):
+    python3 scripts/reconcile_all.py
 """
 
 import csv, os, re, sys, glob
@@ -30,8 +28,9 @@ try:
 except ImportError:
     sys.exit("Missing dependency. Run:  pip install pdfplumber")
 
-FOLDER = Path(__file__).resolve().parent
-CSV    = Path(os.environ.get("BOONE_OUT", FOLDER / "results_long_all.csv"))
+from paths import PDF_DIR, DATA_DIR
+
+CSV    = Path(os.environ.get("BOONE_OUT", DATA_DIR / "results_long_all.csv"))
 
 # summaries that are scanned -> no cross-check here (OCR later)
 SKIP_SUMMARY = {"2011-primary-summary.pdf", "2022-primary-summary.pdf"}
@@ -92,7 +91,7 @@ def load_precinct_totals():
 
 def main():
     precinct = load_precinct_totals()
-    summaries = [Path(f) for f in sorted(glob.glob(str(FOLDER / "*-summary.pdf")))
+    summaries = [Path(f) for f in sorted(glob.glob(str(PDF_DIR / "*-summary.pdf")))
                  if Path(f).name not in SKIP_SUMMARY]
 
     print(f"{'election':18}{'matched':>8}{'agree':>7}{'MISMATCH':>9}{'only-sum':>9}{'only-prec':>10}")

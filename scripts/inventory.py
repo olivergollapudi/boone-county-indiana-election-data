@@ -12,7 +12,10 @@ WITHOUT modifying any file. For every PDF it answers four questions:
 
 Output:
   - a readable table printed to the terminal
-  - inventory.csv written next to the PDFs (one row per file)
+  - build/inventory.csv (one row per file)
+
+Run (from the repository root):
+    python3 scripts/inventory.py
 
 Classification is heuristic and meant for HUMAN REVIEW - that is the whole point
 of the inventory step. Anything uncertain is marked with "??".
@@ -28,7 +31,7 @@ try:
 except ImportError:
     sys.exit("Missing dependency. Run:  pip install pdfplumber")
 
-FOLDER = Path(__file__).resolve().parent
+from paths import PDF_DIR, build_path
 
 
 def extract_text(pdf):
@@ -80,9 +83,9 @@ def classify(name, text):
 
 
 def main():
-    pdfs = sorted(FOLDER.glob("*.pdf"))
+    pdfs = sorted(PDF_DIR.glob("*.pdf"))
     if not pdfs:
-        sys.exit("No PDFs found in %s" % FOLDER)
+        sys.exit("No PDFs found in %s" % PDF_DIR)
 
     rows = []
     for pdf in pdfs:
@@ -109,8 +112,8 @@ def main():
     for r in rows:
         print("  ".join(str(r[c]).ljust(widths[c]) for c in cols))
 
-    # Write inventory.csv next to the PDFs.
-    out = FOLDER / "inventory.csv"
+    # Write inventory.csv to build/ (regenerated; not published).
+    out = build_path("inventory.csv")
     with open(out, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()

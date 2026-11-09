@@ -18,10 +18,8 @@ Tabs: README, Results_Long, Turnout_Long (placeholder), Precincts, Source_Proven
 Validation, Coverage_Inventory.
 
 Reads override via env BOONE_OUT (embedded csv) / BOONE_XLSX (output).
-Run:
-    cd ~/Documents/"Boone County Data"
-    source .venv/bin/activate
-    python3 build_workbook.py
+Run (from the repository root):
+    python3 scripts/build_workbook.py
 """
 
 import os, csv
@@ -35,9 +33,10 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 
 import reconcile_all as RC          # reuse the summary parser for 2008 primary
 
-FOLDER = Path(__file__).resolve().parent
-CSV    = Path(os.environ.get("BOONE_OUT", FOLDER / "results_long_all.csv"))
-OUT    = Path(os.environ.get("BOONE_XLSX", FOLDER / "boone_county_election_results.xlsx"))
+from paths import PDF_DIR, DATA_DIR
+
+CSV    = Path(os.environ.get("BOONE_OUT", DATA_DIR / "results_long_all.csv"))
+OUT    = Path(os.environ.get("BOONE_XLSX", DATA_DIR / "boone_county_election_results.xlsx"))
 
 MIXED = {"2010-GENERAL", "2012-PRIMARY", "2015-GENERAL", "2020-GENERAL", "2020-PRIMARY"}
 CROSS_CHECK = {"2022-GENERAL": 116, "2023-GENERAL": 44, "2023-PRIMARY": 38,
@@ -46,18 +45,18 @@ CROSS_CHECK = {"2022-GENERAL": 116, "2023-GENERAL": 44, "2023-PRIMARY": 38,
 # OCR-recovered elections: every INGESTED contest reconciles (within-contest checksum);
 # unreconstructable contests are omitted and logged. NOT fabricated, NOT partial rows.
 OCR_CLEAN = {
-    "2008-GENERAL": FOLDER / "results_long_2008-general-precinct-geom-clean.csv",
-    "2022-PRIMARY": FOLDER / "results_long_2022-primary-precinct-geom-clean.csv",
+    "2008-GENERAL": DATA_DIR / "results_long_2008-general-precinct-geom-clean.csv",
+    "2022-PRIMARY": DATA_DIR / "results_long_2022-primary-precinct-geom-clean.csv",
 }
 OMITTED = {
-    "2008-GENERAL": FOLDER / "omitted_2008-general-precinct.csv",
-    "2022-PRIMARY": FOLDER / "omitted_2022-primary-precinct.csv",
+    "2008-GENERAL": DATA_DIR / "omitted_2008-general-precinct.csv",
+    "2022-PRIMARY": DATA_DIR / "omitted_2022-primary-precinct.csv",
 }
 # OCR summaries are themselves scanned -> no clean independent cross-check available.
 OCR_NO_XCHECK = {"2008-GENERAL": "no county summary exists",
                  "2022-PRIMARY": "county summary is also scanned"}
 
-SUMMARY_ONLY = {"2008-PRIMARY": FOLDER / "2008-primary-summary.pdf"}
+SUMMARY_ONLY = {"2008-PRIMARY": PDF_DIR / "2008-primary-summary.pdf"}
 
 STD_COLS = ["source_file_id","precinct_id","precinct_name","office","contest_party","party",
             "party_raw","vote_for","contest_votes","candidate","column_scheme","split1",
@@ -215,7 +214,7 @@ def main():
     write_df(wb.create_sheet("Results_Long"), df[STD_COLS])
 
     # ---------- Turnout_Long ----------
-    tpath = FOLDER / "turnout_long.csv"
+    tpath = DATA_DIR / "turnout_long.csv"
     ws = wb.create_sheet("Turnout_Long")
     if tpath.exists():
         tdf = pd.read_csv(tpath, dtype=str).fillna("")

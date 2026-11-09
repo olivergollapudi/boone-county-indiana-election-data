@@ -2,8 +2,8 @@
 
 > How `boone_county_election_results.xlsx` was produced and why it can be trusted.
 > Written for two readers: someone who wants the overview, and someone who wants to
-> audit every line. `PARSING_STRATEGY.md` has the report-format spec. Every script
-> named here is in this repository.
+> audit every line. `docs/PARSING_STRATEGY.md` has the report-format spec. Every script
+> named here is in `scripts/`; every output is in `data/`.
 
 ---
 
@@ -257,16 +257,19 @@ the proof the workbook is validated.
 
 ### How to re-verify it yourself (nothing to take on faith)
 ```bash
-cd ~/Documents/"Boone County Data"
-source .venv/bin/activate
-python3 parse_all.py       # re-parses the 25 text elections; every 'vf1-bad' prints 0
-python3 reconcile_all.py   # independent cross-check; TOTAL mismatches must be 0
-python3 geometry_parse.py 2008-general-precinct   # re-runs OCR reconstruction + checksum
-python3 geometry_parse.py 2022-primary-precinct
-python3 finalize_ocr.py 2008-general-precinct     # regenerates clean + omitted split
-python3 finalize_ocr.py 2022-primary-precinct
-python3 build_workbook.py  # rebuilds the workbook from scratch
+# from the repository root, after: pip install -r requirements.txt
+python3 scripts/parse_all.py       # re-parses the 25 text elections; every 'vf1-bad' prints 0
+python3 scripts/reconcile_all.py   # independent cross-check; TOTAL mismatches must be 0
+python3 scripts/geometry_parse.py 2008-general-precinct   # re-runs OCR reconstruction + checksum
+python3 scripts/geometry_parse.py 2022-primary-precinct
+python3 scripts/finalize_ocr.py 2008-general-precinct     # regenerates clean + omitted split
+python3 scripts/finalize_ocr.py 2022-primary-precinct
+python3 scripts/extract_turnout.py # rebuilds turnout_long.csv
+python3 scripts/add_center1.py     # folds 2008 precinct 01 into the clean + turnout CSVs
+python3 scripts/build_workbook.py  # rebuilds the workbook from scratch
 ```
+Order matters: `add_center1.py` must run after `finalize_ocr.py` and `extract_turnout.py`,
+because both of those rewrite the files it appends precinct 01 to.
 Every step is deterministic and prints its own numbers. The scripts are commented and were
 written to be read.
 

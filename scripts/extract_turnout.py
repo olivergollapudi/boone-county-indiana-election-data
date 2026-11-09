@@ -25,7 +25,7 @@ Also emits a per-election COUNTYWIDE row (from each report's "All Precincts" pag
 sum of precinct public counts can be cross-checked against the county total later.
 
 Writes turnout_long.csv and prints a validation report. Modifies nothing else.
-Run:  python3 extract_turnout.py
+Run (from the repository root):  python3 scripts/extract_turnout.py
 """
 
 import re, csv, json, glob
@@ -36,10 +36,11 @@ try:
 except ImportError:
     import sys; sys.exit("Missing dependency. Run: pip install pdfplumber")
 
-FOLDER = Path(__file__).resolve().parent
+from paths import PDF_DIR, OCR_DIR, DATA_DIR
+
 OCR_JSON = {   # scanned elections -> cached Apple Vision text lines
-    "2008-GENERAL-PRECINCT": FOLDER / "2008-general-precinct-applelines.json",
-    "2022-PRIMARY-PRECINCT": FOLDER / "2022-primary-precinct-applelines.json",
+    "2008-GENERAL-PRECINCT": OCR_DIR / "2008-general-precinct-applelines.json",
+    "2022-PRIMARY-PRECINCT": OCR_DIR / "2022-primary-precinct-applelines.json",
 }
 
 RE_NN   = re.compile(r"^(\d{2,4})-([A-Za-z].*?)\s*$")
@@ -141,7 +142,7 @@ def collect(source_id, pages):
 
 def main():
     out = []
-    text_files = [f for f in sorted(glob.glob(str(FOLDER / "*-precinct.pdf")))
+    text_files = [f for f in sorted(glob.glob(str(PDF_DIR / "*-precinct.pdf")))
                   if "2008-general" not in f and "2022-primary" not in f]
     for f in text_files:
         sid = Path(f).stem.upper()
@@ -175,7 +176,7 @@ def main():
     cols = ["source_file_id","precinct_id","precinct_name","registered_voters","public_count",
             "turnout_pct","split1","split2","split3","column_scheme","granularity",
             "recovered_split","flag_core","flag_split"]
-    with open(FOLDER / "turnout_long.csv", "w", newline="") as f:
+    with open(DATA_DIR / "turnout_long.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction="ignore")
         w.writeheader()
         for r in out: w.writerow(r)

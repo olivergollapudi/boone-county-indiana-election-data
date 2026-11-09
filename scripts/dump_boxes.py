@@ -15,12 +15,12 @@ tokens for the requested pages sorted top->bottom, left->right so we can SEE the
 Coordinates are normalized 0..1 with origin BOTTOM-LEFT (Apple Vision's convention):
 each token is [text, x_left, y_bottom, w, h].
 
-Run (macOS, in the venv where ocrmac already works):
-    cd ~/Documents/"Boone County Data"
-    source .venv/bin/activate
-    python3 dump_boxes.py                         # default: 2008 pages 141-143 (precinct 49)
-    python3 dump_boxes.py 2008-general-precinct.pdf 141 143
-    python3 dump_boxes.py 2022-primary-precinct.pdf 0 2
+The PDF name is looked up in source_pdfs/; the cache is written to ocr_cache/.
+
+Run (macOS only, from the repository root):
+    python3 scripts/dump_boxes.py                 # default: 2008 pages 141-143 (precinct 49)
+    python3 scripts/dump_boxes.py 2008-general-precinct.pdf 141 143
+    python3 scripts/dump_boxes.py 2022-primary-precinct.pdf 0 2
 """
 
 import io, sys, json
@@ -35,7 +35,9 @@ except ImportError as e:
 
 DPI = 350
 
-SRC   = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("2008-general-precinct.pdf")
+from paths import PDF_DIR, OCR_DIR
+
+SRC   = PDF_DIR / Path(sys.argv[1] if len(sys.argv) > 1 else "2008-general-precinct.pdf").name
 START = int(sys.argv[2]) if len(sys.argv) > 2 else 141      # 0-based page index (matches the JSON list index)
 END   = int(sys.argv[3]) if len(sys.argv) > 3 else 143      # inclusive
 
@@ -57,7 +59,7 @@ def main():
     if not SRC.exists():
         sys.exit(f"Missing {SRC}")
     doc = fitz.open(SRC)
-    cache_path = SRC.with_name(SRC.stem + "-appleboxes.json")
+    cache_path = OCR_DIR / (SRC.stem + "-appleboxes.json")
     cache = json.loads(cache_path.read_text()) if cache_path.exists() else {}
 
     verbose = (END - START) <= 4            # only dump per-token detail for small ranges

@@ -24,17 +24,18 @@ every failing contest into buckets so we can separate:
 This script MODIFIES NOTHING. It only reads the CSV(s) and prints a breakdown, plus
 a few example contests per bucket so we can eyeball them.
 
-Usage:
-    python3 classify_fails.py            # the two corrected OCR CSVs (defaults)
-    python3 classify_fails.py a.csv b.csv
+Usage (from the repository root):
+    python3 scripts/classify_fails.py            # the two raw OCR parses in build/
+    python3 scripts/classify_fails.py a.csv b.csv
 """
 
 import sys, csv
 from collections import defaultdict
+from paths import BUILD_DIR
 
 DEFAULTS = [
-    "results_long_2008-general-precinct-corrected.csv",
-    "results_long_2022-primary-precinct-corrected.csv",
+    str(BUILD_DIR / "results_long_2008-general-precinct-geom.csv"),
+    str(BUILD_DIR / "results_long_2022-primary-precinct-geom.csv"),
 ]
 
 # office strings that are generic enough that OCR routinely collapses several
