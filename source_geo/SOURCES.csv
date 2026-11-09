@@ -1,0 +1,10 @@
+file,origin,retrieved,source_sha256,note
+precincts_2000.geojson,IndianaMap statewide layer 'Voting_Districts_2000.geojson',2026-06-06,f70f4caa7ac818d9055c3cabb4da8578e2069958a49d4bbd06cf3c9d0670f425,Boone County (FIPS 011) features only; geometry and attributes unchanged
+precincts_2010.geojson,IndianaMap statewide layer 'Voting_District_Boundaries_2010.geojson',2026-06-06,b3ce5f476f763a1fe9c6890a7be799aceacb87728f12e45ad4d1de6a827baa29,Boone County (FIPS 011) features only; geometry and attributes unchanged
+precincts_2020.geojson,IndianaMap statewide layer 'Voting_District_Boundaries_2020.geojson',2026-06-06,2f89038e37d25cfbc08b9d00436d2be6a0492aa039543af329e1799b476346a7,Boone County (FIPS 011) features only; geometry and attributes unchanged
+precincts_2023.geojson,IndianaMap statewide layer 'Voting_District_Boundaries_2023.geojson',2026-06-06,8c615131e78b4167c063c16daabf9d8efe43da145a31500e7cc386b7ba154008,Boone County (FIPS 011) features only; geometry and attributes unchanged
+precincts_2024.geojson,IndianaMap statewide layer 'Voting_District_Boundaries_2024.geojson',2026-06-06,745cc8f18f0d2e2d89143acaa4891a1187e965e7769bf85198b3c87e8cc013c4,Boone County (FIPS 011) features only; geometry and attributes unchanged
+census_blocks_2010.geojson,https://www2.census.gov/geo/tiger/TIGER2010/TABBLOCK/2010/tl_2010_18011_tabblock10.zip,2026-11-09,e568dc18195bac922048ec38c37406f8e3a9182fa295727102f9285c731f388b,Boone County blocks only
+census_blocks_2010.geojson,https://www2.census.gov/census_2010/01-Redistricting_File--PL_94-171/Indiana/in2010.pl.zip,2026-11-09,6e6e8133d180775cf25fff3ce501399649772935d3a54420c6cf6774169cb632,Boone County blocks only
+census_blocks_2020.geojson,https://www2.census.gov/geo/tiger/TIGER2020PL/STATE/18_INDIANA/18011/tl_2020_18011_tabblock20.zip,2026-11-09,5b12b893dca01bb2406a6d185fbae7172c4abc0b24d1e24b7ede5ae8fcf60e4a,Boone County blocks only
+census_blocks_2020.geojson,https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/Indiana/in2020.pl.zip,2026-11-09,5f4999237a9bf3b3337865494d0d62c0a1dc620cad7e48caebaa83811f95901a,Boone County blocks only

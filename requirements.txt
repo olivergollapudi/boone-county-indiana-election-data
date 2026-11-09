@@ -4,5 +4,10 @@ PyMuPDF==1.27.2.3
 pandas==3.0.3
 openpyxl==3.1.5
 pillow==12.2.0
+# Geography: district normalization and maps (prepare_geo.py and later steps).
+geopandas==1.2.0
+shapely==2.2.0
+pyogrio==0.13.0
+pyproj==3.8.0
 # Only needed to re-run OCR from the scanned PDFs (dump_boxes.py); macOS only.
 ocrmac==1.0.1; sys_platform == "darwin"
