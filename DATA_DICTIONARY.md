@@ -170,6 +170,16 @@ PNG images made by `scripts/make_maps.py`, plus `captions.csv` (`file`, `title`,
 `caption`): the full caption of every image, for alt text and reuse. Every number drawn
 comes from the tables above.
 
+## Interactive map data: `site/data/`
+
+Written by `scripts/build_site.py` (checks W1–W3: every precinct has a shape; precinct
+votes equal Results_Long; district votes equal precinct votes). `results.json` holds, per
+contest and year: each precinct's candidate rows as reported (`c` = [candidate, party,
+votes]) and two-party margin (`m`); each current district's re-expressed rows, margin,
+precinct count (`n`), votes from split precincts (`split`) and contest coverage (`cov`).
+The GeoJSON files are the precinct shapes (2010; 2024, used for 2012 onward) and today's
+district outlines.
+
 ## Geography inputs: `source_geo/`
 
 - `precincts_<vintage>.geojson` — Boone precinct shapes from IndianaMap; properties

@@ -14,6 +14,10 @@ current (2021-enacted) Indiana House, Indiana Senate and U.S. House districts, s
 district's history can be compared on today's lines. That layer is kept separate from
 the master (`data/normalized/`) and documented in METHODOLOGY.md §7.
 
+**Interactive map:** <https://olivergollapudi.github.io/boone-county-indiana-election-data/>
+— choose a contest and year, view precincts as reported or today's districts, and hover
+any area to see the results rows it is built from.
+
 ## Why normalize: a district number is not a place
 
 Boone County's district lines were redrawn for 2012 and again for 2022, and district
@@ -48,6 +52,7 @@ Senate and congressional districts.
 data/              the published database (start here)
 data/normalized/   results on today's districts, and as drawn at the time (analysis layer)
 maps/              static maps and charts (PNG) with captions
+site/              the interactive map (static page + data; published to GitHub Pages)
 source_pdfs/       the Clerk's original reports — every row traces back to one of these
 source_geo/        precinct maps and Census blocks used for normalization (Boone only)
 ocr_cache/         cached OCR output for the two scanned reports
@@ -133,7 +138,11 @@ python3 scripts/build_workbook.py    # -> data/boone_county_election_results.xls
 python3 scripts/normalize.py         # -> data/normalized/ (stops if any check fails)
 python3 scripts/as_drawn.py          # -> data/normalized/ comparison baseline (stops if any check fails)
 python3 scripts/make_maps.py         # -> maps/
+python3 scripts/build_site.py        # -> site/data/ for the interactive map (stops if any check fails)
 ```
+
+To view the interactive map locally: `python3 -m http.server --directory site`, then open
+<http://localhost:8000>.
 
 `scripts/prepare_geo.py` rebuilds `source_geo/` from the IndianaMap layers and Census
 downloads; it only needs to run if those inputs change.

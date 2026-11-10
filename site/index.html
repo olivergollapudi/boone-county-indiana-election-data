@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boone County Election Map</title>
+<meta name="description" content="Precinct-level election results for Boone County, Indiana, 2010–2024, on the precincts of the time or on today's districts. Source: Boone County Clerk.">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+  :root {
+    --surface: #fcfcfb; --panel: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #8a8984;
+    --rule: #e6e5e1; --focus: #2a78d6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface); color: var(--ink);
+         font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header, main, footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  header h1 { font-size: 22px; margin: 20px 0 4px; }
+  header p { margin: 0 0 12px; color: var(--ink-2); max-width: 70ch; }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; margin: 8px 0 12px; }
+  .controls label { display: flex; flex-direction: column; font-size: 13px; color: var(--ink-2); gap: 4px; }
+  select { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid #c9c8c2;
+           border-radius: 6px; padding: 6px 8px; min-width: 160px; }
+  select:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .layout { display: grid; grid-template-columns: 1fr 230px; gap: 16px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+  #map { height: 560px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+  @media (max-width: 760px) { #map { height: 320px; } }   /* county is wider than tall */
+  .legend h2, .info h2 { font-size: 13px; font-weight: 600; margin: 0 0 6px; color: var(--ink-2); }
+  .legend ul { list-style: none; padding: 0; margin: 0 0 16px; font-size: 13px; }
+  .legend li { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
+  .swatch { width: 18px; height: 12px; border-radius: 2px; flex: none; }
+  .county { font-size: 14px; margin: 0 0 12px; }
+  .caption { font-size: 12.5px; color: var(--ink-2); margin: 12px 0 8px; max-width: 110ch; }
+  .maplibregl-popup-content { font: 13px/1.4 system-ui, sans-serif; color: var(--ink); padding: 10px 12px;
+                              border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,.15); max-width: 300px; }
+  .tip h3 { font-size: 14px; margin: 0 0 2px; }
+  .tip .m { font-weight: 600; margin: 0 0 6px; }
+  .tip table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+  .tip td { padding: 1px 0; } .tip td.v { text-align: right; padding-left: 10px; font-variant-numeric: tabular-nums; }
+  .tip .src { color: var(--ink-3); font-size: 11.5px; margin-top: 6px; }
+  details { margin: 8px 0 24px; }
+  summary { cursor: pointer; color: var(--ink-2); font-size: 14px; }
+  #table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+  #table th, #table td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--rule); }
+  #table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  footer { font-size: 12.5px; color: var(--ink-3); padding-bottom: 24px; }
+  a { color: #1c5cab; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Boone County, Indiana: election results map</h1>
+  <p>Two-party margin by precinct, as reported by the Boone County Clerk, or re-expressed on
+     today's (2021-enacted) Indiana House, Indiana Senate and U.S. House districts. Hover or tap
+     any area to see the results it is built from.</p>
+</header>
+<main>
+  <div class="controls">
+    <label>Contest <select id="contest"></select></label>
+    <label>Year <select id="year"></select></label>
+    <label>Show <select id="view">
+      <option value="precincts">Precincts (as reported)</option>
+      <option value="in_house">Today's Indiana House districts</option>
+      <option value="in_senate">Today's Indiana Senate districts</option>
+      <option value="us_house">Today's U.S. House district</option>
+    </select></label>
+  </div>
+  <div class="layout">
+    <div id="map" role="region" aria-label="Map of Boone County results"></div>
+    <aside>
+      <p class="county" id="county"></p>
+      <div class="legend"><h2>Two-party margin (points)</h2><ul id="legend"></ul></div>
+    </aside>
+  </div>
+  <p class="caption" id="caption"></p>
+  <details>
+    <summary>Show the numbers as a table</summary>
+    <table id="table"><thead></thead><tbody></tbody></table>
+  </details>
+</main>
+<footer>
+  Data and method: <a href="https://github.com/olivergollapudi/boone-county-indiana-election-data">github.com/olivergollapudi/boone-county-indiana-election-data</a>
+  (see METHODOLOGY.md). 2008 is omitted while its scanned results are under review.
+</footer>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+// Everything shown comes from data/ (written by scripts/build_site.py); nothing is computed
+// here except formatting and the margin bins, which match the static maps exactly.
+const $ = id => document.getElementById(id);
+let DATA, SHAPES = {}, DISTRICTS, map, popup;
+
+const fmtMargin = m => m === null ? "no two-party votes"
+  : Math.abs(m) < 0.05 ? "Even"
+  : `${m > 0 ? "Republican" : "Democratic"} +${Math.abs(m).toFixed(1)}`;
+const fmtVotes = v => Number.isInteger(v) ? v.toLocaleString() : v.toLocaleString(undefined, {maximumFractionDigits: 1});
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function colorExpr() {
+  // step: <-30, -30..-20, -20..-10, -10..-5, -5..0 (blue, dark -> light), 0..5 ... 30+ (red, light -> dark)
+  const {blue, red, edges, no_data} = DATA.palette;   // edges = [5, 10, 20, 30]
+  const e = edges;
+  return ["case", ["==", ["get", "m"], null], no_data,
+    ["step", ["get", "m"], blue[4], -e[3], blue[3], -e[2], blue[2], -e[1], blue[1], -e[0], blue[0],
+      0, red[0], e[0], red[1], e[1], red[2], e[2], red[3], e[3], red[4]]];
+}
+
+function buildLegend() {
+  const {blue, red, edges} = DATA.palette;
+  const ranges = edges.map((b, i) => `${i ? edges[i - 1] : 0}–${b}`).concat(`${edges[edges.length - 1]}+`);
+  const items = ranges.map((r, i) => [red[i], `Republican ${r}`]).reverse()
+    .concat(ranges.map((r, i) => [blue[i], `Democratic ${r}`]));
+  $("legend").innerHTML = items.map(([c, t]) =>
+    `<li><span class="swatch" style="background:${c}"></span>${t}</li>`).join("");
+}
+
+function current() {
+  const contest = $("contest").value, year = $("year").value, view = $("view").value;
+  return {contest, year, view, c: DATA.contests[contest], y: DATA.contests[contest].years[year]};
+}
+let SHOWN = null;   // the selection the map was last DRAWN with; tooltips and table read this,
+                    // so they can never describe something other than what is on screen
+let GEN = 0;        // drawing version: features carry it, and the tooltip ignores leftovers
+                    // from a previous drawing during the split-second redraw
+
+function featuresFor({y, view}) {
+  if (view === "precincts") {
+    const shp = SHAPES[y.shapes];
+    return {type: "FeatureCollection", features: shp.features.map(f => {
+      const r = y.precincts[f.properties.pkey];
+      return {type: "Feature", geometry: f.geometry,
+              properties: {id: f.properties.pkey, m: r ? r.m : null, g: GEN}};
+    })};
+  }
+  return {type: "FeatureCollection", features: DISTRICTS.features
+    .filter(f => f.properties.district_type === view)
+    .map(f => {
+      const r = y.districts[view][f.properties.district];
+      return {type: "Feature", geometry: f.geometry, properties: {id: f.properties.district, m: r ? r.m : null, g: GEN}};
+    })};
+}
+
+function candRows(c) {
+  return c.slice().sort((a, b) => b[2] - a[2]).map(([n, p, v]) =>
+    `<tr><td>${esc(n)}${p ? ` (${esc(p)})` : ""}</td><td class="v">${fmtVotes(v)}</td></tr>`).join("");
+}
+
+function tooltip(id) {
+  const {c, y, view} = SHOWN;
+  if (view === "precincts") {
+    const r = y.precincts[id];
+    if (!r) return `<div class="tip"><h3>${esc(id)}</h3><p>No reported result for this contest.</p></div>`;
+    return `<div class="tip"><h3>${esc(r.name)}</h3><p class="m">${fmtMargin(r.m)}</p>
+      <table>${candRows(r.c)}</table>
+      <p class="src">Source rows: Results_Long, ${esc(y.source)}, office “${esc(y.office)}”, precinct “${esc(r.name)}”.</p></div>`;
+  }
+  const r = y.districts[view][id];
+  const name = `${DATA.district_types[view]} ${id}`;
+  if (!r) return `<div class="tip"><h3>${esc(name)}</h3><p>No result.</p></div>`;
+  return `<div class="tip"><h3>${esc(name)} (Boone County part)</h3><p class="m">${fmtMargin(r.m)}</p>
+    <table>${candRows(r.c)}</table>
+    <p class="src">From ${r.n} precincts of ${esc(y.source)}, re-expressed on today's lines
+      (data/normalized/results_by_current_district.csv)${r.split > 0 ? `; ${fmtVotes(r.split)} votes from precincts split between districts` : ""}.</p></div>`;
+}
+
+function updateTable() {
+  const {y, view} = SHOWN;
+  const rows = view === "precincts"
+    ? Object.values(y.precincts).map(r => [r.name, r.c, r.m])
+    : Object.entries(y.districts[view]).map(([d, r]) => [`${DATA.district_types[view]} ${d}`, r.c, r.m]);
+  const parties = ["R", "D"];
+  $("table").tHead.innerHTML = `<tr><th>${view === "precincts" ? "Precinct" : "District (Boone part)"}</th>
+    <th class="num">Republican votes</th><th class="num">Democratic votes</th><th>Two-party margin</th></tr>`;
+  $("table").tBodies[0].innerHTML = rows.sort((a, b) => String(a[0]).localeCompare(String(b[0]), undefined, {numeric: true}))
+    .map(([n, c, m]) => {
+      const sum = p => c.filter(x => x[1] === p).reduce((s, x) => s + x[2], 0);
+      return `<tr><td>${esc(n)}</td><td class="num">${fmtVotes(sum("R"))}</td><td class="num">${fmtVotes(sum("D"))}</td><td>${fmtMargin(m)}</td></tr>`;
+    }).join("");
+}
+
+function update() {
+  const sel = current();
+  SHOWN = sel; GEN += 1;
+  map.getSource("areas").setData(featuresFor(sel));
+  map.setLayoutProperty("house-lines", "visibility", sel.view === "precincts" ? "visible" : "none");
+  $("county").innerHTML = `<strong>${sel.c.label}, ${sel.year}</strong><br>Boone County: ${fmtMargin(sel.y.county_margin)}`;
+  const shapesNote = sel.y.basis;   // already worded per year by build_site.py / make_maps.shapes_for
+  $("caption").textContent = `Source: Boone County Clerk precinct results (Results_Long), ${sel.y.source}, “${sel.y.office}”. ` +
+    `Method: margin = (Republican − Democratic) ÷ (Republican + Democratic) votes; ` +
+    (sel.view === "precincts"
+      ? `each precinct colored by its own reported result; ${shapesNote}; dark lines show today's Indiana House districts. `
+      : `old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7); only the part of each district inside Boone County. `) +
+    `Caveat: third-party and write-in votes are not in the margin.`;
+  updateTable();
+  if (popup) popup.remove();
+}
+
+function fillSelectors() {
+  $("contest").innerHTML = Object.entries(DATA.contests).map(([k, c]) => `<option value="${k}">${c.label}</option>`).join("");
+  const fillYears = () => {
+    const keep = $("year").value;
+    const years = Object.keys(DATA.contests[$("contest").value].years);
+    $("year").innerHTML = years.map(y => `<option>${y}</option>`).join("");
+    $("year").value = years.includes(keep) ? keep : years[years.length - 1];
+  };
+  fillYears();
+  // listen to both events: some browsers / assistive tech fire only "input" on a select
+  for (const ev of ["change", "input"]) {
+    $("contest").addEventListener(ev, () => { fillYears(); update(); });
+    $("year").addEventListener(ev, update);
+    $("view").addEventListener(ev, update);
+  }
+}
+
+async function init() {
+  const get = p => fetch(p).then(r => { if (!r.ok) throw new Error(p); return r.json(); });
+  [DATA, SHAPES["2010"], SHAPES["2024"], DISTRICTS] = await Promise.all([
+    get("data/results.json"), get("data/precincts_2010.geojson"),
+    get("data/precincts_2024.geojson"), get("data/districts.geojson")]);
+  fillSelectors(); buildLegend();
+
+  map = new maplibregl.Map({
+    container: "map", attributionControl: false, dragRotate: false, pitchWithRotate: false,
+    style: {version: 8, sources: {}, layers: [{id: "bg", type: "background", paint: {"background-color": "#fcfcfb"}}]},
+    bounds: [[-86.70, 39.92], [-86.24, 40.19]], fitBoundsOptions: {padding: 16}
+  });
+  map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
+  map.on("load", () => {
+    map.addSource("areas", {type: "geojson", data: {type: "FeatureCollection", features: []}, promoteId: "id"});
+    map.addSource("house", {type: "geojson",
+      data: {type: "FeatureCollection", features: DISTRICTS.features.filter(f => f.properties.district_type === "in_house")}});
+    map.addLayer({id: "fill", type: "fill", source: "areas", paint: {"fill-color": colorExpr(), "fill-opacity": 1}});
+    map.addLayer({id: "edges", type: "line", source: "areas", paint: {"line-color": "#fcfcfb", "line-width": 0.6}});
+    map.addLayer({id: "house-lines", type: "line", source: "house", paint: {"line-color": "#0b0b0b", "line-width": 1.6}});
+    map.addLayer({id: "hover", type: "line", source: "areas", paint: {"line-color": "#0b0b0b",
+      "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 2.5, 0]}});
+    popup = new maplibregl.Popup({closeButton: false, closeOnClick: false, maxWidth: "320px"});
+    let hovered = null;
+    const show = e => {
+      const f = e.features[0];
+      if (f.properties.g !== GEN) return;        // stale feature from the previous drawing
+      if (hovered !== null) map.setFeatureState({source: "areas", id: hovered}, {hover: false});
+      hovered = f.properties.id;
+      map.setFeatureState({source: "areas", id: hovered}, {hover: true});
+      map.getCanvas().style.cursor = "pointer";
+      popup.setLngLat(e.lngLat).setHTML(tooltip(f.properties.id)).addTo(map);
+    };
+    map.on("mousemove", "fill", show);
+    map.on("click", "fill", show);             // tap on touch screens
+    map.on("mouseleave", "fill", () => {
+      if (hovered !== null) map.setFeatureState({source: "areas", id: hovered}, {hover: false});
+      hovered = null; map.getCanvas().style.cursor = ""; popup.remove();
+    });
+    update();
+  });
+}
+init().catch(err => { $("map").textContent = "Could not load the map data (" + err.message + ")."; });
+</script>
+</body>
+</html>
