@@ -1,0 +1,65 @@
+# Rebuild the published data from the source PDFs and fail if anything doesn't check out.
+#
+# Every step below exits non-zero on failure:
+#   - normalize.py (V1-V5), as_drawn.py (A1-A3) and build_site.py (W1-W3) stop on any
+#     failed check;
+#   - check_reproducible.py compares every rebuilt output with the committed copy, so a
+#     change in any parsed count, checksum, turnout figure or allocation fails the run.
+#
+# Not run here: re-OCR of the scanned PDFs (dump_boxes.py needs macOS Apple Vision; the
+# committed OCR caches in ocr_cache/ are used instead) and the PNG maps (image rendering
+# differs slightly between machines).
+#
+# Known exception, disclosed in README "Known issues": the 2008 general OCR file is not
+# re-finalized by the current code until the OCR label fix lands, so the committed copy is
+# kept. Remove the exception (rebuild 2008 like 2022) when that fix is merged.
+name: Validate data
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+      - name: Install pinned dependencies
+        run: pip install -r requirements.txt
+
+      - name: Parse the 25 text-based reports and cross-check against county summaries
+        run: |
+          python scripts/parse_all.py
+          python scripts/reconcile_all.py
+
+      - name: Rebuild the 2022 primary from cached OCR (2008 general kept - known issue)
+        run: |
+          python scripts/geometry_parse.py 2022-primary-precinct
+          python scripts/finalize_ocr.py 2022-primary-precinct
+
+      - name: Turnout, 2008 precinct Center 1, workbook
+        run: |
+          python scripts/extract_turnout.py
+          python scripts/add_center1.py
+          python scripts/build_workbook.py
+
+      - name: Normalize onto today's districts (checks V1-V5)
+        run: python scripts/normalize.py
+
+      - name: Results by the lines at the time (checks A1-A3)
+        run: python scripts/as_drawn.py
+
+      - name: Interactive map data (checks W1-W3)
+        run: python scripts/build_site.py
+
+      - name: Every published output is reproduced exactly
+        run: python scripts/check_reproducible.py
