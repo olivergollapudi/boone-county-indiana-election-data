@@ -1,0 +1,62 @@
+name: Report a data error
+description: A number in this dataset doesn't match the Boone County Clerk's report.
+title: "Data error: [election] [precinct] [contest]"
+labels: ["data error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for checking the data. Every number here comes from a Clerk report in
+        `source_pdfs/`, so pointing to the page lets anyone verify the fix.
+  - type: input
+    id: election
+    attributes:
+      label: Election
+      description: e.g. 2024 general, 2023 primary
+    validations:
+      required: true
+  - type: input
+    id: precinct
+    attributes:
+      label: Precinct
+      description: As printed, e.g. "Eagle 05" (or "countywide")
+    validations:
+      required: true
+  - type: input
+    id: contest
+    attributes:
+      label: Contest and candidate
+      description: e.g. "County Council District 2, Jane Doe"
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: File in this repository
+      description: e.g. data/results_long_all.csv, or the map / chart name
+    validations:
+      required: true
+  - type: input
+    id: shown
+    attributes:
+      label: Value shown in this dataset
+    validations:
+      required: true
+  - type: input
+    id: correct
+    attributes:
+      label: Value you believe is correct
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Where the correct value appears
+      description: The PDF in source_pdfs/ and page number, or another official Clerk document (link)
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Optional. A screenshot of the report page helps.

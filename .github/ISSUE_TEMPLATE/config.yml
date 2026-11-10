@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How the data was built and validated
+    url: https://github.com/olivergollapudi/boone-county-indiana-election-data/blob/main/METHODOLOGY.md
+    about: Read the methodology before asking about method or assumptions.
+  - name: What each column means
+    url: https://github.com/olivergollapudi/boone-county-indiana-election-data/blob/main/DATA_DICTIONARY.md
+    about: Definitions for every table and column.
