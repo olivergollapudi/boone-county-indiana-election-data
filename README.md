@@ -154,7 +154,20 @@ published.
 Rerunning OCR from the PDFs (`scripts/dump_boxes.py`) requires macOS because it uses
 Apple Vision. Every other step runs on any platform from the cached JSON files.
 
-## License and citation
+## License
 
-A license has not been chosen yet. Until one is added, please contact the maintainer
-before reusing the data.
+| What | License |
+|---|---|
+| **Data, maps and documentation:** `data/`, `maps/`, `site/data/`, `source_geo/` (as compiled here), and the `.md` files | [CC0 1.0](LICENSE-DATA): dedicated to the public domain. Use it for anything, no permission needed. Credit is appreciated (see the citation file) but not required. |
+| **Code:** `scripts/`, `site/index.html`, `.github/` | [MIT](LICENSE) |
+
+Third-party material in this repository, which these licenses do not cover:
+
+- **`source_pdfs/`**: the Boone County Clerk's official result reports, public records,
+  reproduced unchanged.
+- **Census blocks** (in `source_geo/`): U.S. Census Bureau TIGER/Line and P.L. 94-171
+  data, public domain.
+- **Precinct shapes** (in `source_geo/` and `site/data/`): from IndianaMap / gisdata.in.gov.
+  The 2010 and 2020 layers are derived from Census voting districts (public domain). The
+  2023 and 2024 layers come from the Indiana General Assembly; their item pages state no
+  license. Provenance for every input is in `source_geo/SOURCES.csv`.
