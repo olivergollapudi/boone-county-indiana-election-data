@@ -154,6 +154,18 @@ published.
 Rerunning OCR from the PDFs (`scripts/dump_boxes.py`) requires macOS because it uses
 Apple Vision. Every other step runs on any platform from the cached JSON files.
 
+## How to cite
+
+Use GitHub's **"Cite this repository"** button (from [CITATION.cff](CITATION.cff)), or:
+
+> Gollapudi, O. (2026). *Boone County, Indiana Precinct-Level Election Results,
+> 2008–2026* (Version 1.0.0) [Data set].
+> https://github.com/olivergollapudi/boone-county-indiana-election-data
+
+Please cite a specific release so others can see exactly which version of the data you
+used; changes between versions are listed on the
+[Releases](https://github.com/olivergollapudi/boone-county-indiana-election-data/releases) page.
+
 ## License
 
 | What | License |
