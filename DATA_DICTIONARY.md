@@ -51,7 +51,7 @@ Grain: one row per **election × precinct**, plus one `COUNTYWIDE` row per elect
 | Column | Meaning |
 |---|---|
 | `source_file_id`, `precinct_id`, `precinct_name` | As in Results_Long. |
-| `registered_voters` | Registered voters as printed. (2020 reports print 0 here at the source.) |
+| `registered_voters` | Registered voters as printed. (The 2020 primary reports print 0 here for 49 of 53 precincts, at the source.) |
 | `public_count` | Ballots cast. |
 | `turnout_pct` | Turnout as printed. Validated: `public_count / registered_voters` = this, within rounding. |
 | `split1-3`, `column_scheme` | Ballots by method, as in Results_Long. |
@@ -134,12 +134,41 @@ matched to a map shape.
 | `precinct_key` | Map precinct it was matched to. |
 | `match` | `name`, or `name_fix` where an explicit, documented exception in `normalize.py` applied. |
 
+## Comparison baseline: `data/normalized/results_by_district_as_drawn.csv`
+
+Grain: one row per **election × district as drawn at the time × contest × candidate**.
+Produced by `scripts/as_drawn.py`. Each precinct is assigned, whole, to the district
+printed on its own ballot in that map era, so nothing is estimated. Put next to
+`results_by_current_district.csv`, it shows how a district number's history differs from
+the history of today's district.
+
+| Column | Meaning |
+|---|---|
+| `election` | Election ID. |
+| `redistricting_era` | `2001-2010 map`, `2011-2020 map` or `2021-present map` (as tagged in Results_Long). |
+| `district_type`, `district`, `district_name` | The district as drawn at the time. Numbers are reused across maps for different places (e.g. House 28). |
+| `office`, `contest_party`, `candidate`, `party` | As in Results_Long. |
+| `votes` | Votes in the Boone County part of the district at the time (whole numbers). |
+| `n_precincts` | Precincts in that district at the time that reported the contest. |
+| `exists_in_boone_today` | `True` if this district number is used in Boone under today's map. |
+| `data_quality`, `provisional` | As in the normalized results. |
+
+`data/normalized/precinct_district_as_drawn.csv` — one row per **map era × precinct ×
+district type**: `district`, and `seen_in` (the elections whose ballots showed it).
+`data/normalized/as_drawn_validation.csv` — checks A1–A3 (see METHODOLOGY.md §7).
+
 ## Normalized: other files
 
 - `set_aside.csv` — Results_Long rows that could not be allocated, with `reason`. Currently empty.
 - `normalization_validation.csv` — each validation check (`check`, `scope`, `result`, `detail`).
 - `current_districts.geojson` — today's district outlines within Boone County (WGS84);
   properties `district_type`, `district`.
+
+## Maps: `maps/`
+
+PNG images made by `scripts/make_maps.py`, plus `captions.csv` (`file`, `title`,
+`caption`): the full caption of every image, for alt text and reuse. Every number drawn
+comes from the tables above.
 
 ## Geography inputs: `source_geo/`
 

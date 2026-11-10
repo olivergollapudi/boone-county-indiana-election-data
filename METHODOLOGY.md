@@ -227,7 +227,7 @@ wherever they sit on the page). Two built-in validations mirror the results chec
 Result: **1,245 rows across 27 elections; the core turnout identity passes on all 1,189
 checkable precincts (0 failures)**, and the ballot-type breakdown reconciles for 1,187 of
 them. The 2008 *primary* has no precinct-level turnout (summary-only), and the 2020
-reports print registered voters / turnout % as zero at the source — both documented, not
+*primary* reports print registered voters / turnout % as zero at the source — both documented, not
 errors on our side.
 
 ### Stage 8 — Assemble the workbook
@@ -289,8 +289,8 @@ written to be read.
   the single-winner checksum, so where they came from a scan they were conservatively
   omitted rather than included unverified.
 - **Turnout is now included** (Turnout_Long tab), validated by the turnout identity. Two
-  edges: 2008 primary has no precinct-level turnout (summary-only), and 2020's reports
-  print registered voters / turnout % as zero at the source (public count and ballot
+  edges: 2008 primary has no precinct-level turnout (summary-only), and the 2020 primary
+  reports print registered voters / turnout % as zero at the source (49 of 53 precincts) (public count and ballot
   splits are still captured and reconcile).
 - **Precinct 01 / Center 1 of 2008** was in a separate stray PDF; it has now been OCR'd,
   reconstructed, validated, and folded into 2008 general as precinct 01 (via
@@ -405,6 +405,38 @@ one district of each type (check V4 below).
 V5 is the strongest: the Clerk's ballots and IndianaMap's district codes are independent
 sources, and they agree for every precinct. Results are in
 `data/normalized/normalization_validation.csv`.
+
+### The comparison baseline: results as the lines were drawn at the time
+
+To show *why* normalization matters, `scripts/as_drawn.py` also totals every election by
+the districts that were actually in force at that election. Each precinct's district is
+read from its own ballot: every ballot prints its State Rep, State Senate and U.S. Rep
+contest with the district number. Within one map era a precinct's districts don't
+change, so a district seen on any of that era's ballots applies to the whole era (State
+Senate seats are staggered, so no single election shows every precinct's Senate
+district). Each precinct is counted whole; nothing is estimated.
+
+Checks (the script writes nothing if any fail): **A1** no precinct shows two different
+districts of one type in the same era (PASS, 471 era × precinct × type); **A2** every
+precinct is assigned or set aside (3 rows set aside: Worth in the 2011 municipal
+election, whose name differs from the 2012-era names; that election has no state or
+federal district contest); **A3** votes conserved for every election × contest ×
+candidate (PASS).
+
+What it shows: Boone's district numbers changed with each map.
+
+| | 2002 map (2002–2011) | 2012 map (2012–2020) | Today's map (2022–) |
+|---|---|---|---|
+| Indiana House | 28, 38, 87 | 24, 28, 41 | 24, 25, 28, 41 |
+| Indiana Senate | 21, 23 | 7, 23, 29 | 7, 29 |
+| U.S. House | 4 | 4, 5 | 4 |
+
+The same number under a new map is a different place. Comparing the two-party margin for
+President and U.S. Senate, 2012–2020 general elections (Boone County portion), the area
+that was House 24 at the time was 15–29 points less Republican than the area that is
+House 24 today; House 28, 6–42 points less Republican; Senate 7, 9–16 points *more*
+Republican. House 41 and Senate 29 changed little (within 4 points). The
+`compare_*.png` maps put the two series side by side for each district number.
 
 ### Assumptions and limitations
 

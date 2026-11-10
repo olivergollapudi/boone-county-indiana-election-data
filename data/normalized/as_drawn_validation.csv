@@ -1,0 +1,4 @@
+check,scope,result,detail
+A1 one district per precinct per era,471 era x precinct x type,PASS,
+A2 every precinct assigned or set aside,1237 election-precincts x 3,PASS,3 precinct x type set aside: 2011-GENERAL WORTH in_house; 2011-GENERAL WORTH in_senate; 2011-GENERAL WORTH us_house
+A3 votes conserved (allocated + set aside = Results_Long),2863 x 3 district types,PASS,0 failures

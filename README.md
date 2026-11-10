@@ -14,6 +14,24 @@ current (2021-enacted) Indiana House, Indiana Senate and U.S. House districts, s
 district's history can be compared on today's lines. That layer is kept separate from
 the master (`data/normalized/`) and documented in METHODOLOGY.md §7.
 
+## Why normalize: a district number is not a place
+
+Boone County's district lines were redrawn for 2012 and again for 2022, and district
+numbers were reused for different areas. Charting "House 28" over time with the results
+as reported mixes three different places. The chart below compares each House district
+number using the lines in force at the time (dashed) with the same number on today's
+lines (solid):
+
+![President margin by Indiana House district: today's lines vs the lines at the time](maps/compare_in_house_president.png)
+
+![Indiana House districts in Boone County under three maps](maps/district_lines_in_house.png)
+
+More maps, each with its caption (source, election, method, caveat), are in
+[`maps/`](maps/): precinct margins for President, Governor and U.S. Senate; each
+current district's trend; every precinct's presidential trend 2012→2024; precinct
+swing maps for 2012→2024 and 2016→2024; 2024 turnout; and the same comparison for
+Senate and congressional districts.
+
 ## At a glance
 
 | | |
@@ -28,7 +46,8 @@ the master (`data/normalized/`) and documented in METHODOLOGY.md §7.
 
 ```
 data/              the published database (start here)
-data/normalized/   results on today's districts (analysis layer)
+data/normalized/   results on today's districts, and as drawn at the time (analysis layer)
+maps/              static maps and charts (PNG) with captions
 source_pdfs/       the Clerk's original reports — every row traces back to one of these
 source_geo/        precinct maps and Census blocks used for normalization (Boone only)
 ocr_cache/         cached OCR output for the two scanned reports
@@ -45,6 +64,7 @@ docs/              technical notes
 | `data/turnout_long.csv` | Per-precinct registered voters, ballots cast, turnout %, and ballot-type counts |
 | `data/precinct_crosswalk.csv` | Current precincts with their town and county council district |
 | `data/normalized/results_by_current_district.csv` | Every election's results on today's House, Senate and congressional districts (Boone County's portion) |
+| `data/normalized/results_by_district_as_drawn.csv` | The comparison baseline: every election's results by the districts in force at the time (from each precinct's ballot) |
 | `data/normalized/precinct_district_shares.csv` | How each precinct was split across today's districts |
 | `data/normalized/normalization_validation.csv` | The five normalization checks and their results |
 | `data/normalized/current_districts.geojson` | Today's district outlines within Boone County |
@@ -90,8 +110,8 @@ matches the map for all 630 checks from 2022 onward.
   countywide only.
 - **2008 general and 2022 primary:** the source reports are scans. Contests that could
   not be reconstructed exactly are excluded and listed in `data/omitted_*.csv`.
-- **2020:** the Clerk's reports print registered voters and turnout % as zero. Ballots
-  cast are still recorded.
+- **2020 primary:** the Clerk's reports print registered voters and turnout % as zero
+  for 49 of 53 precincts. Ballots cast are still recorded. (The 2020 general is complete.)
 - **2026 general:** not yet included. It will be added after the county certifies results.
 
 ## Rebuild from source
@@ -111,6 +131,8 @@ python3 scripts/extract_turnout.py   # -> data/turnout_long.csv
 python3 scripts/add_center1.py       # add 2008 precinct Center 1, which the Clerk published separately
 python3 scripts/build_workbook.py    # -> data/boone_county_election_results.xlsx
 python3 scripts/normalize.py         # -> data/normalized/ (stops if any check fails)
+python3 scripts/as_drawn.py          # -> data/normalized/ comparison baseline (stops if any check fails)
+python3 scripts/make_maps.py         # -> maps/
 ```
 
 `scripts/prepare_geo.py` rebuilds `source_geo/` from the IndianaMap layers and Census
