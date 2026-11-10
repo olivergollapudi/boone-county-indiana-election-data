@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: >-
+  If you use this dataset, please cite it as below. The data is dedicated to the
+  public domain (CC0 1.0), so citation is requested, not required.
+title: "Boone County, Indiana Precinct-Level Election Results, 2008–2026"
+type: dataset
+authors:
+  - family-names: Gollapudi
+    given-names: Oliver
+abstract: >-
+  Precinct-level election results for Boone County, Indiana, parsed from the Boone
+  County Clerk's official result reports for every election from 2008 onward
+  (primaries, generals, municipal and special elections, all offices and public
+  questions), validated against each report's own contest totals. Includes per-precinct
+  turnout, results re-expressed on the 2021-enacted Indiana House, Indiana Senate and
+  U.S. House districts using Census block voting-age population, results by the district
+  lines in force at each election, static maps, and an interactive map.
+repository-code: "https://github.com/olivergollapudi/boone-county-indiana-election-data"
+url: "https://olivergollapudi.github.io/boone-county-indiana-election-data/"
+license:
+  - CC0-1.0
+  - MIT
+keywords:
+  - elections
+  - election results
+  - precinct
+  - Boone County
+  - Indiana
+  - redistricting
+  - normalization
+  - open data
