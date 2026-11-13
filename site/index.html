@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boone County Election Map</title>
-<meta name="description" content="Precinct-level election results for Boone County, Indiana, 2010–2024, on the precincts of the time or on today's districts. Source: Boone County Clerk.">
+<meta name="description" content="Precinct-level election results, turnout and how people voted (election day, mail, early) for Boone County, Indiana, 2010–2026, on the precincts of the time or on today's districts. Source: Boone County Clerk.">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <style>
   :root {
@@ -20,21 +20,23 @@
   nav.site a[aria-current="page"] { color: var(--ink); font-weight: 600; border-bottom: 2px solid var(--ink); }
   nav.site a:hover { color: var(--ink); }
   header h1 { font-size: 22px; margin: 14px 0 4px; }
-  header p { margin: 0 0 12px; color: var(--ink-2); max-width: 70ch; }
+  header p { margin: 0 0 12px; color: var(--ink-2); max-width: 75ch; }
   .controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; margin: 8px 0 12px; }
   .controls label { display: flex; flex-direction: column; font-size: 13px; color: var(--ink-2); gap: 4px; }
+  .controls label[hidden] { display: none; }
   select { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid #c9c8c2;
-           border-radius: 6px; padding: 6px 8px; min-width: 160px; }
+           border-radius: 6px; padding: 6px 8px; min-width: 160px; max-width: 100%; }
   select:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-  .layout { display: grid; grid-template-columns: 1fr 230px; gap: 16px; }
-  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } }
+  .layout { display: grid; grid-template-columns: 1fr 240px; gap: 16px; }
+  @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .controls label { flex: 1 1 100%; } }
   #map { height: 560px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
   @media (max-width: 760px) { #map { height: 320px; } }   /* county is wider than tall */
-  .legend h2, .info h2 { font-size: 13px; font-weight: 600; margin: 0 0 6px; color: var(--ink-2); }
+  .legend h2 { font-size: 13px; font-weight: 600; margin: 0 0 6px; color: var(--ink-2); }
   .legend ul { list-style: none; padding: 0; margin: 0 0 16px; font-size: 13px; }
   .legend li { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
   .swatch { width: 18px; height: 12px; border-radius: 2px; flex: none; }
   .county { font-size: 14px; margin: 0 0 12px; }
+  .note { font-size: 12.5px; color: var(--ink-2); }
   .prov { display: inline-block; margin-top: 4px; font-size: 12.5px; font-weight: 600; color: #8a4b00;
           background: #fff4e0; border: 1px solid #f0c27a; border-radius: 4px; padding: 1px 6px; }
   .caption { font-size: 12.5px; color: var(--ink-2); margin: 12px 0 8px; max-width: 110ch; }
@@ -47,6 +49,7 @@
   .tip .src { color: var(--ink-3); font-size: 11.5px; margin-top: 6px; }
   details { margin: 8px 0 24px; }
   summary { cursor: pointer; color: var(--ink-2); font-size: 14px; }
+  .tablewrap { overflow-x: auto; }
   #table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
   #table th, #table td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--rule); }
   #table .num { text-align: right; font-variant-numeric: tabular-nums; }
@@ -62,17 +65,28 @@
     <a href="https://github.com/olivergollapudi/boone-county-indiana-election-data">Data &amp; method</a>
   </nav>
   <h1>Boone County, Indiana: election results map</h1>
-  <p>Two-party margin by precinct, as reported by the Boone County Clerk, or re-expressed on
-     today's (2021-enacted) Indiana House, Indiana Senate and U.S. House districts. Hover or tap
-     any area to see the results it is built from. Secretary of State is the race on every
-     midterm ballot, so it is the one to compare years without a President, Governor or U.S.
-     Senate contest (such as 2026).</p>
+  <p>General-election results by precinct, as reported by the Boone County Clerk, or re-expressed
+     on today's (2021-enacted) Indiana House, Indiana Senate and U.S. House districts. Map how a
+     race voted, how that changed since an earlier election, turnout, or how people cast their
+     ballots (election day, mail, early in person). Hover or tap any area to see the numbers it
+     is built from. Secretary of State is on every midterm ballot, so it is the race to compare
+     years without a President, Governor or U.S. Senate contest (such as 2026).</p>
 </header>
 <main>
   <div class="controls">
-    <label>Contest <select id="contest"></select></label>
+    <label>Map <select id="measure">
+      <option value="margin">How it voted (two-party margin)</option>
+      <option value="margin_change">Change in margin since an earlier election</option>
+      <option value="turnout">Turnout</option>
+      <option value="turnout_change">Change in turnout since an earlier election</option>
+      <option value="share_e">Share who voted on election day</option>
+      <option value="share_a">Share who voted by mail</option>
+      <option value="share_w">Share who voted early in person</option>
+    </select></label>
+    <label id="contest-wrap">Contest <select id="contest"></select></label>
     <label>Year <select id="year"></select></label>
-    <label>Show <select id="view">
+    <label id="base-wrap" hidden>Compared with <select id="base"></select></label>
+    <label>Areas <select id="view">
       <option value="precincts">Precincts (as reported)</option>
       <option value="in_house">Today's Indiana House districts</option>
       <option value="in_senate">Today's Indiana Senate districts</option>
@@ -80,16 +94,16 @@
     </select></label>
   </div>
   <div class="layout">
-    <div id="map" role="region" aria-label="Map of Boone County results"></div>
+    <div id="map" role="region" aria-label="Map of Boone County"></div>
     <aside>
       <p class="county" id="county"></p>
-      <div class="legend"><h2>Two-party margin (points)</h2><ul id="legend"></ul></div>
+      <div class="legend"><h2 id="legend-title"></h2><ul id="legend"></ul></div>
     </aside>
   </div>
   <p class="caption" id="caption"></p>
   <details>
     <summary>Show the numbers as a table</summary>
-    <table id="table"><thead></thead><tbody></tbody></table>
+    <div class="tablewrap"><table id="table"><thead></thead><tbody></tbody></table></div>
   </details>
 </main>
 <footer>
@@ -99,132 +113,323 @@
 
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
-// Everything shown comes from data/ (written by scripts/build_site.py); nothing is computed
-// here except formatting and the margin bins, which match the static maps exactly.
+// Every number shown comes from data/ (written and checked by scripts/build_site.py). This page
+// only divides counts it is given (turnout = ballots / registered, share = method / ballots),
+// subtracts two years for the change maps, and formats. Color bins match the static maps.
 const $ = id => document.getElementById(id);
 let DATA, SHAPES = {}, DISTRICTS, map, popup;
 
-const fmtMargin = m => m === null ? "no two-party votes"
+const MEASURES = {
+  margin:         {kind: "vote"},
+  margin_change:  {kind: "vote", change: true},
+  turnout:        {kind: "turnout"},
+  turnout_change: {kind: "turnout", change: true},
+  share_e:        {kind: "method", f: "e", what: "on election day"},
+  share_a:        {kind: "method", f: "a", what: "by mail"},
+  share_w:        {kind: "method", f: "w", what: "early in person"},
+};
+const METHOD_NAMES = [["e", "Election day"], ["a", "Mail (paper absentee)"], ["w", "Early in person"]];
+
+const fmtMargin = m => m == null ? "no two-party votes"
   : Math.abs(m) < 0.05 ? "Even"
   : `${m > 0 ? "Republican" : "Democratic"} +${Math.abs(m).toFixed(1)}`;
-const fmtVotes = v => Number.isInteger(v) ? v.toLocaleString() : v.toLocaleString(undefined, {maximumFractionDigits: 1});
+const fmtShift = d => d == null ? "not comparable"
+  : Math.abs(d) < 0.05 ? "No change"
+  : `${Math.abs(d).toFixed(1)} points toward ${d > 0 ? "Republican" : "Democratic"}`;
+const fmtPct = p => p == null ? "n/a" : `${p.toFixed(1)}%`;
+const fmtPts = d => d == null ? "not comparable"
+  : Math.abs(d) < 0.05 ? "No change" : `${d > 0 ? "Up" : "Down"} ${Math.abs(d).toFixed(1)} points`;
+const fmtVotes = v => v == null ? "n/a" : Number.isInteger(v) ? v.toLocaleString()
+  : v.toLocaleString(undefined, {maximumFractionDigits: 1});
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const areaName = (view, id, rec) => view === "precincts" ? (rec && rec.name) || id : `${DATA.district_types[view]} ${id}`;
 
-function colorExpr() {
-  // step: <-30, -30..-20, -20..-10, -10..-5, -5..0 (blue, dark -> light), 0..5 ... 30+ (red, light -> dark)
-  const {blue, red, edges, no_data} = DATA.palette;   // edges = [5, 10, 20, 30]
-  const e = edges;
-  return ["case", ["==", ["get", "m"], null], no_data,
-    ["step", ["get", "m"], blue[4], -e[3], blue[3], -e[2], blue[2], -e[1], blue[1], -e[0], blue[0],
-      0, red[0], e[0], red[1], e[1], red[2], e[2], red[3], e[3], red[4]]];
+// ---- where the numbers come from -----------------------------------------------------------
+function yearData(sel, year) {           // the per-year block for the selected measure
+  return MEASURES[sel.measure].kind === "vote" ? DATA.contests[sel.contest].years[year] : DATA.turnout[year];
+}
+function records(sel, year) {            // id -> record, for the chosen areas
+  const y = yearData(sel, year);
+  if (!y) return {};
+  return (sel.view === "precincts" ? y.precincts : y.districts[sel.view]) || {};
+}
+function valueOf(measure, r) {           // the mapped number for one area-year (null = no data)
+  if (!r) return null;
+  const M = MEASURES[measure];
+  if (M.kind === "vote") return r.m;
+  if (M.kind === "turnout") return r.reg > 0 && r.ballots != null ? 100 * r.ballots / r.reg : null;
+  return r.ballots > 0 && r[M.f] != null ? 100 * r[M.f] / r.ballots : null;
+}
+const baseMeasure = m => ({margin_change: "margin", turnout_change: "turnout"})[m] || m;
+function value(sel, id) {
+  const bm = baseMeasure(sel.measure);
+  const now = valueOf(bm, records(sel, sel.year)[id]);
+  if (!MEASURES[sel.measure].change) return now;
+  if (!sel.base) return null;
+  const then = valueOf(bm, records(sel, sel.base)[id]);
+  return now == null || then == null ? null : now - then;
+}
+function countyValue(sel, year) {
+  const bm = baseMeasure(sel.measure), y = yearData(sel, year);
+  return MEASURES[bm].kind === "vote" ? y.county_margin : valueOf(bm, y.county);
+}
+function basisFor(year) {               // map-basis wording, written per year by build_site.py
+  for (const c of Object.values(DATA.contests)) if (c.years[year]) return c.years[year].basis;
+  return "";
 }
 
-function buildLegend() {
-  const {blue, red, edges} = DATA.palette;
-  const ranges = edges.map((b, i) => `${i ? edges[i - 1] : 0}–${b}`).concat(`${edges[edges.length - 1]}+`);
-  const items = ranges.map((r, i) => [red[i], `Republican ${r}`]).reverse()
-    .concat(ranges.map((r, i) => [blue[i], `Democratic ${r}`]));
-  $("legend").innerHTML = items.map(([c, t]) =>
-    `<li><span class="swatch" style="background:${c}"></span>${t}</li>`).join("");
+// ---- colors and legend (bins from DATA.palette, each ramp checked by the palette validator) --
+function scale(measure) {
+  const P = DATA.palette, L = P.layers;
+  const steps = (colors, cuts) => ["case", ["==", ["get", "v"], null], P.no_data,
+    ["step", ["get", "v"], colors[0], ...cuts.flatMap((c, i) => [c, colors[i + 1]])]];
+  const range = (e, i) => i === 0 ? `0–${e[0]}` : i < e.length ? `${e[i - 1]}–${e[i]}` : `${e[e.length - 1]}+`;
+  const pctLabels = e => [`Under ${e[0]}%`, ...e.slice(1).map((x, i) => `${e[i]}–${x}%`), `${e[e.length - 1]}% or more`];
+  if (measure === "margin" || measure === "margin_change") {
+    const e = P.edges, b = P.blue, r = P.red;           // e = [5, 10, 20, 30]
+    const colors = [b[4], b[3], b[2], b[1], b[0], r[0], r[1], r[2], r[3], r[4]];
+    const cuts = [-e[3], -e[2], -e[1], -e[0], 0, e[0], e[1], e[2], e[3]];
+    const pre = measure === "margin" ? ["Republican", "Democratic"] : ["Toward Republican", "Toward Democratic"];
+    const items = r.map((c, i) => [c, `${pre[0]} ${range(e, i)}`]).reverse()
+      .concat(b.map((c, i) => [c, `${pre[1]} ${range(e, i)}`]));
+    return {title: measure === "margin" ? "Two-party margin (points)" : "Change in two-party margin (points)",
+            expr: steps(colors, cuts), items};
+  }
+  if (measure === "turnout") {
+    const {ramp, edges: e} = L.turnout;
+    const labels = pctLabels(e);
+    return {title: "Turnout (ballots ÷ registered voters)", expr: steps(ramp, e),
+            items: ramp.map((c, i) => [c, labels[i]]).reverse()};
+  }
+  if (measure === "turnout_change") {
+    const {up, down, edges: e} = L.turnout_change;     // e = [2, 5, 10]
+    const colors = [down[3], down[2], down[1], down[0], up[0], up[1], up[2], up[3]];
+    const cuts = [-e[2], -e[1], -e[0], 0, e[0], e[1], e[2]];
+    const items = up.map((c, i) => [c, `Up ${range(e, i)}`]).reverse()
+      .concat(down.map((c, i) => [c, `Down ${range(e, i)}`]));
+    return {title: "Change in turnout (percentage points)", expr: steps(colors, cuts), items};
+  }
+  const {ramp, edges: e} = L.share;
+  const labels = pctLabels(e);
+  return {title: `Share of ballots cast ${MEASURES[measure].what}`, expr: steps(ramp, e),
+          items: ramp.map((c, i) => [c, labels[i]]).reverse()};
+}
+function buildLegend(sel) {
+  const s = scale(sel.measure);
+  $("legend-title").textContent = s.title;
+  $("legend").innerHTML = s.items.concat([[DATA.palette.no_data, "No data / not comparable"]]).map(([c, t]) =>
+    `<li><span class="swatch" style="background:${c}"></span>${esc(t)}</li>`).join("");
+  return s.expr;
 }
 
+// ---- selection -----------------------------------------------------------------------------
 function current() {
-  const contest = $("contest").value, year = $("year").value, view = $("view").value;
-  return {contest, year, view, c: DATA.contests[contest], y: DATA.contests[contest].years[year]};
+  return {measure: $("measure").value, contest: $("contest").value, year: $("year").value,
+          base: $("base").value || null, view: $("view").value};
 }
 let SHOWN = null;   // the selection the map was last DRAWN with; tooltips and table read this,
                     // so they can never describe something other than what is on screen
 let GEN = 0;        // drawing version: features carry it, and the tooltip ignores leftovers
                     // from a previous drawing during the split-second redraw
 
-function featuresFor({y, view}) {
-  if (view === "precincts") {
-    const shp = SHAPES[y.shapes];
-    return {type: "FeatureCollection", features: shp.features.map(f => {
-      const r = y.precincts[f.properties.pkey];
-      return {type: "Feature", geometry: f.geometry,
-              properties: {id: f.properties.pkey, m: r ? r.m : null, g: GEN}};
-    })};
-  }
-  return {type: "FeatureCollection", features: DISTRICTS.features
-    .filter(f => f.properties.district_type === view)
-    .map(f => {
-      const r = y.districts[view][f.properties.district];
-      return {type: "Feature", geometry: f.geometry, properties: {id: f.properties.district, m: r ? r.m : null, g: GEN}};
-    })};
+function yearsFor(measure, contest) {
+  const M = MEASURES[measure];
+  if (M.kind === "vote") return Object.keys(DATA.contests[contest].years);
+  return Object.keys(DATA.turnout).filter(y => M.kind === "turnout" || DATA.turnout[y].method);
+}
+function baseYearsFor(sel) {
+  // earlier elections of the same series; on the precinct view only those drawn on the same
+  // precinct map, so a precinct is only ever compared with itself
+  const now = yearData(sel, sel.year);
+  return yearsFor(sel.measure, sel.contest).filter(y => +y < +sel.year &&
+    (sel.view !== "precincts" || yearData(sel, y).shapes === now.shapes));
 }
 
+function featuresFor(sel) {
+  const feats = sel.view === "precincts"
+    ? SHAPES[yearData(sel, sel.year).shapes].features.map(f => [f, f.properties.pkey])
+    : DISTRICTS.features.filter(f => f.properties.district_type === sel.view).map(f => [f, f.properties.district]);
+  return {type: "FeatureCollection", features: feats.map(([f, id]) =>
+    ({type: "Feature", geometry: f.geometry, properties: {id, v: value(sel, id), g: GEN}}))};
+}
+
+// ---- tooltip -------------------------------------------------------------------------------
 function candRows(c) {
   return c.slice().sort((a, b) => b[2] - a[2]).map(([n, p, v]) =>
     `<tr><td>${esc(n)}${p ? ` (${esc(p)})` : ""}</td><td class="v">${fmtVotes(v)}</td></tr>`).join("");
 }
-
+function countRows(r) {
+  let rows = `<tr><td>Registered voters</td><td class="v">${fmtVotes(r.reg)}</td></tr>
+              <tr><td>Ballots cast</td><td class="v">${fmtVotes(r.ballots)}</td></tr>`;
+  if (r.e != null) rows += METHOD_NAMES.map(([f, n]) =>
+    `<tr><td>${n}</td><td class="v">${fmtVotes(r[f])} (${fmtPct(valueOf("share_" + f, r))})</td></tr>`).join("");
+  return rows;
+}
 function tooltip(id) {
-  const {c, y, view} = SHOWN;
-  if (view === "precincts") {
-    const r = y.precincts[id];
-    if (!r) return `<div class="tip"><h3>${esc(id)}</h3><p>No reported result for this contest.</p></div>`;
-    return `<div class="tip"><h3>${esc(r.name)}</h3><p class="m">${fmtMargin(r.m)}</p>
-      <table>${candRows(r.c)}</table>
-      <p class="src">Source rows: Results_Long, ${esc(y.source)}, office “${esc(y.office)}”, precinct “${esc(r.name)}”.</p></div>`;
+  const sel = SHOWN, M = MEASURES[sel.measure], y = yearData(sel, sel.year);
+  const r = records(sel, sel.year)[id], rb = sel.base ? records(sel, sel.base)[id] : null;
+  const name = areaName(sel.view, id, r || rb) + (sel.view === "precincts" ? "" : " (Boone County part)");
+  if (!r && !rb) return `<div class="tip"><h3>${esc(name)}</h3><p>No reported result.</p></div>`;
+  const where = sel.view === "precincts" ? `precinct “${esc((r || rb).name)}”`
+    : `allocated from precincts to today's lines (METHODOLOGY.md §7)`;
+  let head, body = "", src;
+  if (M.kind === "vote" && !M.change) {
+    head = fmtMargin(r.m); body = `<table>${candRows(r.c)}</table>`;
+    src = sel.view === "precincts"
+      ? `Source rows: Results_Long, ${esc(y.source)}, office “${esc(y.office)}”, ${where}.`
+      : `From ${r.n} precincts of ${esc(y.source)}, re-expressed on today's lines` +
+        (r.split > 0 ? `; ${fmtVotes(r.split)} votes from precincts split between districts` : "") + ".";
+  } else if (M.kind === "vote") {
+    head = fmtShift(value(sel, id));
+    body = `<table><tr><td>${sel.base}</td><td class="v">${fmtMargin(rb ? rb.m : null)}</td></tr>
+                   <tr><td>${sel.year}</td><td class="v">${fmtMargin(r ? r.m : null)}</td></tr></table>`;
+    src = `Results_Long, ${esc(DATA.contests[sel.contest].label)} ${sel.base} and ${sel.year}, ${where}.`;
+  } else if (M.change) {
+    head = fmtPts(value(sel, id));
+    body = `<table><tr><td>${sel.base} turnout</td><td class="v">${fmtPct(valueOf("turnout", rb))}</td></tr>
+                   <tr><td>${sel.year} turnout</td><td class="v">${fmtPct(valueOf("turnout", r))}</td></tr></table>`;
+    src = `Turnout_Long, ${sel.base} and ${sel.year} general elections, ${where}.`;
+  } else {
+    head = M.kind === "turnout" ? `${fmtPct(value(sel, id))} turnout` : `${fmtPct(value(sel, id))} voted ${M.what}`;
+    body = r ? `<table>${countRows(r)}</table>` : "";
+    src = `Turnout_Long, ${esc(y.source)}, ${where}` + (sel.view === "precincts" ? "." : "; allocated counts can be fractional.");
   }
-  const r = y.districts[view][id];
-  const name = `${DATA.district_types[view]} ${id}`;
-  if (!r) return `<div class="tip"><h3>${esc(name)}</h3><p>No result.</p></div>`;
-  return `<div class="tip"><h3>${esc(name)} (Boone County part)</h3><p class="m">${fmtMargin(r.m)}</p>
-    <table>${candRows(r.c)}</table>
-    <p class="src">From ${r.n} precincts of ${esc(y.source)}, re-expressed on today's lines
-      (data/normalized/results_by_current_district.csv)${r.split > 0 ? `; ${fmtVotes(r.split)} votes from precincts split between districts` : ""}.</p></div>`;
+  return `<div class="tip"><h3>${esc(name)}</h3><p class="m">${head}</p>${body}<p class="src">${src}</p></div>`;
 }
 
+// ---- table ---------------------------------------------------------------------------------
 function updateTable() {
-  const {y, view} = SHOWN;
-  const rows = view === "precincts"
-    ? Object.values(y.precincts).map(r => [r.name, r.c, r.m])
-    : Object.entries(y.districts[view]).map(([d, r]) => [`${DATA.district_types[view]} ${d}`, r.c, r.m]);
-  const parties = ["R", "D"];
-  $("table").tHead.innerHTML = `<tr><th>${view === "precincts" ? "Precinct" : "District (Boone part)"}</th>
-    <th class="num">Republican votes</th><th class="num">Democratic votes</th><th>Two-party margin</th></tr>`;
-  $("table").tBodies[0].innerHTML = rows.sort((a, b) => String(a[0]).localeCompare(String(b[0]), undefined, {numeric: true}))
-    .map(([n, c, m]) => {
-      const sum = p => c.filter(x => x[1] === p).reduce((s, x) => s + x[2], 0);
-      return `<tr><td>${esc(n)}</td><td class="num">${fmtVotes(sum("R"))}</td><td class="num">${fmtVotes(sum("D"))}</td><td>${fmtMargin(m)}</td></tr>`;
-    }).join("");
+  const sel = SHOWN, M = MEASURES[sel.measure];
+  const now = records(sel, sel.year), then = sel.base ? records(sel, sel.base) : {};
+  const ids = [...new Set([...Object.keys(now), ...Object.keys(then)])];
+  const area = sel.view === "precincts" ? "Precinct" : "District (Boone part)";
+  let head, row;
+  if (M.kind === "vote" && !M.change) {
+    head = ["Republican votes", "Democratic votes", "Two-party margin"];
+    const sum = (c, p) => c.filter(x => x[1] === p).reduce((s, x) => s + x[2], 0);
+    row = id => { const r = now[id]; return r ? [fmtVotes(sum(r.c, "R")), fmtVotes(sum(r.c, "D")), fmtMargin(r.m)] : ["", "", "no result"]; };
+  } else if (M.kind === "vote") {
+    head = [`${sel.base || "Earlier"} margin`, `${sel.year} margin`, "Change"];
+    row = id => [fmtMargin(then[id] ? then[id].m : null), fmtMargin(now[id] ? now[id].m : null), fmtShift(value(sel, id))];
+  } else if (M.change) {
+    head = [`${sel.base || "Earlier"} turnout`, `${sel.year} turnout`, "Change"];
+    row = id => [fmtPct(valueOf("turnout", then[id])), fmtPct(valueOf("turnout", now[id])), fmtPts(value(sel, id))];
+  } else if (M.kind === "turnout") {
+    head = ["Registered voters", "Ballots cast", "Turnout"];
+    row = id => { const r = now[id] || {}; return [fmtVotes(r.reg), fmtVotes(r.ballots), fmtPct(valueOf("turnout", now[id]))]; };
+  } else {
+    head = ["Ballots cast", ...METHOD_NAMES.map(([, n]) => n)];
+    row = id => { const r = now[id] || {};
+      return [fmtVotes(r.ballots), ...METHOD_NAMES.map(([f]) => `${fmtVotes(r[f])} (${fmtPct(valueOf("share_" + f, now[id]))})`)]; };
+  }
+  $("table").tHead.innerHTML = `<tr><th>${area}</th>${head.map(h => `<th class="num">${h}</th>`).join("")}</tr>`;
+  $("table").tBodies[0].innerHTML = ids
+    .map(id => [areaName(sel.view, id, now[id] || then[id]), row(id)])
+    .sort((a, b) => a[0].localeCompare(b[0], undefined, {numeric: true}))
+    .map(([n, cells]) => `<tr><td>${esc(n)}</td>${cells.map(c => `<td class="num">${c}</td>`).join("")}</tr>`).join("");
+}
+
+// ---- summary box and caption ---------------------------------------------------------------
+function updateText(sel) {
+  const M = MEASURES[sel.measure], y = yearData(sel, sel.year), yb = sel.base ? yearData(sel, sel.base) : null;
+  const what = M.kind === "vote" ? DATA.contests[sel.contest].label : "General election";
+  const prov = [y, yb].filter(Boolean).map(x => x.provisional).filter(Boolean);
+  const cv = countyValue(sel, sel.year), cb = sel.base ? countyValue(sel, sel.base) : null;
+  let line = "";
+  if (sel.measure === "margin") line = `Boone County: ${fmtMargin(cv)}`;
+  else if (sel.measure === "turnout") line = `Boone County turnout: ${fmtPct(cv)}`;
+  else if (M.kind === "method") line = `Boone County: ${fmtPct(cv)} voted ${M.what}`;
+  else if (sel.base && M.kind === "vote")
+    line = `Boone County: ${fmtMargin(cb)} in ${sel.base} → ${fmtMargin(cv)} in ${sel.year} (${fmtShift(cv - cb)})`;
+  else if (sel.base)
+    line = `Boone County turnout: ${fmtPct(cb)} in ${sel.base} → ${fmtPct(cv)} in ${sel.year} (${fmtPts(cv - cb)})`;
+  else
+    line = `<span class="note">No earlier ${M.kind === "vote" ? "election for this contest" : "general election"}` +
+      (sel.view === "precincts" ? " on the same precinct map. To compare across precinct maps, choose one of today's districts under Areas."
+                                : " in the data.") + `</span>`;
+  $("county").innerHTML = `<strong>${esc(what)}, ${sel.year}${M.change && sel.base ? ` vs ${sel.base}` : ""}</strong><br>${line}` +
+    (prov.length ? `<br><span class="prov">Provisional — not yet certified</span>` : "");
+
+  const areas = sel.view === "precincts"
+    ? `each precinct colored by its own reported numbers; ${basisFor(sel.year)}; dark lines show today's Indiana House districts. `
+    : `old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7); only the part of each district inside Boone County. `;
+  const compared = sel.view === "precincts" ? `; precincts are compared only where both elections use the same precinct map` : "";
+  let src, method, caveat;
+  if (M.kind === "vote") {
+    src = M.change ? `Results_Long, ${DATA.contests[sel.contest].label}, ${sel.base || "–"} and ${sel.year} general elections`
+                   : `Results_Long, ${y.source}, “${y.office}”`;
+    method = `margin = (Republican − Democratic) ÷ (Republican + Democratic) votes` +
+      (M.change ? `; change = ${sel.year} margin minus ${sel.base || "the earlier"} margin, in points${compared}` : "") + "; ";
+    caveat = "third-party and write-in votes are not in the margin.";
+  } else if (M.kind === "turnout") {
+    src = M.change ? `Turnout_Long, ${sel.base || "–"} and ${sel.year} general elections` : `Turnout_Long, ${y.source}`;
+    method = `turnout = ballots cast ÷ registered voters, as printed in the Clerk's report` +
+      (M.change ? `; change = ${sel.year} minus ${sel.base || "the earlier year"}, in percentage points${compared}` : "") + "; ";
+    caveat = "turnout is much higher in presidential years than in midterms, so compare like with like (the default compares with the election four years earlier).";
+  } else {
+    src = `Turnout_Long, ${y.source}`;
+    method = `share = ballots of that type ÷ all ballots cast; election day, mail (paper absentee) and early in person (walk-in absentee) are the E, A and W columns of the Clerk's report; `;
+    caveat = "available from 2020; earlier reports group ballots differently (machine / absentee / provisional), so they are not comparable.";
+  }
+  $("caption").textContent = `Source: Boone County Clerk precinct reports (${src}). Method: ${method}${areas}Caveat: ${caveat}` +
+    (prov.length ? ` PROVISIONAL: ${[...new Set(prov)].join("; ")}.` : "");
 }
 
 function update() {
+  // a selector changed before the map finished loading: the "load" handler draws the
+  // selection current at that moment, so there is nothing to do yet
+  if (!map || !map.getSource("areas")) return;
   const sel = current();
   SHOWN = sel; GEN += 1;
+  map.setPaintProperty("fill", "fill-color", buildLegend(sel));
   map.getSource("areas").setData(featuresFor(sel));
   map.setLayoutProperty("house-lines", "visibility", sel.view === "precincts" ? "visible" : "none");
-  $("county").innerHTML = `<strong>${sel.c.label}, ${sel.year}</strong><br>Boone County: ${fmtMargin(sel.y.county_margin)}` +
-    (sel.y.provisional ? `<br><span class="prov">Provisional — not yet certified</span>` : "");
-  const shapesNote = sel.y.basis;   // already worded per year by build_site.py / make_maps.shapes_for
-  $("caption").textContent = `Source: Boone County Clerk precinct results (Results_Long), ${sel.y.source}, “${sel.y.office}”. ` +
-    `Method: margin = (Republican − Democratic) ÷ (Republican + Democratic) votes; ` +
-    (sel.view === "precincts"
-      ? `each precinct colored by its own reported result; ${shapesNote}; dark lines show today's Indiana House districts. `
-      : `old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7); only the part of each district inside Boone County. `) +
-    `Caveat: third-party and write-in votes are not in the margin.` +
-    (sel.y.provisional ? ` PROVISIONAL: ${sel.y.provisional}.` : "");
+  updateText(sel);
   updateTable();
   if (popup) popup.remove();
 }
 
+// ---- selectors -----------------------------------------------------------------------------
+function setOptions(el, values, keep, fallback) {
+  el.innerHTML = values.map(v => `<option>${v}</option>`).join("");
+  el.value = values.includes(keep) ? keep : fallback;
+}
+function refresh(level) {
+  // level = which selector changed ("measure" | "contest" | "year" | "view"); what depends on it is re-derived
+  const measure = $("measure").value, M = MEASURES[measure];
+  $("contest-wrap").hidden = M.kind !== "vote";
+  $("base-wrap").hidden = !M.change;
+  if (level === "measure" || level === "contest") {
+    const ys = yearsFor(measure, $("contest").value);
+    setOptions($("year"), ys, $("year").value, ys[ys.length - 1]);
+  }
+  if (M.change) {
+    const keep = $("base").value, sel = current();
+    const bs = baseYearsFor(sel);
+    const fourBack = String(+sel.year - 4);
+    // default: the same kind of election four years earlier (midterm vs midterm), else the latest earlier one
+    setOptions($("base"), bs, level === "year" ? null : keep, bs.includes(fourBack) ? fourBack : bs[bs.length - 1]);
+    if (!bs.length) $("base").innerHTML = `<option value="">none available</option>`;
+  } else {
+    $("base").innerHTML = "";
+  }
+  update();
+}
 function fillSelectors() {
-  $("contest").innerHTML = Object.entries(DATA.contests).map(([k, c]) => `<option value="${k}">${c.label}</option>`).join("");
-  const fillYears = () => {
-    const keep = $("year").value;
-    const years = Object.keys(DATA.contests[$("contest").value].years);
-    $("year").innerHTML = years.map(y => `<option>${y}</option>`).join("");
-    $("year").value = years.includes(keep) ? keep : years[years.length - 1];
-  };
-  fillYears();
+  $("contest").innerHTML = Object.entries(DATA.contests).map(([k, c]) => `<option value="${k}">${esc(c.label)}</option>`).join("");
+  // open on the newest election: the first contest whose latest year is the latest of all
+  const last = k => Math.max(...Object.keys(DATA.contests[k].years).map(Number));
+  const newest = Math.max(...Object.keys(DATA.contests).map(last));
+  $("contest").value = Object.keys(DATA.contests).find(k => last(k) === newest);
+  const ys = yearsFor("margin", $("contest").value);
+  setOptions($("year"), ys, null, ys[ys.length - 1]);
   // listen to both events: some browsers / assistive tech fire only "input" on a select
   for (const ev of ["change", "input"]) {
-    $("contest").addEventListener(ev, () => { fillYears(); update(); });
-    $("year").addEventListener(ev, update);
-    $("view").addEventListener(ev, update);
+    $("measure").addEventListener(ev, () => refresh("measure"));
+    $("contest").addEventListener(ev, () => refresh("contest"));
+    $("year").addEventListener(ev, () => refresh("year"));
+    $("view").addEventListener(ev, () => refresh("view"));
+    $("base").addEventListener(ev, update);
   }
 }
 
@@ -233,7 +438,7 @@ async function init() {
   [DATA, SHAPES["2010"], SHAPES["2024"], DISTRICTS] = await Promise.all([
     get("data/results.json"), get("data/precincts_2010.geojson"),
     get("data/precincts_2024.geojson"), get("data/districts.geojson")]);
-  fillSelectors(); buildLegend();
+  fillSelectors();
 
   map = new maplibregl.Map({
     container: "map", attributionControl: false, dragRotate: false, pitchWithRotate: false,
@@ -245,7 +450,7 @@ async function init() {
     map.addSource("areas", {type: "geojson", data: {type: "FeatureCollection", features: []}, promoteId: "id"});
     map.addSource("house", {type: "geojson",
       data: {type: "FeatureCollection", features: DISTRICTS.features.filter(f => f.properties.district_type === "in_house")}});
-    map.addLayer({id: "fill", type: "fill", source: "areas", paint: {"fill-color": colorExpr(), "fill-opacity": 1}});
+    map.addLayer({id: "fill", type: "fill", source: "areas", paint: {"fill-color": DATA.palette.no_data, "fill-opacity": 1}});
     map.addLayer({id: "edges", type: "line", source: "areas", paint: {"line-color": "#fcfcfb", "line-width": 0.6}});
     map.addLayer({id: "house-lines", type: "line", source: "house", paint: {"line-color": "#0b0b0b", "line-width": 1.6}});
     map.addLayer({id: "hover", type: "line", source: "areas", paint: {"line-color": "#0b0b0b",
@@ -267,7 +472,7 @@ async function init() {
       if (hovered !== null) map.setFeatureState({source: "areas", id: hovered}, {hover: false});
       hovered = null; map.getCanvas().style.cursor = ""; popup.remove();
     });
-    update();
+    refresh("measure");
   });
 }
 init().catch(err => { $("map").textContent = "Could not load the map data (" + err.message + ")."; });

@@ -178,11 +178,23 @@ comes from the tables above.
 
 ## Interactive map data: `site/data/`
 
-Written by `scripts/build_site.py` (checks W1–W3: every precinct has a shape; precinct
-votes equal Results_Long; district votes equal precinct votes). `results.json` holds, per
+Written by `scripts/build_site.py` (checks W1–W7: every precinct has a shape; precinct
+votes equal Results_Long; district votes equal precinct votes; W4 every chart appears on
+the "Charts & maps" page once; W5–W7 below). `results.json` holds, per
 contest and year: each precinct's candidate rows as reported (`c` = [candidate, party,
 votes]) and two-party margin (`m`); each current district's re-expressed rows, margin,
 precinct count (`n`), votes from split precincts (`split`) and contest coverage (`cov`).
+
+`results.json` → `turnout` holds, per even-year general election (2010–2026), from
+`turnout_long.csv`: each precinct's registered voters (`reg`) and ballots cast (`ballots`),
+and, where the report uses the E,A,W ballot-type columns (2020 onward, `method` = true),
+ballots cast on election day (`e`), by mail / paper absentee (`a`) and early in person /
+walk-in absentee (`w`). `districts` holds the same counts allocated to today's districts
+with the precinct shares in `precinct_district_shares.csv` (so they can be fractional), and
+`county` the precinct totals. Checks: W5 every turnout precinct has a shape; W6 the
+district totals equal the precinct totals for every count; W7 `e + a + w` = `ballots` for
+every precinct. The map page computes only turnout (`ballots ÷ reg`), shares
+(`e`, `a` or `w` ÷ `ballots`) and differences between two years from these counts.
 The GeoJSON files are the precinct shapes (2010; 2024, used for 2012 onward) and today's
 district outlines.
 

@@ -28,6 +28,11 @@ CHECKS - exits non-zero and writes nothing if any fails:
   W3  per contest x year x candidate x district type, district votes written ==
       precinct votes (normalization conserves votes; tolerance 0.01 for 4-dp rounding)
   W4  every image in maps/ is on the "Charts & maps" page exactly once, with its caption
+  W5  every precinct's turnout row (even-year generals 2010-2026) matches a precinct shape
+  W6  turnout allocated to today's districts conserves every count (registered, ballots,
+      and each ballot method) - same precinct->district shares as the vote normalization
+  W7  where the "how people voted" layer is shown (2020+, E/A/W reports), election day +
+      mail + early in person == ballots cast, for every precinct
 
 Run (from the repository root, after normalize.py):
     python3 scripts/build_site.py
@@ -52,18 +57,98 @@ def fail(msg):
     sys.exit(f"STOP: {msg}")
 
 
+# ---- turnout and "how people voted" layers ----------------------------------------------
+# Even-year general elections (odd-year municipal elections cover only some precincts).
+TURNOUT_YEARS = ["2010", "2012", "2014", "2016", "2018", "2020", "2022", "2024", "2026"]
+# Ballot-method columns mean the same thing only where the report uses the E,A,W scheme:
+# E = election day, A = paper absentee (mail), W = walk-in absentee (early in person).
+# Earlier reports use M,A,P (machine / absentee / provisional), which cannot be split into
+# election day vs early in person, so the method layer starts in 2020.
+METHOD_SCHEME = "E,A,W"
+# Each ramp passed the dataviz palette validator (--ordinal); none is a party color except
+# the margin-change layer, whose direction genuinely is partisan.
+LAYER_PALETTE = {
+    "turnout": {"ramp": ["#78bf9f", "#4ea585", "#2a8a68", "#156e4f", "#084a33"], "edges": [40, 50, 60, 70]},
+    "turnout_change": {"up": ["#78bf9f", "#4ea585", "#2a8a68", "#156e4f"],      # higher turnout
+                       "down": ["#ef9f6f", "#e07f48", "#c2602c", "#94431a"],    # lower turnout
+                       "edges": [2, 5, 10]},
+    "share": {"ramp": ["#b3a9ee", "#8f80e6", "#6250d6", "#4a3aa8", "#33287a"], "edges": [10, 25, 50, 75]},
+    "margin_change": {"edges": [5, 10, 20, 30]},
+}
+
+
+def shares_vintage(year):
+    """Which precinct map's district shares apply to an election (same rule as normalize.py)."""
+    y = int(year)
+    return "2024" if y >= 2020 else "2020" if y >= 2012 else "2010"
+
+
+def build_turnout(keys):
+    """Per even-year general election: each precinct's registered voters, ballots cast and
+    ballot-method counts (Turnout_Long), plus today's districts allocated with the same
+    precinct->district shares used for the vote normalization.
+
+    W5  every precinct's turnout row matches a precinct shape
+    W6  per election and district type, district totals == precinct totals (registered,
+        ballots, and each method), i.e. the allocation conserves every count
+    W7  where a method breakdown is shown, election day + mail + early == ballots cast
+    """
+    t = pd.read_csv(DATA_DIR / "turnout_long.csv", dtype=str, keep_default_na=False)
+    shares = pd.read_csv(NORM / "precinct_district_shares.csv", dtype={"district": str, "vintage": str})
+    num = lambda v: int(v) if str(v).strip() not in ("", "nan") else None
+    out, problems = {}, []
+    for year in TURNOUT_YEARS:
+        rows = t[(t["source_file_id"] == f"{year}-GENERAL-PRECINCT") & (t["granularity"] == "precinct")]
+        vintage = "2010" if int(year) < 2012 else "2024"
+        scheme = rows["column_scheme"].iloc[0]
+        precincts = {}
+        for r in rows.itertuples():
+            pk = key(r.precinct_name)
+            if vintage == "2010" and pk == "WORTH 1":
+                pk = "WORTH"                       # same name fix as the results (normalize.py)
+            if pk not in keys[vintage]:
+                problems.append(f"W5 {year}: no shape for turnout precinct {r.precinct_name}")
+                continue
+            rec = {"name": r.precinct_name, "reg": num(r.registered_voters), "ballots": num(r.public_count)}
+            if scheme == METHOD_SCHEME:
+                e, a, w = num(r.split1), num(r.split2), num(r.split3)
+                if None in (e, a, w) or e + a + w != rec["ballots"]:
+                    problems.append(f"W7 {year} {r.precinct_name}: method counts do not add up to ballots")
+                rec.update({"e": e, "a": a, "w": w})
+            precincts[pk] = rec
+
+        fields = ["reg", "ballots"] + (["e", "a", "w"] if scheme == METHOD_SCHEME else [])
+        sh = shares[shares["vintage"] == shares_vintage(year)].copy()
+        # the file stores shares rounded to 6 decimals; rescale each precinct's shares to sum
+        # to exactly 1 per district type, so the allocation conserves counts to the vote
+        sh["share"] = sh["share"] / sh.groupby(["precinct_key", "district_type"])["share"].transform("sum")
+        districts = {}
+        for dt in DISTRICT_TYPES:
+            acc = defaultdict(lambda: defaultdict(float))
+            for s in sh[sh["district_type"] == dt].itertuples():
+                p = precincts.get(s.precinct_key)
+                if not p:
+                    continue
+                for f in fields:
+                    acc[s.district][f] += (p[f] or 0) * s.share
+            districts[dt] = {d: {f: round(v[f], 2) for f in fields} for d, v in acc.items()}
+            for f in fields:   # W6: allocation conserves every count
+                tot_p = sum((p[f] or 0) for p in precincts.values())
+                tot_d = sum(v[f] for v in acc.values())
+                if abs(tot_p - tot_d) > 0.01:
+                    problems.append(f"W6 {year} {dt} {f}: districts {tot_d:.2f} vs precincts {tot_p}")
+        county = {f: sum((p[f] or 0) for p in precincts.values()) for f in fields}
+        out[year] = {"source": f"{year}-GENERAL-PRECINCT", "shapes": vintage, "scheme": scheme,
+                     "method": scheme == METHOD_SCHEME, "provisional": PROVISIONAL.get(f"{year}-GENERAL"),
+                     "precincts": precincts, "districts": districts, "county": county}
+    return out, problems
+
+
 # ---- the "Charts & maps" page (site/gallery.html) ---------------------------------------
 # Which image goes in which section, in display order. Titles and captions are NOT written
 # here: they come from maps/captions.csv (written by make_maps.py), so the page always shows
 # exactly the caption that is on the image.
 GALLERY = [
-    ("why-normalize", "Why normalize: a district number is not a place",
-     "Each district number using the lines in force at the time (dashed) versus the same number "
-     "on today's lines (solid). Boone's lines were redrawn for 2012 and 2022 and numbers were reused "
-     "for different areas.",
-     ["compare_in_house_president.png", "district_lines_in_house.png", "compare_in_house_us_senate.png",
-      "compare_in_senate_president.png", "compare_in_senate_us_senate.png",
-      "compare_us_house_president.png", "compare_us_house_us_senate.png"]),
     ("2026", "2026 general election (provisional)",
      "2026 had no President, Governor or U.S. Senate race, so it is compared with 2022 on the "
      "statewide offices that were on every ballot in both years. Figures come from the Clerk's "
@@ -71,6 +156,13 @@ GALLERY = [
      ["statewide_offices_2022_2026.png", "swing_secretary_of_state_2022_2026.png",
       "margin_secretary_of_state.png", "trend_secretary_of_state.png",
       "margin_us_house_4.png", "trend_us_house_4.png", "turnout_2026_general.png"]),
+    ("why-normalize", "Why normalize: a district number is not a place",
+     "Each district number using the lines in force at the time (dashed) versus the same number "
+     "on today's lines (solid). Boone's lines were redrawn for 2012 and 2022 and numbers were reused "
+     "for different areas.",
+     ["compare_in_house_president.png", "district_lines_in_house.png", "compare_in_house_us_senate.png",
+      "compare_in_senate_president.png", "compare_in_senate_us_senate.png",
+      "compare_us_house_president.png", "compare_us_house_us_senate.png"]),
     ("precincts", "Results by precinct",
      "Each precinct colored by its own reported result, with today's Indiana House lines on top.",
      ["margin_president.png", "margin_governor.png", "margin_us_senate.png"]),
@@ -124,7 +216,8 @@ def main():
     shapes = {v: precinct_layer(v).to_crs("EPSG:4326") for v in ("2010", "2024")}
     keys = {v: set(g["pkey"]) for v, g in shapes.items()}
 
-    data = {"palette": {"blue": BLUE_ARM, "red": RED_ARM, "edges": MARGIN_EDGES, "no_data": NO_DATA},
+    data = {"palette": {"blue": BLUE_ARM, "red": RED_ARM, "edges": MARGIN_EDGES, "no_data": NO_DATA,
+                        "layers": LAYER_PALETTE},
             "district_types": DISTRICT_TYPES, "contests": {}}
     problems = []
     for slug, (label, pattern, years) in CONTESTS.items():
@@ -181,9 +274,15 @@ def main():
                 "provisional": PROVISIONAL.get(f"{year}-GENERAL"),     # reason text, or None
                 "county_margin": margin(R, D), "precincts": precincts, "districts": districts}
 
+    data["turnout"], t_problems = build_turnout(keys)
+    problems += t_problems
+
     print("CHECKS")
     for name in ("W1 every precinct has a shape", "W2 precinct votes == Results_Long",
-                 "W3 district votes == precinct votes"):
+                 "W3 district votes == precinct votes",
+                 "W5 every turnout precinct has a shape",
+                 "W6 district turnout == precinct turnout (every count conserved)",
+                 "W7 election day + mail + early == ballots cast"):
         bad = [p for p in problems if p.startswith(name[:2])]
         print(f"  {'PASS' if not bad else 'FAIL'}  {name}" + (f"  ({len(bad)} problems)" if bad else ""))
     if problems:
