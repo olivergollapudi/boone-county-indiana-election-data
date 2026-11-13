@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boone County Election Charts</title>
+<meta name="description" content="Captioned maps and charts of Boone County, Indiana election results, 2010–2026: precinct results, today's districts, change over time, turnout, and why district numbers need normalizing. Source: Boone County Clerk.">
+<style>
+  :root {
+    --surface: #fcfcfb; --panel: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #8a8984;
+    --rule: #e6e5e1; --focus: #2a78d6; --link: #1c5cab;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface); color: var(--ink);
+         font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header, main, footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  nav.site { display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 14px 0 0; font-size: 14px; }
+  nav.site a { color: var(--ink-2); text-decoration: none; padding-bottom: 3px; }
+  nav.site a[aria-current="page"] { color: var(--ink); font-weight: 600; border-bottom: 2px solid var(--ink); }
+  nav.site a:hover { color: var(--ink); }
+  header h1 { font-size: 24px; margin: 14px 0 4px; }
+  header p { margin: 0 0 8px; color: var(--ink-2); max-width: 75ch; }
+  .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; padding: 0; list-style: none; }
+  .toc a { display: inline-block; font-size: 13.5px; color: var(--ink); text-decoration: none;
+           border: 1px solid #d6d5d0; border-radius: 999px; padding: 4px 12px; background: var(--panel); }
+  .toc a:hover { border-color: var(--ink-3); }
+  section { margin: 36px 0 8px; scroll-margin-top: 12px; }
+  section > h2 { font-size: 20px; margin: 0 0 4px; }
+  section > p.intro { margin: 0 0 16px; color: var(--ink-2); max-width: 85ch; }
+  .prov { display: inline-block; margin-left: 8px; font-size: 12.5px; font-weight: 600; color: #8a4b00;
+          background: #fff4e0; border: 1px solid #f0c27a; border-radius: 4px; padding: 1px 6px;
+          vertical-align: middle; }
+  figure { margin: 0 0 28px; padding: 14px; background: var(--panel); border: 1px solid var(--rule);
+           border-radius: 8px; }
+  figure a.img { display: block; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 4px; }
+  figcaption { margin-top: 10px; }
+  figcaption .t { font-weight: 600; font-size: 15px; }
+  figcaption .c { color: var(--ink-2); font-size: 13px; margin-top: 4px; }
+  figcaption .links { font-size: 13px; margin-top: 6px; }
+  a { color: var(--link); }
+  a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  footer { font-size: 12.5px; color: var(--ink-3); padding: 12px 16px 28px; border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+<header>
+  <nav class="site" aria-label="Site">
+    <a href="./">Interactive map</a>
+    <a href="gallery.html" aria-current="page">Charts &amp; maps</a>
+    <a href="https://github.com/olivergollapudi/boone-county-indiana-election-data">Data &amp; method</a>
+  </nav>
+  <h1>Boone County, Indiana: charts and maps</h1>
+  <p>Every image is built by a script from the Boone County Clerk's precinct results and carries its
+     own caption: source, elections, method, and a caveat. Click any image to open it full size.</p>
+  <ul class="toc" id="toc"></ul>
+</header>
+<main id="gallery"><p>Loading…</p></main>
+<footer>
+  Data and code: <a href="https://github.com/olivergollapudi/boone-county-indiana-election-data">github.com/olivergollapudi/boone-county-indiana-election-data</a>
+  · Data and maps CC0 1.0, code MIT · 2008 is omitted while its scanned results are under review.
+</footer>
+<script>
+// Sections, titles and captions all come from data/gallery.json (written by
+// scripts/build_site.py from maps/captions.csv); nothing on this page is typed by hand.
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+fetch("data/gallery.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(sections => {
+  document.getElementById("toc").innerHTML = sections.map(s =>
+    `<li><a href="#${esc(s.id)}">${esc(s.title)}</a></li>`).join("");
+  document.getElementById("gallery").innerHTML = sections.map(s => `
+    <section id="${esc(s.id)}">
+      <h2>${esc(s.title)}</h2>
+      <p class="intro">${esc(s.intro)}</p>
+      ${s.images.map(im => `
+        <figure>
+          <a class="img" href="maps/${esc(im.file)}" target="_blank" rel="noopener">
+            <img src="maps/${esc(im.file)}" alt="${esc(im.title)}. ${esc(im.caption)}" loading="lazy"></a>
+          <figcaption>
+            <div class="t">${esc(im.title)}${/provisional/i.test(im.caption) ? '<span class="prov">Provisional</span>' : ""}</div>
+            <div class="c">${esc(im.caption)}</div>
+            <div class="links"><a href="maps/${esc(im.file)}" download>Download PNG</a></div>
+          </figcaption>
+        </figure>`).join("")}
+    </section>`).join("");
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+}).catch(err => {
+  document.getElementById("gallery").innerHTML = `<p>Could not load the charts (${esc(err.message)}).</p>`;
+});
+</script>
+</body>
+</html>

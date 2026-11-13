@@ -15,7 +15,11 @@
   body { margin: 0; background: var(--surface); color: var(--ink);
          font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
   header, main, footer { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-  header h1 { font-size: 22px; margin: 20px 0 4px; }
+  nav.site { display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 14px 0 0; font-size: 14px; }
+  nav.site a { color: var(--ink-2); text-decoration: none; padding-bottom: 3px; }
+  nav.site a[aria-current="page"] { color: var(--ink); font-weight: 600; border-bottom: 2px solid var(--ink); }
+  nav.site a:hover { color: var(--ink); }
+  header h1 { font-size: 22px; margin: 14px 0 4px; }
   header p { margin: 0 0 12px; color: var(--ink-2); max-width: 70ch; }
   .controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; margin: 8px 0 12px; }
   .controls label { display: flex; flex-direction: column; font-size: 13px; color: var(--ink-2); gap: 4px; }
@@ -52,6 +56,11 @@
 </head>
 <body>
 <header>
+  <nav class="site" aria-label="Site">
+    <a href="./" aria-current="page">Interactive map</a>
+    <a href="gallery.html">Charts &amp; maps</a>
+    <a href="https://github.com/olivergollapudi/boone-county-indiana-election-data">Data &amp; method</a>
+  </nav>
   <h1>Boone County, Indiana: election results map</h1>
   <p>Two-party margin by precinct, as reported by the Boone County Clerk, or re-expressed on
      today's (2021-enacted) Indiana House, Indiana Senate and U.S. House districts. Hover or tap

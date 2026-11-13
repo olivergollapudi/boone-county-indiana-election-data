@@ -1,0 +1,164 @@
+[
+ {
+  "id": "why-normalize",
+  "title": "Why normalize: a district number is not a place",
+  "intro": "Each district number using the lines in force at the time (dashed) versus the same number on today's lines (solid). Boone's lines were redrawn for 2012 and 2022 and numbers were reused for different areas.",
+  "images": [
+   {
+    "file": "compare_in_house_president.png",
+    "title": "President margin by Indiana House district: today's lines vs the lines at the time",
+    "caption": "Source: data/normalized/results_by_current_district.csv and results_by_district_as_drawn.csv (Boone County Clerk results). Elections: 2012, 2016, 2020, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Solid = precincts re-expressed on 2021-enacted lines; dashed = precincts in that district number at the time, read from each precinct's own ballot; dotted verticals mark new maps (dashed line breaks there); from 2022 the two coincide, so only earlier maps are drawn dashed; a single result under a map is not drawn. Caveat: Boone County portion only; a shared district number does not mean the same place."
+   },
+   {
+    "file": "district_lines_in_house.png",
+    "title": "Indiana House districts in Boone County under three maps",
+    "caption": "Source: each precinct's district as printed on its own ballot (data/normalized/precinct_district_as_drawn.csv); precinct shapes from IndianaMap. Method: precincts dissolved by the district shown on their ballots in each map era; a number keeps one color across panels. Caveat: 2002–2011 and 2012–2020 drawn on 2010 and 2020 precinct shapes, the closest maps available."
+   },
+   {
+    "file": "compare_in_house_us_senate.png",
+    "title": "U.S. Senate margin by Indiana House district: today's lines vs the lines at the time",
+    "caption": "Source: data/normalized/results_by_current_district.csv and results_by_district_as_drawn.csv (Boone County Clerk results). Elections: 2010, 2012, 2016, 2018, 2022, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Solid = precincts re-expressed on 2021-enacted lines; dashed = precincts in that district number at the time, read from each precinct's own ballot; dotted verticals mark new maps (dashed line breaks there); from 2022 the two coincide, so only earlier maps are drawn dashed; a single result under a map is not drawn. Not shown (only one result, no trend): Indiana House 38 (2010); Indiana House 87 (2010). Caveat: Boone County portion only; a shared district number does not mean the same place."
+   },
+   {
+    "file": "compare_in_senate_president.png",
+    "title": "President margin by Indiana Senate district: today's lines vs the lines at the time",
+    "caption": "Source: data/normalized/results_by_current_district.csv and results_by_district_as_drawn.csv (Boone County Clerk results). Elections: 2012, 2016, 2020, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Solid = precincts re-expressed on 2021-enacted lines; dashed = precincts in that district number at the time, read from each precinct's own ballot; dotted verticals mark new maps (dashed line breaks there); from 2022 the two coincide, so only earlier maps are drawn dashed; a single result under a map is not drawn. Caveat: Boone County portion only; a shared district number does not mean the same place."
+   },
+   {
+    "file": "compare_in_senate_us_senate.png",
+    "title": "U.S. Senate margin by Indiana Senate district: today's lines vs the lines at the time",
+    "caption": "Source: data/normalized/results_by_current_district.csv and results_by_district_as_drawn.csv (Boone County Clerk results). Elections: 2010, 2012, 2016, 2018, 2022, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Solid = precincts re-expressed on 2021-enacted lines; dashed = precincts in that district number at the time, read from each precinct's own ballot; dotted verticals mark new maps (dashed line breaks there); from 2022 the two coincide, so only earlier maps are drawn dashed; a single result under a map is not drawn. Not shown (only one result, no trend): Indiana Senate 21 (2010). Caveat: Boone County portion only; a shared district number does not mean the same place."
+   },
+   {
+    "file": "compare_us_house_president.png",
+    "title": "President margin by U.S. House district: today's lines vs the lines at the time",
+    "caption": "Source: data/normalized/results_by_current_district.csv and results_by_district_as_drawn.csv (Boone County Clerk results). Elections: 2012, 2016, 2020, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Solid = precincts re-expressed on 2021-enacted lines; dashed = precincts in that district number at the time, read from each precinct's own ballot; dotted verticals mark new maps (dashed line breaks there); from 2022 the two coincide, so only earlier maps are drawn dashed; a single result under a map is not drawn. Caveat: Boone County portion only; a shared district number does not mean the same place."
+   },
+   {
+    "file": "compare_us_house_us_senate.png",
+    "title": "U.S. Senate margin by U.S. House district: today's lines vs the lines at the time",
+    "caption": "Source: data/normalized/results_by_current_district.csv and results_by_district_as_drawn.csv (Boone County Clerk results). Elections: 2010, 2012, 2016, 2018, 2022, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Solid = precincts re-expressed on 2021-enacted lines; dashed = precincts in that district number at the time, read from each precinct's own ballot; dotted verticals mark new maps (dashed line breaks there); from 2022 the two coincide, so only earlier maps are drawn dashed; a single result under a map is not drawn. Caveat: Boone County portion only; a shared district number does not mean the same place."
+   }
+  ]
+ },
+ {
+  "id": "2026",
+  "title": "2026 general election (provisional)",
+  "intro": "2026 had no President, Governor or U.S. Senate race, so it is compared with 2022 on the statewide offices that were on every ballot in both years. Figures come from the Clerk's election-night report and are provisional until certified.",
+  "images": [
+   {
+    "file": "statewide_offices_2022_2026.png",
+    "title": "Statewide offices on the 2022 and 2026 ballots: two-party margin by today's district",
+    "caption": "Source: Boone County Clerk results (Results_Long) and data/normalized/results_by_current_district.csv. Elections: 2022 and 2026 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Both years are on today's precincts and district lines, so district figures are exact sums of whole precincts. Caveat: Boone County portion of each district only; the candidates differ between years. 2026 results are provisional (not yet certified)."
+   },
+   {
+    "file": "swing_secretary_of_state_2022_2026.png",
+    "title": "Secretary of State: change in two-party margin by precinct, 2022 → 2026",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2022 and 2026 general. Method: 2026 margin minus 2022 margin. Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Caveat: the 2022 and 2026 candidates differ. 2026 results are provisional (not yet certified)."
+   },
+   {
+    "file": "margin_secretary_of_state.png",
+    "title": "Secretary of State: two-party margin by precinct, Boone County",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2010 general, 2014 general, 2018 general, 2022 general, 2026 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Each precinct colored by its own reported result. Caveat: 2014, 2018 use precinct shapes assumed equal to 2020's; lines show today's Indiana House districts; 2008 omitted (scanned data under review). 2026 results are provisional (not yet certified)."
+   },
+   {
+    "file": "trend_secretary_of_state.png",
+    "title": "Secretary of State: how today's districts voted, Boone County portion",
+    "caption": "Source: data/normalized/results_by_current_district.csv (Boone County Clerk results re-expressed on 2021-enacted districts). Elections: 2010, 2014, 2018, 2022, 2026 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7). Caveat: 2014, 2018 assume 2020 precinct shapes; 2008 omitted (scanned data under review). 2026 results are provisional (not yet certified)."
+   },
+   {
+    "file": "margin_us_house_4.png",
+    "title": "U.S. House District 4: two-party margin by precinct, Boone County",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2022 general, 2024 general, 2026 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Each precinct colored by its own reported result. Caveat: lines show today's Indiana House districts; 2008 omitted (scanned data under review). 2026 results are provisional (not yet certified)."
+   },
+   {
+    "file": "trend_us_house_4.png",
+    "title": "U.S. House District 4: how today's districts voted, Boone County portion",
+    "caption": "Source: data/normalized/results_by_current_district.csv (Boone County Clerk results re-expressed on 2021-enacted districts). Elections: 2022, 2024, 2026 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7). Caveat: 2008 omitted (scanned data under review). 2026 results are provisional (not yet certified)."
+   },
+   {
+    "file": "turnout_2026_general.png",
+    "title": "Turnout by precinct, 2026 general (county: 48.1%)",
+    "caption": "Source: Boone County Clerk precinct reports (Turnout_Long). Election: 2026 general. Method: ballots cast (public count) ÷ registered voters, as printed per precinct. Caveat: registered-voter counts are as printed in each precinct report, not adjusted in any way. 2026 results are provisional (not yet certified)."
+   }
+  ]
+ },
+ {
+  "id": "precincts",
+  "title": "Results by precinct",
+  "intro": "Each precinct colored by its own reported result, with today's Indiana House lines on top.",
+  "images": [
+   {
+    "file": "margin_president.png",
+    "title": "President: two-party margin by precinct, Boone County",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2012 general, 2016 general, 2020 general, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Each precinct colored by its own reported result. Caveat: 2012, 2016 use precinct shapes assumed equal to 2020's; lines show today's Indiana House districts; 2008 omitted (scanned data under review)."
+   },
+   {
+    "file": "margin_governor.png",
+    "title": "Governor: two-party margin by precinct, Boone County",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2012 general, 2016 general, 2020 general, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Each precinct colored by its own reported result. Caveat: 2012, 2016 use precinct shapes assumed equal to 2020's; lines show today's Indiana House districts; 2008 omitted (scanned data under review)."
+   },
+   {
+    "file": "margin_us_senate.png",
+    "title": "U.S. Senate: two-party margin by precinct, Boone County",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2010 general, 2012 general, 2016 general, 2018 general, 2022 general, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Each precinct colored by its own reported result. Caveat: 2012, 2016, 2018 use precinct shapes assumed equal to 2020's; lines show today's Indiana House districts; 2008 omitted (scanned data under review)."
+   }
+  ]
+ },
+ {
+  "id": "districts",
+  "title": "How today's districts voted",
+  "intro": "Results re-expressed on today's districts (Boone County part of each), election by election.",
+  "images": [
+   {
+    "file": "trend_president.png",
+    "title": "President: how today's districts voted, Boone County portion",
+    "caption": "Source: data/normalized/results_by_current_district.csv (Boone County Clerk results re-expressed on 2021-enacted districts). Elections: 2012, 2016, 2020, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7). Caveat: 2012, 2016 assume 2020 precinct shapes; 2008 omitted (scanned data under review)."
+   },
+   {
+    "file": "trend_governor.png",
+    "title": "Governor: how today's districts voted, Boone County portion",
+    "caption": "Source: data/normalized/results_by_current_district.csv (Boone County Clerk results re-expressed on 2021-enacted districts). Elections: 2012, 2016, 2020, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7). Caveat: 2012, 2016 assume 2020 precinct shapes; 2008 omitted (scanned data under review)."
+   },
+   {
+    "file": "trend_us_senate.png",
+    "title": "U.S. Senate: how today's districts voted, Boone County portion",
+    "caption": "Source: data/normalized/results_by_current_district.csv (Boone County Clerk results re-expressed on 2021-enacted districts). Elections: 2010, 2012, 2016, 2018, 2022, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7). Caveat: 2012, 2016, 2018 assume 2020 precinct shapes; 2008 omitted (scanned data under review)."
+   }
+  ]
+ },
+ {
+  "id": "change",
+  "title": "Change over time",
+  "intro": "How each precinct's margin moved across the period.",
+  "images": [
+   {
+    "file": "precinct_trends_president.png",
+    "title": "President: every precinct's two-party margin, 2012 → 2024 (grouped by today's Indiana House district)",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2012, 2016, 2020, 2024 general. Method: Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Each panel: one precinct (H = today's Indiana House district); shaded red above the line = Republican margin, blue below = Democratic; scale ±80 points in every panel; text = total shift 2012→2024. Caveat: 2012 and 2016 precinct shapes assumed equal to today's (same 53 names)."
+   },
+   {
+    "file": "swing_president_2012_2024.png",
+    "title": "President: change in two-party margin by precinct, 2012 → 2024",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2012 and 2024 general. Method: 2024 margin minus 2012 margin. Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Caveat: 2012 precinct shapes assumed equal to today's (same 53 names); the 2012 and 2024 candidates differ."
+   },
+   {
+    "file": "swing_president_2016_2024.png",
+    "title": "President: change in two-party margin by precinct, 2016 → 2024",
+    "caption": "Source: Boone County Clerk precinct results (Results_Long), github.com/olivergollapudi/boone-county-indiana-election-data. Elections: 2016 and 2024 general. Method: 2024 margin minus 2016 margin. Margin = (Republican − Democratic) ÷ (Republican + Democratic) votes. Caveat: 2016 precinct shapes assumed equal to today's (same 53 names); the 2016 and 2024 candidates differ."
+   }
+  ]
+ },
+ {
+  "id": "turnout",
+  "title": "Turnout",
+  "intro": "Ballots cast divided by registered voters, as printed in each precinct's report.",
+  "images": [
+   {
+    "file": "turnout_2024_general.png",
+    "title": "Turnout by precinct, 2024 general (county: 65.7%)",
+    "caption": "Source: Boone County Clerk precinct reports (Turnout_Long). Election: 2024 general. Method: ballots cast (public count) ÷ registered voters, as printed per precinct. Caveat: registered-voter counts are as printed in each precinct report, not adjusted in any way."
+   }
+  ]
+ }
+]

@@ -47,6 +47,7 @@ OUTPUTS = [
     "site/data/precincts_2010.geojson",
     "site/data/precincts_2024.geojson",
     "site/data/districts.geojson",
+    "site/data/gallery.json",
 ]
 TOL, COORD_TOL = 1e-3, 1e-5
 

@@ -1,17 +1,19 @@
-# Publish the interactive map (site/) to GitHub Pages.
+# Publish the website (site/) to GitHub Pages: the interactive map (index.html) and the
+# "Charts & maps" page (gallery.html).
 #
-# It only copies the files already committed in site/ - it does not rebuild any data.
-# (site/data/ is written by scripts/build_site.py, which checks its own numbers; commit
-# its output, and this workflow publishes exactly that.)
+# It only copies files already committed - it does not rebuild any data. site/data/ is
+# written by scripts/build_site.py, which checks its own numbers (W1-W4); the chart images
+# are the committed maps/*.png, copied into the site here so they are stored in the
+# repository only once.
 #
 # One-time setup in the repository: Settings -> Pages -> Build and deployment ->
 # Source: "GitHub Actions".
-name: Publish map to GitHub Pages
+name: Publish website to GitHub Pages
 
 on:
   push:
     branches: [main]
-    paths: ["site/**", ".github/workflows/pages.yml"]
+    paths: ["site/**", "maps/**", ".github/workflows/pages.yml"]
   workflow_dispatch:          # also allows a manual run from the Actions tab
 
 permissions:
@@ -31,6 +33,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Copy the chart images into the site
+        run: |
+          rm -rf site/maps
+          mkdir -p site/maps
+          cp maps/*.png site/maps/
+          # every image the gallery lists must be there (the page would show a broken image)
+          python3 -c "import json,os,sys; m=[i['file'] for s in json.load(open('site/data/gallery.json')) for i in s['images'] if not os.path.exists('site/maps/'+i['file'])]; sys.exit('missing: '+str(m) if m else 0)"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

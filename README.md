@@ -17,6 +17,8 @@ the master (`data/normalized/`) and documented in METHODOLOGY.md §7.
 **Interactive map:** <https://olivergollapudi.github.io/boone-county-indiana-election-data/>
 — choose a contest and year, view precincts as reported or today's districts, and hover
 any area to see the results rows it is built from.
+**All charts and maps, with captions:**
+<https://olivergollapudi.github.io/boone-county-indiana-election-data/gallery.html>
 
 ## Why normalize: a district number is not a place
 
@@ -64,7 +66,7 @@ both years, plus U.S. House District 4 and turnout:
 data/              the published database (start here)
 data/normalized/   results on today's districts, and as drawn at the time (analysis layer)
 maps/              static maps and charts (PNG) with captions
-site/              the interactive map (static page + data; published to GitHub Pages)
+site/              the website: interactive map + "Charts & maps" page (published to GitHub Pages)
 source_pdfs/       the Clerk's original reports — every row traces back to one of these
 source_geo/        precinct maps and Census blocks used for normalization (Boone only)
 ocr_cache/         cached OCR output for the two scanned reports
