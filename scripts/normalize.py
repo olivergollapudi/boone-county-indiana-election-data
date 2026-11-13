@@ -53,6 +53,7 @@ import geopandas as gpd
 import pandas as pd
 
 from paths import DATA_DIR, ROOT
+from provisional import is_provisional
 
 GEO = ROOT / "source_geo"
 OUT = DATA_DIR / "normalized"
@@ -317,7 +318,7 @@ def main():
     out = out.merge(cov[["election", "office", "contest_party", "district_type", "district", "contest_coverage"]],
                     on=["election", "office", "contest_party", "district_type", "district"])
     out["data_quality"] = out["election"].map(lambda e: "ocr_labels_unverified" if e in OCR_ELECTIONS else "verified")
-    out["provisional"] = out["election"].str.startswith("2026")
+    out["provisional"] = out["election"].map(is_provisional)
     out["district_name"] = out["district_type"].map(DISTRICT_TYPES) + " " + out["district"]
     for c in ("votes", "votes_from_split_precincts", "votes_from_straddling", "contest_coverage"):
         out[c] = out[c].round(4)

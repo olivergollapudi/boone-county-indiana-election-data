@@ -89,33 +89,54 @@ def load_precinct_totals():
     return data
 
 
-def main():
+def cross_check():
+    """Compare every clean countywide summary with the parsed precinct rows.
+
+    Returns {election key e.g. "2024-general": result}, where result is None for a
+    summary-only election (no precinct file), else a dict with:
+      matched   candidates found in both documents
+      mismatch  list of (key, summary total, precinct total) that disagree
+      only_sum / only_prec   candidates found in just one document
+    Used by main() below and by build_workbook.py, so the workbook's cross-check column
+    is computed, never typed.
+    """
     precinct = load_precinct_totals()
     summaries = [Path(f) for f in sorted(glob.glob(str(PDF_DIR / "*-summary.pdf")))
                  if Path(f).name not in SKIP_SUMMARY]
-
-    print(f"{'election':18}{'matched':>8}{'agree':>7}{'MISMATCH':>9}{'only-sum':>9}{'only-prec':>10}")
-    print("-" * 62)
-    overall_bad = 0
+    results = {}
     for spath in summaries:
         ekey = "-".join(spath.stem.split("-")[:2]).lower()       # "2024-general"
         if ekey not in precinct:
+            results[ekey] = None
+            continue
+        summ, prec = parse_summary(spath), precinct[ekey]
+        both = set(summ) & set(prec)
+        results[ekey] = {"matched": len(both),
+                         "mismatch": [(k, summ[k], prec[k]) for k in both if summ[k] != prec[k]],
+                         "only_sum": len(set(summ) - set(prec)),
+                         "only_prec": len(set(prec) - set(summ))}
+    return results
+
+
+def main():
+    print(f"{'election':18}{'matched':>8}{'agree':>7}{'MISMATCH':>9}{'only-sum':>9}{'only-prec':>10}")
+    print("-" * 62)
+    overall_bad = 0
+    for ekey, r in cross_check().items():
+        if r is None:
             print(f"{ekey:18}  (no precinct file to compare - summary-only)")
             continue
-        summ = parse_summary(spath)
-        prec = precinct[ekey]
-        both = set(summ) & set(prec)
-        mism = [k for k in both if summ[k] != prec[k]]
-        only_s = set(summ) - set(prec)
-        only_p = set(prec) - set(summ)
-        overall_bad += len(mism)
-        print(f"{ekey:18}{len(both):>8}{len(both)-len(mism):>7}{len(mism):>9}{len(only_s):>9}{len(only_p):>10}")
-        for k in mism[:4]:
-            print(f"    MISMATCH {k}  summary={summ[k]}  precinct={prec[k]}")
+        bad = len(r["mismatch"])
+        overall_bad += bad
+        print(f"{ekey:18}{r['matched']:>8}{r['matched'] - bad:>7}{bad:>9}{r['only_sum']:>9}{r['only_prec']:>10}")
+        for k, s, p in r["mismatch"][:4]:
+            print(f"    MISMATCH {k}  summary={s}  precinct={p}")
 
     print("-" * 62)
     print(f"TOTAL candidate-level mismatches across all cross-checkable elections: {overall_bad}")
     print("0 = every parsed precinct total reconciles to the independent county summary.")
+    if overall_bad:
+        sys.exit("STOP: precinct totals disagree with a county summary - inspect before going on.")
 
 
 if __name__ == "__main__":

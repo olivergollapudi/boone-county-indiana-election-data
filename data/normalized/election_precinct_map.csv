@@ -1081,6 +1081,59 @@ election,precinct_id,precinct_name,vintage,geometry_basis,name_key,precinct_key,
 2024-PRIMARY,51,Washington,2024,as_of_election,WASHINGTON,WASHINGTON,name
 2024-PRIMARY,52,Worth 1,2024,as_of_election,WORTH 1,WORTH 1,name
 2024-PRIMARY,53,Worth 2,2024,as_of_election,WORTH 2,WORTH 2,name
+2026-GENERAL,01,Center 01,2024,as_of_election,CENTER 1,CENTER 1,name
+2026-GENERAL,02,Center 02,2024,as_of_election,CENTER 2,CENTER 2,name
+2026-GENERAL,03,Center 03,2024,as_of_election,CENTER 3,CENTER 3,name
+2026-GENERAL,04,Center 04,2024,as_of_election,CENTER 4,CENTER 4,name
+2026-GENERAL,05,Center 05,2024,as_of_election,CENTER 5,CENTER 5,name
+2026-GENERAL,06,Center 06,2024,as_of_election,CENTER 6,CENTER 6,name
+2026-GENERAL,07,Center 07,2024,as_of_election,CENTER 7,CENTER 7,name
+2026-GENERAL,08,Center 08,2024,as_of_election,CENTER 8,CENTER 8,name
+2026-GENERAL,09,Center 09,2024,as_of_election,CENTER 9,CENTER 9,name
+2026-GENERAL,10,Center 10,2024,as_of_election,CENTER 10,CENTER 10,name
+2026-GENERAL,11,Center 11,2024,as_of_election,CENTER 11,CENTER 11,name
+2026-GENERAL,12,Center 12,2024,as_of_election,CENTER 12,CENTER 12,name
+2026-GENERAL,13,Center 13,2024,as_of_election,CENTER 13,CENTER 13,name
+2026-GENERAL,14,Center 14,2024,as_of_election,CENTER 14,CENTER 14,name
+2026-GENERAL,15,Center 15,2024,as_of_election,CENTER 15,CENTER 15,name
+2026-GENERAL,16,Center 16,2024,as_of_election,CENTER 16,CENTER 16,name
+2026-GENERAL,17,Center 17,2024,as_of_election,CENTER 17,CENTER 17,name
+2026-GENERAL,18,Clinton,2024,as_of_election,CLINTON,CLINTON,name
+2026-GENERAL,19,Eagle 01,2024,as_of_election,EAGLE 1,EAGLE 1,name
+2026-GENERAL,20,Eagle 02,2024,as_of_election,EAGLE 2,EAGLE 2,name
+2026-GENERAL,21,Eagle 03,2024,as_of_election,EAGLE 3,EAGLE 3,name
+2026-GENERAL,22,Eagle 04,2024,as_of_election,EAGLE 4,EAGLE 4,name
+2026-GENERAL,23,Eagle 05,2024,as_of_election,EAGLE 5,EAGLE 5,name
+2026-GENERAL,24,Eagle 06,2024,as_of_election,EAGLE 6,EAGLE 6,name
+2026-GENERAL,25,Eagle 07,2024,as_of_election,EAGLE 7,EAGLE 7,name
+2026-GENERAL,26,Eagle 08,2024,as_of_election,EAGLE 8,EAGLE 8,name
+2026-GENERAL,27,Eagle 09,2024,as_of_election,EAGLE 9,EAGLE 9,name
+2026-GENERAL,28,Eagle 10,2024,as_of_election,EAGLE 10,EAGLE 10,name
+2026-GENERAL,29,Eagle 11,2024,as_of_election,EAGLE 11,EAGLE 11,name
+2026-GENERAL,30,Eagle 12,2024,as_of_election,EAGLE 12,EAGLE 12,name
+2026-GENERAL,31,Eagle 13,2024,as_of_election,EAGLE 13,EAGLE 13,name
+2026-GENERAL,32,Eagle 14,2024,as_of_election,EAGLE 14,EAGLE 14,name
+2026-GENERAL,33,Eagle 15,2024,as_of_election,EAGLE 15,EAGLE 15,name
+2026-GENERAL,34,Eagle 16,2024,as_of_election,EAGLE 16,EAGLE 16,name
+2026-GENERAL,35,Eagle 17,2024,as_of_election,EAGLE 17,EAGLE 17,name
+2026-GENERAL,36,Eagle 18,2024,as_of_election,EAGLE 18,EAGLE 18,name
+2026-GENERAL,37,Eagle 19,2024,as_of_election,EAGLE 19,EAGLE 19,name
+2026-GENERAL,38,Eagle 20,2024,as_of_election,EAGLE 20,EAGLE 20,name
+2026-GENERAL,39,Harrison,2024,as_of_election,HARRISON,HARRISON,name
+2026-GENERAL,40,Jackson 1,2024,as_of_election,JACKSON 1,JACKSON 1,name
+2026-GENERAL,41,Jackson 2,2024,as_of_election,JACKSON 2,JACKSON 2,name
+2026-GENERAL,42,Jackson 3,2024,as_of_election,JACKSON 3,JACKSON 3,name
+2026-GENERAL,43,Jefferson,2024,as_of_election,JEFFERSON,JEFFERSON,name
+2026-GENERAL,44,Marion 1,2024,as_of_election,MARION 1,MARION 1,name
+2026-GENERAL,45,Marion 2,2024,as_of_election,MARION 2,MARION 2,name
+2026-GENERAL,46,Perry,2024,as_of_election,PERRY,PERRY,name
+2026-GENERAL,47,Sugar Creek 1,2024,as_of_election,SUGAR CREEK 1,SUGAR CREEK 1,name
+2026-GENERAL,48,Sugar Creek 2,2024,as_of_election,SUGAR CREEK 2,SUGAR CREEK 2,name
+2026-GENERAL,49,Union 1,2024,as_of_election,UNION 1,UNION 1,name
+2026-GENERAL,50,Union 2,2024,as_of_election,UNION 2,UNION 2,name
+2026-GENERAL,51,Washington,2024,as_of_election,WASHINGTON,WASHINGTON,name
+2026-GENERAL,52,Worth 1,2024,as_of_election,WORTH 1,WORTH 1,name
+2026-GENERAL,53,Worth 2,2024,as_of_election,WORTH 2,WORTH 2,name
 2026-PRIMARY,01,Center 01,2024,as_of_election,CENTER 1,CENTER 1,name
 2026-PRIMARY,02,Center 02,2024,as_of_election,CENTER 2,CENTER 2,name
 2026-PRIMARY,03,Center 03,2024,as_of_election,CENTER 3,CENTER 3,name

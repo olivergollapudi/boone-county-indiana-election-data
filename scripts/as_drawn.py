@@ -38,6 +38,7 @@ import re, sys
 import pandas as pd
 
 from paths import DATA_DIR
+from provisional import is_provisional
 from normalize import DISTRICT_TYPES, OCR_ELECTIONS, load_results
 
 OUT = DATA_DIR / "normalized"
@@ -123,7 +124,7 @@ def main():
     out["district_name"] = out["district_type"].map(DISTRICT_TYPES) + " " + out["district"]
     out["exists_in_boone_today"] = [d in TODAY[t] for t, d in zip(out.district_type, out.district)]
     out["data_quality"] = out["election"].map(lambda e: "ocr_labels_unverified" if e in OCR_ELECTIONS else "verified")
-    out["provisional"] = out["election"].str.startswith("2026")
+    out["provisional"] = out["election"].map(is_provisional)
     out = out[["election", "redistricting_era", "district_type", "district", "district_name", "office",
                "contest_party", "candidate", "party", "votes", "n_precincts", "exists_in_boone_today",
                "data_quality", "provisional"]].sort_values(["election", "district_type", "district", "office"])

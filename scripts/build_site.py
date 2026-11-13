@@ -35,6 +35,7 @@ import pandas as pd
 from paths import DATA_DIR, ROOT
 from make_maps import (CONTESTS, BLUE_ARM, RED_ARM, MARGIN_EDGES, NO_DATA, key,
                        load_results, contest_rows, precinct_layer, shapes_for)
+from provisional import PROVISIONAL
 
 SITE = ROOT / "site"
 OUT = SITE / "data"
@@ -115,6 +116,7 @@ def main():
             R, D = int(rows[rows.party == "R"]["votes"].sum()), int(rows[rows.party == "D"]["votes"].sum())
             data["contests"][slug]["years"][year] = {
                 "office": office, "source": f"{year}-GENERAL-PRECINCT", "shapes": vintage, "basis": basis,
+                "provisional": PROVISIONAL.get(f"{year}-GENERAL"),     # reason text, or None
                 "county_margin": margin(R, D), "precincts": precincts, "districts": districts}
 
     print("CHECKS")

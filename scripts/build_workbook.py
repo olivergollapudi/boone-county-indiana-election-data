@@ -39,8 +39,9 @@ CSV    = Path(os.environ.get("BOONE_OUT", DATA_DIR / "results_long_all.csv"))
 OUT    = Path(os.environ.get("BOONE_XLSX", DATA_DIR / "boone_county_election_results.xlsx"))
 
 MIXED = {"2010-GENERAL", "2012-PRIMARY", "2015-GENERAL", "2020-GENERAL", "2020-PRIMARY"}
-CROSS_CHECK = {"2022-GENERAL": 116, "2023-GENERAL": 44, "2023-PRIMARY": 38,
-               "2024-GENERAL": 66, "2024-PRIMARY": 260, "2026-PRIMARY": 216}
+from provisional import PROVISIONAL   # the one shared list (scripts/provisional.py)
+# The countywide cross-check is COMPUTED at build time (reconcile_all.cross_check), not
+# typed in, so the workbook can never claim a PASS the data doesn't support.
 
 # OCR-recovered elections: every INGESTED contest reconciles (within-contest checksum);
 # unreconstructable contests are omitted and logged. NOT fabricated, NOT partial rows.
@@ -146,7 +147,14 @@ def main():
     # ---------- README ----------
     ws = wb.active; ws.title = "README"
     B12 = Font(name="Arial", bold=True, size=12)
-    n_embedded = 25
+    # counts computed from the data, never typed: text-based elections, and elections whose
+    # precinct rows were cross-checked against a clean county summary (and how many passed)
+    n_embedded = pd.read_csv(CSV, dtype=str, usecols=["source_file_id"])["source_file_id"].nunique()
+    xchecks = {k.upper(): v for k, v in RC.cross_check().items()}   # e.g. "2024-GENERAL"
+    n_xc = sum(1 for v in xchecks.values() if v)
+    n_xc_pass = sum(1 for v in xchecks.values() if v and not v["mismatch"])
+    xc_line = (f"Passes with 0 mismatches for all {n_xc} elections." if n_xc_pass == n_xc
+               else f"{n_xc_pass} of {n_xc} elections pass; see Source_Provenance for the rest.")
     lines = [
         ("Boone County, Indiana — Election Results Database", TITLE),
         ("", BODY),
@@ -159,11 +167,12 @@ def main():
         (f"Rows in Results_Long: {len(df):,}.  Every ingested contest reconciles to the report's own", BODY),
         ("countywide total (within-contest checksum = 0). Nothing that fails validation is included.", BODY),
         (f"• {n_embedded} embedded/mixed elections (2010–2026): precinct-level, fully validated;", BODY),
-        ("  6 of them also cross-checked candidate-by-candidate against the separate county summary.", BODY),
+        (f"  {n_xc} of them also cross-checked candidate-by-candidate against the separate county summary.", BODY),
         ("• 2008 GENERAL and 2022 PRIMARY: scanned reports recovered by OCR (Apple Vision) + a", BODY),
         ("  geometry reconstruction. Only contests whose candidate totals reconcile EXACTLY are", BODY),
         ("  included; contests OCR could not reconstruct are OMITTED and listed in the omitted_*.csv", BODY),
         ("  files and summarized in Coverage_Inventory (approximate later — never fabricated here).", BODY),
+        *[(f"• {el}: {note}.", BODY) for el, note in PROVISIONAL.items()],
         ("• 2008 PRIMARY: countywide-only (no precinct breakdown exists); ingested at", BODY),
         ("  granularity = countywide.", BODY),
         ("• Turnout_Long: per-precinct registered voters, ballots cast (public count), turnout %,", BODY),
@@ -174,13 +183,13 @@ def main():
         ("Embedded/mixed PDFs: profile-detecting text parser (parse_all.py). Scanned PDFs: Apple", BODY),
         ("Vision OCR to token boxes (dump_boxes.py) then a geometry reconstruction that rebuilds the", BODY),
         ("table from each token's x/y position (geometry_parse.py), then finalize_ocr.py keeps only", BODY),
-        ("the contests that reconcile. See PROCESS_LOG.md for the full paper trail.", BODY),
+        ("the contests that reconcile. See METHODOLOGY.md in the repository for the full method.", BODY),
         ("", BODY),
         ("Validation standard", B12),
         ("1. Within-contest checksum (ALL ingested rows): candidate totals equal the report's own", BODY),
         ("   VOTES= figure. This is the inclusion gate — a contest is in the master only if it passes.", BODY),
         ("2. Independent county cross-check (where a clean summary exists): precinct rows summed per", BODY),
-        ("   candidate equal the Clerk's separate summary. Passes with 0 mismatches for 6 elections.", BODY),
+        (f"   candidate equal the Clerk's separate summary. {xc_line}", BODY),
         ("", BODY),
         ("Data dictionary — Results_Long columns", B12),
     ]
@@ -251,9 +260,16 @@ def main():
             xcheck    = "n/a — this IS the summary"
         else:
             parsed_by = "mixed (scanned summary front; precinct pages text)" if el in MIXED else "embedded (text)"
+            if el in PROVISIONAL:
+                parsed_by += f" — PROVISIONAL: {PROVISIONAL[el]}"
             checksum  = "PASS — within-contest checksum, 0 mismatches"
-            xcheck    = (f"PASS — {CROSS_CHECK[el]} candidates vs summary, 0 mismatches"
-                         if el in CROSS_CHECK else "n/a (no clean summary)")
+            xc = xchecks.get(el)
+            if not xc:
+                xcheck = "n/a (no clean summary)"
+            elif xc["mismatch"]:
+                xcheck = f"FAIL — {len(xc['mismatch'])} of {xc['matched']} candidates differ from the summary"
+            else:
+                xcheck = f"PASS — {xc['matched']} candidates vs summary, 0 mismatches"
         prov.append([el, parsed_by, int(r["rows"]), int(r["precincts"]), int(r["offices"]), checksum, xcheck])
     prov_df = pd.DataFrame(prov, columns=["election","parsed_by","rows","precincts","offices",
                                           "within_contest_checksum","countywide_cross_check"])

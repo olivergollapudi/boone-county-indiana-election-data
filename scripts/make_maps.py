@@ -53,6 +53,13 @@ from matplotlib.patches import Patch
 import pandas as pd
 
 from paths import DATA_DIR, ROOT
+from provisional import is_provisional
+
+
+def provisional_note(years):
+    """Caption sentence naming any provisional (not yet certified) general elections shown."""
+    ys = [y for y in years if is_provisional(f"{y}-GENERAL")]
+    return f" {', '.join(ys)} results are provisional (not yet certified)." if ys else ""
 
 GEO, NORM, OUT = ROOT / "source_geo", DATA_DIR / "normalized", ROOT / "maps"
 
@@ -61,6 +68,14 @@ CONTESTS = {
     "president": ("President", r"^PRESIDENT", ["2012", "2016", "2020", "2024"]),
     "governor":  ("Governor",  r"^GOVERNOR",  ["2012", "2016", "2020", "2024"]),
     "us_senate": ("U.S. Senate", r"^UNITED STATES SENATOR", ["2010", "2012", "2016", "2018", "2022", "2024"]),
+    # midterm statewide office on every ballot every four years - the long-run comparison for
+    # years with no President / Governor / U.S. Senate race (e.g. 2026)
+    "secretary_of_state": ("Secretary of State", r"^SECRETARY OF STATE",
+                           ["2010", "2014", "2018", "2022", "2026"]),
+    # one congressional district covers all of Boone only under today's map (2022+);
+    # before that Boone was split between Districts 4 and 5
+    "us_house_4": ("U.S. House District 4", r"^(?:UNITED STATES|U\.?\s?S\.?)\s+REP\w*\.?\s+DISTRICT\s+4$",
+                   ["2022", "2024", "2026"]),
 }
 
 # ---- colors (dataviz reference palette: diverging blue <-> red, gray midpoint) ----------
@@ -231,8 +246,9 @@ def margin_maps(results, house):
         for ax in axes[n:]: ax.set_axis_off()
         fig.legend(handles=handles, loc="outside right center", frameon=False, fontsize=8,
                    title="Two-party margin (points)", title_fontsize=8.5)
-        caveat = (f"Caveat: {', '.join(assumed)} use precinct shapes assumed equal to 2020's; "
-                  if assumed else "Caveat: ") + "lines show today's Indiana House districts; 2008 omitted (scanned data under review)."
+        caveat = ((f"Caveat: {', '.join(assumed)} use precinct shapes assumed equal to 2020's; "
+                   if assumed else "Caveat: ") + "lines show today's Indiana House districts; 2008 omitted (scanned data under review)."
+                  + provisional_note(years))
         finish(fig, f"margin_{slug}", f"{label}: two-party margin by precinct, Boone County",
                f"{SOURCE} Elections: {', '.join(y + ' general' for y in years)}. "
                f"Method: {MARGIN_METHOD} Each precinct colored by its own reported result. {caveat}")
@@ -284,14 +300,18 @@ def trend_maps():
                f"Source: data/normalized/results_by_current_district.csv (Boone County Clerk results re-expressed on "
                f"2021-enacted districts). Elections: {', '.join(years)} general. Method: {MARGIN_METHOD} "
                f"Old precincts allocated to today's districts by Census voting-age population (METHODOLOGY.md §7). "
-               f"Caveat: 2012–2018 assume 2020 precinct shapes; 2008 omitted (scanned data under review).")
+               + (f"Caveat: {', '.join(y for y in years if 2012 <= int(y) <= 2018)} assume 2020 precinct shapes; "
+                  if any(2012 <= int(y) <= 2018 for y in years) else "Caveat: ")
+               + "2008 omitted (scanned data under review)." + provisional_note(years))
 
 
-def swing_map(results, house, y0="2016", y1="2024", edges=SWING_EDGES):
-    """Change in each precinct's President margin from y0 to y1 (both on today's 53 precinct names)."""
+def swing_map(results, house, y0="2016", y1="2024", edges=SWING_EDGES, contest="president"):
+    """Change in each precinct's margin for one contest from y0 to y1 (both on today's 53
+    precinct names)."""
+    label, pattern, _ = CONTESTS[contest]
     cmap, norm, handles = diverging(edges, "Toward Democratic", "Toward Republican")
-    a, _ = contest_rows(results, y0, CONTESTS["president"][1])
-    b, _ = contest_rows(results, y1, CONTESTS["president"][1])
+    a, _ = contest_rows(results, y0, pattern)
+    b, _ = contest_rows(results, y1, pattern)
     ma, mb = precinct_margins(a), precinct_margins(b)
     for m in (ma, mb): m["pkey"] = m["precinct_name"].map(key)
     sw = mb[["pkey", "margin"]].merge(ma[["pkey", "margin"]], on="pkey", suffixes=("_1", "_0"))
@@ -304,9 +324,10 @@ def swing_map(results, house, y0="2016", y1="2024", edges=SWING_EDGES):
     ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(1.0, 1.0), frameon=False, fontsize=8,
               title="Change in margin (points)", title_fontsize=8.5)
     fig.subplots_adjust(left=0.01, right=0.74, top=0.93, bottom=0.02)
-    finish(fig, f"swing_president_{y0}_{y1}", f"President: change in two-party margin by precinct, {y0} → {y1}",
+    shapes = (f"{y0} precinct shapes assumed equal to today's (same 53 names); " if int(y0) < 2020 else "")
+    finish(fig, f"swing_{contest}_{y0}_{y1}", f"{label}: change in two-party margin by precinct, {y0} → {y1}",
            f"{SOURCE} Elections: {y0} and {y1} general. Method: {y1} margin minus {y0} margin. {MARGIN_METHOD} "
-           f"Caveat: {y0} precinct shapes assumed equal to today's (same 53 names); the {y0} and {y1} candidates differ.")
+           f"Caveat: {shapes}the {y0} and {y1} candidates differ." + provisional_note([y0, y1]))
 
 
 def precinct_trends(results, house):
@@ -355,28 +376,96 @@ def precinct_trends(results, house):
            f"Caveat: 2012 and 2016 precinct shapes assumed equal to today's (same 53 names).")
 
 
-def turnout_map(house):
+def turnout_map(house, year="2024", edges=TURNOUT_EDGES):
+    """Precinct turnout for one general election. Bins are per year (`edges`, 4 cut points
+    -> 5 bins): presidential-year turnout runs ~20 points above midterm turnout, so one fixed
+    set of bins would put nearly every precinct in a single bin in one or the other."""
     t = pd.read_csv(DATA_DIR / "turnout_long.csv", dtype=str)
-    t = t[(t["source_file_id"] == "2024-GENERAL-PRECINCT") & (t["granularity"] == "precinct")].copy()
+    t = t[(t["source_file_id"] == f"{year}-GENERAL-PRECINCT") & (t["granularity"] == "precinct")].copy()
     t["pct"] = 100 * t["public_count"].astype(float) / t["registered_voters"].astype(float)
     t["pkey"] = t["precinct_name"].map(key)
     g = precinct_layer("2024").merge(t[["pkey", "pct"]], on="pkey", how="left")
-    bounds = [0] + TURNOUT_EDGES + [100]
+    bounds = [0] + list(edges) + [100]
     cmap, norm = ListedColormap(TURNOUT_RAMP), BoundaryNorm(bounds, len(TURNOUT_RAMP))
     fig, ax = plt.subplots(figsize=(9, 6.2))
     g.plot(ax=ax, column="pct", cmap=cmap, norm=norm, edgecolor=SURFACE, linewidth=0.4,
            missing_kwds={"color": NO_DATA})
     draw_districts(ax, house); ax.set_axis_off()
-    labels = [f"under {TURNOUT_EDGES[0]}%"] + [f"{a}–{b}%" for a, b in zip(TURNOUT_EDGES, TURNOUT_EDGES[1:])] + [f"{TURNOUT_EDGES[-1]}%+"]
+    labels = [f"under {edges[0]}%"] + [f"{a}–{b}%" for a, b in zip(edges, edges[1:])] + [f"{edges[-1]}%+"]
     ax.legend(handles=[Patch(fc=c, label=l) for c, l in zip(reversed(TURNOUT_RAMP), reversed(labels))],
               loc="upper left", bbox_to_anchor=(1.0, 1.0), frameon=False, fontsize=8,
               title="Ballots cast ÷ registered", title_fontsize=8.5)
     county = 100 * t["public_count"].astype(float).sum() / t["registered_voters"].astype(float).sum()
     fig.subplots_adjust(left=0.01, right=0.76, top=0.93, bottom=0.02)
-    finish(fig, "turnout_2024_general", f"Turnout by precinct, 2024 general (county: {county:.1f}%)",
-           "Source: Boone County Clerk precinct reports (Turnout_Long). Election: 2024 general. "
+    finish(fig, f"turnout_{year}_general", f"Turnout by precinct, {year} general (county: {county:.1f}%)",
+           f"Source: Boone County Clerk precinct reports (Turnout_Long). Election: {year} general. "
            "Method: ballots cast (public count) ÷ registered voters, as printed per precinct. "
-           "Caveat: registered-voter counts are as printed in each precinct report, not adjusted in any way.")
+           "Caveat: registered-voter counts are as printed in each precinct report, not adjusted in any way."
+           + provisional_note([year]))
+
+
+# ----------------------------------------------------------------------------- 2022 vs 2026
+MIDTERM_OFFICES = [   # on every Boone ballot in both 2022 and 2026, contested by both parties
+    ("Secretary of State", r"^SECRETARY OF STATE"),
+    ("Auditor of State / State Comptroller", r"AUDITOR OF STATE|COMPTROLLER"),
+    ("Treasurer of State", r"^TREASURER OF STATE"),
+    ("U.S. House District 4", None),           # pattern filled from CONTESTS below
+]
+
+
+def office_shift_chart(results, y0="2022", y1="2026"):
+    """Dumbbell chart: each statewide office's two-party margin in y0 (hollow gray) and y1
+    (solid ink), for Boone County and for each of today's legislative districts. Both years
+    use today's precincts and lines, so the districts are exact (no estimation)."""
+    offices = [(l, p or CONTESTS["us_house_4"][1]) for l, p in MIDTERM_OFFICES]
+    norm_ = pd.read_csv(NORM / "results_by_current_district.csv", dtype={"district": str})
+    rows = [("county", None, "Boone County (all)")] + \
+           [("in_house", d, f"Indiana House {d}") for d in ["24", "25", "28", "41"]] + \
+           [("in_senate", d, f"Indiana Senate {d}") for d in ["7", "29"]]
+    vals = {}
+    for label, pattern in offices:
+        dm = district_margins(norm_, pattern, [y0, y1]).set_index(["district_type", "district", "year"])["margin"]
+        for y in (y0, y1):
+            r_, _ = contest_rows(results, y, pattern)
+            R, D = r_[r_.party == "R"]["votes"].sum(), r_[r_.party == "D"]["votes"].sum()
+            vals[(label, "county", None, y)] = 100 * (R - D) / (R + D)
+            for dt, d, _ in rows[1:]:
+                vals[(label, dt, d, y)] = dm.get((dt, d, int(y)))
+    lim = (max(abs(v) for v in vals.values() if v is not None) // 10 + 1) * 10
+    fig, axes = plt.subplots(1, len(offices), figsize=(3.6 * len(offices) + 1.6, 4.4), sharey=True)
+    ypos = list(range(len(rows)))[::-1]
+    for ax, (label, _) in zip(axes, offices):
+        ax.axvspan(0, lim, color="#fbeceb", zorder=0); ax.axvspan(-lim, 0, color="#e9f1fb", zorder=0)
+        ax.axvline(0, color=INK_3, linewidth=0.8)
+        for y_, (dt, d, _) in zip(ypos, rows):
+            a, b = vals[(label, dt, d, y0)], vals[(label, dt, d, y1)]
+            ax.plot([a, b], [y_, y_], color=INK_3, linewidth=2, zorder=2)
+            ax.plot(a, y_, "o", markersize=7, markerfacecolor=SURFACE, markeredgecolor=INK_3,
+                    markeredgewidth=1.6, zorder=3)
+            ax.plot(b, y_, "o", markersize=7, markerfacecolor=INK, markeredgecolor=SURFACE,
+                    markeredgewidth=1.2, zorder=4)
+        ax.set_title(label, loc="left", fontsize=9.5, color=INK)
+        ax.set_xlim(-lim, lim)
+        ticks = [-lim / 2, 0, lim / 2]      # inner ticks only: edge labels collide across panels
+        ax.set_xticks(ticks)
+        ax.set_xticklabels([("Dem +" if t < 0 else "Rep +") + f"{abs(t):.0f}" if t else "Even" for t in ticks],
+                           fontsize=7.5)
+        ax.grid(axis="x", color="#e6e5e1", linewidth=0.6)
+        for sp in ("top", "right", "left"): ax.spines[sp].set_visible(False)
+        ax.tick_params(axis="y", length=0)
+    axes[0].set_yticks(ypos); axes[0].set_yticklabels([r[2] for r in rows], fontsize=8.5)
+    fig.legend(handles=[plt.Line2D([], [], marker="o", linestyle="", markersize=7, markerfacecolor=SURFACE,
+                                   markeredgecolor=INK_3, markeredgewidth=1.6, label=f"{y0}"),
+                        plt.Line2D([], [], marker="o", linestyle="", markersize=7, markerfacecolor=INK,
+                                   markeredgecolor=SURFACE, label=f"{y1}")],
+               loc="upper left", ncol=2, frameon=False, fontsize=8.5, bbox_to_anchor=(0.015, 0.92))
+    fig.subplots_adjust(left=0.13, right=0.99, top=0.74, bottom=0.12, wspace=0.08)
+    finish(fig, f"statewide_offices_{y0}_{y1}",
+           f"Statewide offices on the {y0} and {y1} ballots: two-party margin by today's district",
+           f"Source: Boone County Clerk results (Results_Long) and data/normalized/results_by_current_district.csv. "
+           f"Elections: {y0} and {y1} general. Method: {MARGIN_METHOD} Both years are on today's precincts and "
+           f"district lines, so district figures are exact sums of whole precincts. Caveat: Boone County portion "
+           f"of each district only; the candidates differ between years." + provisional_note([y0, y1]))
 
 
 # ----------------------------------------------------------------------------- comparison
@@ -532,8 +621,11 @@ def main():
     trend_maps()
     swing_map(results, house)                                        # recent: 2016 -> 2024
     swing_map(results, house, "2012", "2024", edges=[5, 10, 20, 30])   # whole period
+    swing_map(results, house, "2022", "2026", contest="secretary_of_state")   # midterm to midterm
     precinct_trends(results, house)
-    turnout_map(house)
+    turnout_map(house)                                             # 2024 general
+    turnout_map(house, "2026", edges=[40, 45, 50, 55])             # midterm: ~20 pts lower
+    office_shift_chart(results)
     compare_charts()
     district_lines_map()
     with open(OUT / "captions.csv", "w", newline="") as f:

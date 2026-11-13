@@ -12011,6 +12011,554 @@ election,redistricting_era,district_type,district,district_name,office,contest_p
 2024-PRIMARY,2021-present map,us_house,4,U.S. House 4,United States Senator,D,Marc Carmichael,D,407,53,True,verified,False
 2024-PRIMARY,2021-present map,us_house,4,U.S. House 4,United States Senator,D,Valerie McCray,D,1063,53,True,verified,False
 2024-PRIMARY,2021-present map,us_house,4,U.S. House 4,United States Senator,R,Jim Banks,R,7247,53,True,verified,False
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Circuit Court Clerk,,Lisa L. Bruder,R,1098,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Circuit Court Clerk,,Monica Leigh White,D,677,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Assessor,,Jennifer Lasley,R,1305,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Commissioner District 1,,Jason Alan Plunkett,R,1050,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Commissioner District 1,,Robert D. (Bob) Brennan,D,754,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Council Member District 2,,Gretchen Smith,R,313,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Council Member District 2,,Kevin W. Prather,D,105,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Council Member District 3,,Geoffrey (Geoff) Lee,D,255,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Council Member District 3,,Kevin Van Horn,R,383,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Council Member District 4,,Craig Justin Melton,R,387,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Council Member District 4,,Javier Morell,D,360,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Sheriff,,Anthony (Tony) Harris,R,1329,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,County Surveyor,,Carol Cunningham,R,1316,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Court of Appeals Dist 4-DeBoer,,No,,292,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Court of Appeals Dist 4-DeBoer,,Yes,,1147,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Court of Appeals Dist 5-Felix,,No,,296,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Court of Appeals Dist 5-Felix,,Yes,,1134,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Indiana Tax Court-McAdam,,No,,295,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Indiana Tax Court-McAdam,,Yes,,1138,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,1327,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,1303,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Marion Township Board Member,,Barton (Bart) R. Grinstead,R,243,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Marion Township Board Member,,John W. Padgett,R,258,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Marion Township Board Member,,Robert Boone,R,264,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Marion Township Trustee,,Michael Morgan,R,340,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,1297,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Judge Residence,,No,,620,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Judge Residence,,Yes,,1062,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Right to Bail,,No,,670,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Right to Bail,,Yes,,1059,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Sheridan Schools,,No,,236,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Sheridan Schools,,Yes,,173,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Zionsville Schools,,No,,531,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Public Question-Zionsville Schools,,Yes,,844,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Secretary of State,,Beau Bayh,D,783,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Secretary of State,,Greg Ballard,LIN,125,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Secretary of State,,Lauri A. Shillings,L,36,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Secretary of State,,Max Engling,R,888,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Secretary of State,,Write-In,,0,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Sheridan School Board Adams Township,,Kim Zachery,,219,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Sheridan School Board Adams Township,,Tyler Henning,I,221,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Sheridan School Board At Large,,Nancy Boone,,323,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,State Comptroller (Auditor of State),,Elise Nieshalla,R,1055,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,State Comptroller (Auditor of State),,Jessica Bailey,D,713,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,State Comptroller (Auditor of State),,John Schick,L,50,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,State Representative District 24,,Hunter Smith,R,1076,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,State Representative District 24,,Racheal Bleicher,D,743,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Treasurer of State,,Coumba Kebe,D,698,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Treasurer of State,,Daniel Elliott,R,1107,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,United States Representative District 4,,Drew Cox,D,756,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,United States Representative District 4,,Jim Baird,R,1064,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,United States Representative District 4,,Write-In,,3,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Zionsville School Corp At Large,,Christina Wessel-Powell,,638,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Zionsville School Corp At Large,,Thomas (Tom) Trupe,R,676,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Zionsville School Corp Eagle Twp,,Melissa Waters,R,689,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Zionsville School Corp Eagle Twp,,Michael Berg,,619,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Zionsville School Corp Union Twp,,Jennifer Valentine,,708,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,24,Indiana House 24,Zionsville School Corp Union Twp,,Rachel Brandli,R,618,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Center Township Board Member,,Amanda Bishop,D,154,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Center Township Board Member,,Anna M. Donley,D,128,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Center Township Board Member,,Debra (Debby) Scering,R,288,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Center Township Board Member,,Matthew L. Schaller,R,304,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Center Township Board Member,,Penny S. Bogan,R,352,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Center Township Trustee,,Tonya Thayer,R,426,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Circuit Court Clerk,,Lisa L. Bruder,R,8503,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Circuit Court Clerk,,Monica Leigh White,D,9911,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Assessor,,Jennifer Lasley,R,11160,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Commissioner District 1,,Jason Alan Plunkett,R,8040,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Commissioner District 1,,Robert D. (Bob) Brennan,D,10743,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 1,,Alyson Bray,D,4798,14,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 1,,Jennifer J. Hostetter,R,4087,14,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 2,,Gretchen Smith,R,835,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 2,,Kevin W. Prather,D,1032,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 3,,Geoffrey (Geoff) Lee,D,161,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 3,,Kevin Van Horn,R,385,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 4,,Craig Justin Melton,R,3215,7,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Council Member District 4,,Javier Morell,D,4206,7,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Sheriff,,Anthony (Tony) Harris,R,11467,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,County Surveyor,,Carol Cunningham,R,11302,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Court of Appeals Dist 4-DeBoer,,No,,3012,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Court of Appeals Dist 4-DeBoer,,Yes,,11637,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Court of Appeals Dist 5-Felix,,No,,3231,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Court of Appeals Dist 5-Felix,,Yes,,11284,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Indiana Tax Court-McAdam,,No,,3163,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Indiana Tax Court-McAdam,,Yes,,11417,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,11526,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,11320,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Lebanon Community School Corp At-Lg,,Chessany M. Edmonds,,1304,5,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Lebanon Community School Corp At-Lg,,Haley (Hendrix) Shirley,R,1905,5,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Lebanon Community School Corp Worth Twp,,Jordan K. Clouser,R,2429,5,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,11212,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-City of Lebanon,,No,,75,3,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-City of Lebanon,,Yes,,46,3,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-Judge Residence,,No,,6865,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-Judge Residence,,Yes,,10521,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-Right to Bail,,No,,7998,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-Right to Bail,,Yes,,10010,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-Zionsville Schools,,No,,4416,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Public Question-Zionsville Schools,,Yes,,10210,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Secretary of State,,Beau Bayh,D,10738,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Secretary of State,,Greg Ballard,LIN,1346,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Secretary of State,,Lauri A. Shillings,L,302,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Secretary of State,,Max Engling,R,6663,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Secretary of State,,Write-In,,6,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Comptroller (Auditor of State),,Elise Nieshalla,R,8288,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Comptroller (Auditor of State),,Jessica Bailey,D,9990,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Comptroller (Auditor of State),,John Schick,L,464,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Representative District 25,,Becky Cash,R,7863,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Representative District 25,,Tiffany Stoner,D,11049,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Senator District 29,,John Ruckelshaus,R,5491,17,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,State Senator District 29,,Kristina Moorhead,D,6534,17,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Treasurer of State,,Coumba Kebe,D,10013,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Treasurer of State,,Daniel Elliott,R,8670,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,United States Representative District 4,,Drew Cox,D,10586,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,United States Representative District 4,,Jim Baird,R,8137,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,United States Representative District 4,,Write-In,,44,25,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Worth Township Board Member,,Daniel Travis,R,874,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Worth Township Board Member,,Richard Michael (Mike) Hancock,R,1084,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Worth Township Board Member,,Shelby Hasz,R,1048,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Worth Township Trustee,,James (Jim) Baldwin,R,1487,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Zionsville School Corp At Large,,Christina Wessel-Powell,,7635,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Zionsville School Corp At Large,,Thomas (Tom) Trupe,R,5887,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Zionsville School Corp Eagle Twp,,Melissa Waters,R,5985,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Zionsville School Corp Eagle Twp,,Michael Berg,,7472,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Zionsville School Corp Union Twp,,Jennifer Valentine,,8015,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,25,Indiana House 25,Zionsville School Corp Union Twp,,Rachel Brandli,R,5524,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Advance Town Clerk-Treasurer,,Shari Johnson,I,80,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Advance Town Council Member,,Amanda Mitchell Lyles,I,67,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Advance Town Council Member,,Sammy L. Mitchell,I,69,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Circuit Court Clerk,,Lisa L. Bruder,R,738,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Circuit Court Clerk,,Monica Leigh White,D,263,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Assessor,,Jennifer Lasley,R,794,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Commissioner District 1,,Jason Alan Plunkett,R,728,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Commissioner District 1,,Robert D. (Bob) Brennan,D,283,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Council Member District 2,,Gretchen Smith,R,744,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Council Member District 2,,Kevin W. Prather,D,265,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Sheriff,,Anthony (Tony) Harris,R,813,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,County Surveyor,,Carol Cunningham,R,812,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Court of Appeals Dist 4-DeBoer,,No,,198,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Court of Appeals Dist 4-DeBoer,,Yes,,579,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Court of Appeals Dist 5-Felix,,No,,202,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Court of Appeals Dist 5-Felix,,Yes,,561,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Harrison Township Board Member,,Arlan R. Johnson,R,111,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Harrison Township Board Member,,Gary W. Baldauf,R,135,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Harrison Township Board Member,,Russell (Rusty) Solomon,R,139,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Harrison Township Trustee,,Chester (Chet) Crow,R,176,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Indiana Tax Court-McAdam,,No,,192,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Indiana Tax Court-McAdam,,Yes,,574,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Jackson Township Board Member,,Amanda Plunkett,R,415,3,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Jackson Township Board Member,,"Randall (Keith) Cromwell, II",R,368,3,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Jackson Township Board Member,,Tyler Trent,R,443,3,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Jackson Township Trustee,,"Danny D. Mitchell, Sr.",R,657,3,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,816,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,802,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,800,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Public Question-Judge Residence,,No,,349,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Public Question-Judge Residence,,Yes,,635,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Public Question-Right to Bail,,No,,305,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Public Question-Right to Bail,,Yes,,634,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Secretary of State,,Beau Bayh,D,334,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Secretary of State,,Greg Ballard,LIN,64,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Secretary of State,,Lauri A. Shillings,L,31,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Secretary of State,,Max Engling,R,609,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Secretary of State,,Write-In,,1,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,State Comptroller (Auditor of State),,Elise Nieshalla,R,703,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,State Comptroller (Auditor of State),,Jessica Bailey,D,263,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,State Comptroller (Auditor of State),,John Schick,L,48,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,State Representative District 28,,Jeffrey A. Thompson,R,719,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,State Representative District 28,,Karen Whitney,D,288,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Treasurer of State,,Coumba Kebe,D,263,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Treasurer of State,,Daniel Elliott,R,747,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,United States Representative District 4,,Drew Cox,D,279,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,United States Representative District 4,,Jim Baird,R,729,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,United States Representative District 4,,Write-In,,1,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Western Boone SB Clinton Township,,Shane Steimel,,599,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Western Boone Sch Corp Harrison Twp,,Melissa Smith,R,714,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Western Boone Sch Corp Jackson Twp,,Phillip Foster,R,719,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,28,Indiana House 28,Western Boone Sch Corp Sugar Creek Twp,,Dennis J. Reagan,,611,4,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Center Township Board Member,,Amanda Bishop,D,1732,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Center Township Board Member,,Anna M. Donley,D,1593,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Center Township Board Member,,Debra (Debby) Scering,R,1834,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Center Township Board Member,,Matthew L. Schaller,R,2004,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Center Township Board Member,,Penny S. Bogan,R,2380,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Center Township Trustee,,Tonya Thayer,R,3202,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Circuit Court Clerk,,Lisa L. Bruder,R,4060,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Circuit Court Clerk,,Monica Leigh White,D,2396,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Clinton Township Board Member,,Anita K. Dale,R,160,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Clinton Township Board Member,,Bradley (Brad) Smith,R,172,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Clinton Township Board Member,,Cody Dale,R,142,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Clinton Township Trustee,,Chad Johnson,R,237,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Assessor,,Jennifer Lasley,R,4684,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Commissioner District 1,,Jason Alan Plunkett,R,3804,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Commissioner District 1,,Robert D. (Bob) Brennan,D,2676,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Council Member District 2,,Gretchen Smith,R,1890,8,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Council Member District 2,,Kevin W. Prather,D,1005,8,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Council Member District 3,,Geoffrey (Geoff) Lee,D,1566,12,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Council Member District 3,,Kevin Van Horn,R,2000,12,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Sheriff,,Anthony (Tony) Harris,R,4791,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,County Surveyor,,Carol Cunningham,R,4754,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Court of Appeals Dist 4-DeBoer,,No,,1424,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Court of Appeals Dist 4-DeBoer,,Yes,,3831,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Court of Appeals Dist 5-Felix,,No,,1443,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Court of Appeals Dist 5-Felix,,Yes,,3763,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Indiana Tax Court-McAdam,,No,,1412,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Indiana Tax Court-McAdam,,Yes,,3818,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Jefferson Township Board Member,,Kaitlin Timmons,R,277,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Jefferson Township Board Member,,Margaret C. Beesley,R,322,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Jefferson Township Board Member,,Wes Nicley,R,290,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Jefferson Township Trustee,,Todd Smith,R,409,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,4798,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,4678,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Lebanon Community School Corp At-Lg,,Chessany M. Edmonds,,1611,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Lebanon Community School Corp At-Lg,,Haley (Hendrix) Shirley,R,2503,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Lebanon Community School Corp Worth Twp,,Jordan K. Clouser,R,3094,15,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,4644,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Public Question-City of Lebanon,,No,,2604,17,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Public Question-City of Lebanon,,Yes,,1717,17,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Public Question-Judge Residence,,No,,2454,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Public Question-Judge Residence,,Yes,,3977,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Public Question-Right to Bail,,No,,2325,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Public Question-Right to Bail,,Yes,,3913,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Secretary of State,,Beau Bayh,D,2877,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Secretary of State,,Greg Ballard,LIN,437,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Secretary of State,,Lauri A. Shillings,L,207,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Secretary of State,,Max Engling,R,3100,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Secretary of State,,Write-In,,3,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,State Comptroller (Auditor of State),,Elise Nieshalla,R,3721,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,State Comptroller (Auditor of State),,Jessica Bailey,D,2483,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,State Comptroller (Auditor of State),,John Schick,L,314,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,State Representative District 41,,Jackson T. Hayes,D,2520,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,State Representative District 41,,Mark Genda,R,3957,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Sugar Creek Township Board Member,,Kay Leigh Fisher,R,251,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Sugar Creek Township Board Member,,Lynn Davis,R,315,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Sugar Creek Township Board Member,,Tamara K. Lawson,R,244,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Sugar Creek Township Trustee,,Albert (AJ) Naekel,R,437,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Thorntown Town Clerk-Treasurer,,Alysa (Aly) Hickman,I,211,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Thorntown Town Council Member,,Bruce E. Burtner,I,181,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Thorntown Town Council Member,,Jonathan (Jon) M. Riggen,I,173,2,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Treasurer of State,,Coumba Kebe,D,2486,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Treasurer of State,,Daniel Elliott,R,3980,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Ulen Town Clerk-Treasurer,,Mary Ann Herny,I,57,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Ulen Town Council Member,,Jennifer E. Jones,I,52,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Ulen Town Council Member,,Mark Ransom,I,54,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Ulen Town Council Member,,Sheryl Sanders Cassis,I,53,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,United States Representative District 4,,Drew Cox,D,2699,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,United States Representative District 4,,Jim Baird,R,3812,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,United States Representative District 4,,Write-In,,17,20,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Washington Township Board Member,,Adam C. Jones,D,131,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Washington Township Board Member,,Angela (Angie) Moody,R,280,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Washington Township Board Member,,Diana L. Freeman,R,227,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Washington Township Board Member,,Kirt Adams,R,265,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Washington Township Trustee,,Gordon Brindle,D,137,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Washington Township Trustee,,Michael (Mike) Baird,R,316,1,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Western Boone SB Clinton Township,,Shane Steimel,,1137,5,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Western Boone Sch Corp Harrison Twp,,Melissa Smith,R,1240,5,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Western Boone Sch Corp Jackson Twp,,Phillip Foster,R,1227,5,True,verified,True
+2026-GENERAL,2021-present map,in_house,41,Indiana House 41,Western Boone Sch Corp Sugar Creek Twp,,Dennis J. Reagan,,1189,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Circuit Court Clerk,,Lisa L. Bruder,R,5514,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Circuit Court Clerk,,Monica Leigh White,D,6193,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Assessor,,Jennifer Lasley,R,7210,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Commissioner District 1,,Jason Alan Plunkett,R,5156,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Commissioner District 1,,Robert D. (Bob) Brennan,D,6830,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Council Member District 1,,Alyson Bray,D,4798,14,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Council Member District 1,,Jennifer J. Hostetter,R,4087,14,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Council Member District 4,,Craig Justin Melton,R,1461,3,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Council Member District 4,,Javier Morell,D,1607,3,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Sheriff,,Anthony (Tony) Harris,R,7488,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,County Surveyor,,Carol Cunningham,R,7312,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Court of Appeals Dist 4-DeBoer,,No,,1686,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Court of Appeals Dist 4-DeBoer,,Yes,,7625,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Court of Appeals Dist 5-Felix,,No,,1791,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Court of Appeals Dist 5-Felix,,Yes,,7425,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Indiana Tax Court-McAdam,,No,,1753,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Indiana Tax Court-McAdam,,Yes,,7509,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,7553,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,7361,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,7271,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Public Question-Judge Residence,,No,,4276,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Public Question-Judge Residence,,Yes,,6657,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Public Question-Right to Bail,,No,,5150,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Public Question-Right to Bail,,Yes,,6347,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Public Question-Zionsville Schools,,No,,3576,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Public Question-Zionsville Schools,,Yes,,8340,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Secretary of State,,Beau Bayh,D,6810,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Secretary of State,,Greg Ballard,LIN,930,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Secretary of State,,Lauri A. Shillings,L,161,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Secretary of State,,Max Engling,R,4260,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Secretary of State,,Write-In,,4,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Comptroller (Auditor of State),,Elise Nieshalla,R,5406,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Comptroller (Auditor of State),,Jessica Bailey,D,6267,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Comptroller (Auditor of State),,John Schick,L,267,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Representative District 25,,Becky Cash,R,5000,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Representative District 25,,Tiffany Stoner,D,7075,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Senator District 29,,John Ruckelshaus,R,5491,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,State Senator District 29,,Kristina Moorhead,D,6534,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Treasurer of State,,Coumba Kebe,D,6257,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Treasurer of State,,Daniel Elliott,R,5637,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,United States Representative District 4,,Drew Cox,D,6690,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,United States Representative District 4,,Jim Baird,R,5250,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,United States Representative District 4,,Write-In,,23,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Zionsville School Corp At Large,,Christina Wessel-Powell,,6104,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Zionsville School Corp At Large,,Thomas (Tom) Trupe,R,4968,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Zionsville School Corp Eagle Twp,,Melissa Waters,R,5008,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Zionsville School Corp Eagle Twp,,Michael Berg,,6000,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Zionsville School Corp Union Twp,,Jennifer Valentine,,6476,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,29,Indiana Senate 29,Zionsville School Corp Union Twp,,Rachel Brandli,R,4612,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Advance Town Clerk-Treasurer,,Shari Johnson,I,80,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Advance Town Council Member,,Amanda Mitchell Lyles,I,67,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Advance Town Council Member,,Sammy L. Mitchell,I,69,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Center Township Board Member,,Amanda Bishop,D,1886,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Center Township Board Member,,Anna M. Donley,D,1721,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Center Township Board Member,,Debra (Debby) Scering,R,2122,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Center Township Board Member,,Matthew L. Schaller,R,2308,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Center Township Board Member,,Penny S. Bogan,R,2732,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Center Township Trustee,,Tonya Thayer,R,3628,17,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Circuit Court Clerk,,Lisa L. Bruder,R,8885,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Circuit Court Clerk,,Monica Leigh White,D,7054,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Clinton Township Board Member,,Anita K. Dale,R,160,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Clinton Township Board Member,,Bradley (Brad) Smith,R,172,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Clinton Township Board Member,,Cody Dale,R,142,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Clinton Township Trustee,,Chad Johnson,R,237,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Assessor,,Jennifer Lasley,R,10733,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Commissioner District 1,,Jason Alan Plunkett,R,8466,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Commissioner District 1,,Robert D. (Bob) Brennan,D,7626,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Council Member District 2,,Gretchen Smith,R,3782,16,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Council Member District 2,,Kevin W. Prather,D,2407,16,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Council Member District 3,,Geoffrey (Geoff) Lee,D,1982,15,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Council Member District 3,,Kevin Van Horn,R,2768,15,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Council Member District 4,,Craig Justin Melton,R,2141,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Council Member District 4,,Javier Morell,D,2959,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Sheriff,,Anthony (Tony) Harris,R,10912,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,County Surveyor,,Carol Cunningham,R,10872,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Court of Appeals Dist 4-DeBoer,,No,,3240,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Court of Appeals Dist 4-DeBoer,,Yes,,9569,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Court of Appeals Dist 5-Felix,,No,,3381,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Court of Appeals Dist 5-Felix,,Yes,,9317,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Harrison Township Board Member,,Arlan R. Johnson,R,111,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Harrison Township Board Member,,Gary W. Baldauf,R,135,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Harrison Township Board Member,,Russell (Rusty) Solomon,R,139,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Harrison Township Trustee,,Chester (Chet) Crow,R,176,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Indiana Tax Court-McAdam,,No,,3309,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Indiana Tax Court-McAdam,,Yes,,9438,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jackson Township Board Member,,Amanda Plunkett,R,415,3,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jackson Township Board Member,,"Randall (Keith) Cromwell, II",R,368,3,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jackson Township Board Member,,Tyler Trent,R,443,3,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jackson Township Trustee,,"Danny D. Mitchell, Sr.",R,657,3,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jefferson Township Board Member,,Kaitlin Timmons,R,277,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jefferson Township Board Member,,Margaret C. Beesley,R,322,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jefferson Township Board Member,,Wes Nicley,R,290,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Jefferson Township Trustee,,Todd Smith,R,409,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,10914,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,10742,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Lebanon Community School Corp At-Lg,,Chessany M. Edmonds,,2915,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Lebanon Community School Corp At-Lg,,Haley (Hendrix) Shirley,R,4408,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Lebanon Community School Corp Worth Twp,,Jordan K. Clouser,R,5523,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Marion Township Board Member,,Barton (Bart) R. Grinstead,R,243,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Marion Township Board Member,,John W. Padgett,R,258,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Marion Township Board Member,,Robert Boone,R,264,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Marion Township Trustee,,Michael Morgan,R,340,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,10682,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-City of Lebanon,,No,,2679,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-City of Lebanon,,Yes,,1763,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Judge Residence,,No,,6012,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Judge Residence,,Yes,,9538,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Right to Bail,,No,,6148,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Right to Bail,,Yes,,9269,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Sheridan Schools,,No,,236,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Sheridan Schools,,Yes,,173,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Zionsville Schools,,No,,1371,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Public Question-Zionsville Schools,,Yes,,2714,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Secretary of State,,Beau Bayh,D,7922,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Secretary of State,,Greg Ballard,LIN,1042,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Secretary of State,,Lauri A. Shillings,L,415,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Secretary of State,,Max Engling,R,7000,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Secretary of State,,Write-In,,6,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sheridan School Board Adams Township,,Kim Zachery,,219,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sheridan School Board Adams Township,,Tyler Henning,I,221,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sheridan School Board At Large,,Nancy Boone,,323,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Comptroller (Auditor of State),,Elise Nieshalla,R,8361,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Comptroller (Auditor of State),,Jessica Bailey,D,7182,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Comptroller (Auditor of State),,John Schick,L,609,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 24,,Hunter Smith,R,1076,4,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 24,,Racheal Bleicher,D,743,4,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 25,,Becky Cash,R,2863,8,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 25,,Tiffany Stoner,D,3974,8,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 28,,Jeffrey A. Thompson,R,719,4,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 28,,Karen Whitney,D,288,4,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 41,,Jackson T. Hayes,D,2520,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,State Representative District 41,,Mark Genda,R,3957,20,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sugar Creek Township Board Member,,Kay Leigh Fisher,R,251,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sugar Creek Township Board Member,,Lynn Davis,R,315,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sugar Creek Township Board Member,,Tamara K. Lawson,R,244,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Sugar Creek Township Trustee,,Albert (AJ) Naekel,R,437,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Thorntown Town Clerk-Treasurer,,Alysa (Aly) Hickman,I,211,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Thorntown Town Council Member,,Bruce E. Burtner,I,181,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Thorntown Town Council Member,,Jonathan (Jon) M. Riggen,I,173,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Treasurer of State,,Coumba Kebe,D,7203,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Treasurer of State,,Daniel Elliott,R,8867,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Ulen Town Clerk-Treasurer,,Mary Ann Herny,I,57,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Ulen Town Council Member,,Jennifer E. Jones,I,52,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Ulen Town Council Member,,Mark Ransom,I,54,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Ulen Town Council Member,,Sheryl Sanders Cassis,I,53,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,United States Representative District 4,,Drew Cox,D,7630,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,United States Representative District 4,,Jim Baird,R,8492,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,United States Representative District 4,,Write-In,,42,36,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Washington Township Board Member,,Adam C. Jones,D,131,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Washington Township Board Member,,Angela (Angie) Moody,R,280,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Washington Township Board Member,,Diana L. Freeman,R,227,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Washington Township Board Member,,Kirt Adams,R,265,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Washington Township Trustee,,Gordon Brindle,D,137,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Washington Township Trustee,,Michael (Mike) Baird,R,316,1,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Western Boone SB Clinton Township,,Shane Steimel,,1736,9,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Western Boone Sch Corp Harrison Twp,,Melissa Smith,R,1954,9,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Western Boone Sch Corp Jackson Twp,,Phillip Foster,R,1946,9,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Western Boone Sch Corp Sugar Creek Twp,,Dennis J. Reagan,,1800,9,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Worth Township Board Member,,Daniel Travis,R,874,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Worth Township Board Member,,Richard Michael (Mike) Hancock,R,1084,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Worth Township Board Member,,Shelby Hasz,R,1048,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Worth Township Trustee,,James (Jim) Baldwin,R,1487,2,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Zionsville School Corp At Large,,Christina Wessel-Powell,,2169,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Zionsville School Corp At Large,,Thomas (Tom) Trupe,R,1595,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Zionsville School Corp Eagle Twp,,Melissa Waters,R,1666,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Zionsville School Corp Eagle Twp,,Michael Berg,,2091,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Zionsville School Corp Union Twp,,Jennifer Valentine,,2247,5,True,verified,True
+2026-GENERAL,2021-present map,in_senate,7,Indiana Senate 7,Zionsville School Corp Union Twp,,Rachel Brandli,R,1530,5,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Advance Town Clerk-Treasurer,,Shari Johnson,I,80,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Advance Town Council Member,,Amanda Mitchell Lyles,I,67,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Advance Town Council Member,,Sammy L. Mitchell,I,69,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Center Township Board Member,,Amanda Bishop,D,1886,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Center Township Board Member,,Anna M. Donley,D,1721,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Center Township Board Member,,Debra (Debby) Scering,R,2122,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Center Township Board Member,,Matthew L. Schaller,R,2308,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Center Township Board Member,,Penny S. Bogan,R,2732,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Center Township Trustee,,Tonya Thayer,R,3628,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Circuit Court Clerk,,Lisa L. Bruder,R,14399,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Circuit Court Clerk,,Monica Leigh White,D,13247,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Clinton Township Board Member,,Anita K. Dale,R,160,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Clinton Township Board Member,,Bradley (Brad) Smith,R,172,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Clinton Township Board Member,,Cody Dale,R,142,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Clinton Township Trustee,,Chad Johnson,R,237,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Assessor,,Jennifer Lasley,R,17943,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Commissioner District 1,,Jason Alan Plunkett,R,13622,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Commissioner District 1,,Robert D. (Bob) Brennan,D,14456,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 1,,Alyson Bray,D,4798,14,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 1,,Jennifer J. Hostetter,R,4087,14,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 2,,Gretchen Smith,R,3782,16,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 2,,Kevin W. Prather,D,2407,16,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 3,,Geoffrey (Geoff) Lee,D,1982,15,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 3,,Kevin Van Horn,R,2768,15,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 4,,Craig Justin Melton,R,3602,8,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Council Member District 4,,Javier Morell,D,4566,8,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Sheriff,,Anthony (Tony) Harris,R,18400,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,County Surveyor,,Carol Cunningham,R,18184,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Court of Appeals Dist 4-DeBoer,,No,,4926,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Court of Appeals Dist 4-DeBoer,,Yes,,17194,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Court of Appeals Dist 5-Felix,,No,,5172,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Court of Appeals Dist 5-Felix,,Yes,,16742,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Harrison Township Board Member,,Arlan R. Johnson,R,111,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Harrison Township Board Member,,Gary W. Baldauf,R,135,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Harrison Township Board Member,,Russell (Rusty) Solomon,R,139,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Harrison Township Trustee,,Chester (Chet) Crow,R,176,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Indiana Tax Court-McAdam,,No,,5062,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Indiana Tax Court-McAdam,,Yes,,16947,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jackson Township Board Member,,Amanda Plunkett,R,415,3,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jackson Township Board Member,,"Randall (Keith) Cromwell, II",R,368,3,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jackson Township Board Member,,Tyler Trent,R,443,3,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jackson Township Trustee,,"Danny D. Mitchell, Sr.",R,657,3,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jefferson Township Board Member,,Kaitlin Timmons,R,277,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jefferson Township Board Member,,Margaret C. Beesley,R,322,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jefferson Township Board Member,,Wes Nicley,R,290,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Jefferson Township Trustee,,Todd Smith,R,409,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Judge of the Superior Court No. 1,,Matthew C. Kincaid,R,18467,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Judge of the Superior Court No. 2,,Thomas Kenneth (T.K.) Morris,R,18103,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Lebanon Community School Corp At-Lg,,Chessany M. Edmonds,,2915,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Lebanon Community School Corp At-Lg,,Haley (Hendrix) Shirley,R,4408,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Lebanon Community School Corp Worth Twp,,Jordan K. Clouser,R,5523,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Marion Township Board Member,,Barton (Bart) R. Grinstead,R,243,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Marion Township Board Member,,John W. Padgett,R,258,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Marion Township Board Member,,Robert Boone,R,264,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Marion Township Trustee,,Michael Morgan,R,340,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Prosecuting Atty 20th Judicial Circuit,,Kent T. Eastwood,R,17953,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-City of Lebanon,,No,,2679,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-City of Lebanon,,Yes,,1763,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Judge Residence,,No,,10288,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Judge Residence,,Yes,,16195,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Right to Bail,,No,,11298,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Right to Bail,,Yes,,15616,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Sheridan Schools,,No,,236,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Sheridan Schools,,Yes,,173,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Zionsville Schools,,No,,4947,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Public Question-Zionsville Schools,,Yes,,11054,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Secretary of State,,Beau Bayh,D,14732,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Secretary of State,,Greg Ballard,LIN,1972,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Secretary of State,,Lauri A. Shillings,L,576,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Secretary of State,,Max Engling,R,11260,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Secretary of State,,Write-In,,10,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sheridan School Board Adams Township,,Kim Zachery,,219,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sheridan School Board Adams Township,,Tyler Henning,I,221,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sheridan School Board At Large,,Nancy Boone,,323,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Comptroller (Auditor of State),,Elise Nieshalla,R,13767,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Comptroller (Auditor of State),,Jessica Bailey,D,13449,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Comptroller (Auditor of State),,John Schick,L,876,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 24,,Hunter Smith,R,1076,4,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 24,,Racheal Bleicher,D,743,4,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 25,,Becky Cash,R,7863,25,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 25,,Tiffany Stoner,D,11049,25,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 28,,Jeffrey A. Thompson,R,719,4,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 28,,Karen Whitney,D,288,4,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 41,,Jackson T. Hayes,D,2520,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Representative District 41,,Mark Genda,R,3957,20,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Senator District 29,,John Ruckelshaus,R,5491,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,State Senator District 29,,Kristina Moorhead,D,6534,17,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sugar Creek Township Board Member,,Kay Leigh Fisher,R,251,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sugar Creek Township Board Member,,Lynn Davis,R,315,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sugar Creek Township Board Member,,Tamara K. Lawson,R,244,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Sugar Creek Township Trustee,,Albert (AJ) Naekel,R,437,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Thorntown Town Clerk-Treasurer,,Alysa (Aly) Hickman,I,211,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Thorntown Town Council Member,,Bruce E. Burtner,I,181,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Thorntown Town Council Member,,Jonathan (Jon) M. Riggen,I,173,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Treasurer of State,,Coumba Kebe,D,13460,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Treasurer of State,,Daniel Elliott,R,14504,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Ulen Town Clerk-Treasurer,,Mary Ann Herny,I,57,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Ulen Town Council Member,,Jennifer E. Jones,I,52,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Ulen Town Council Member,,Mark Ransom,I,54,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Ulen Town Council Member,,Sheryl Sanders Cassis,I,53,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,United States Representative District 4,,Drew Cox,D,14320,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,United States Representative District 4,,Jim Baird,R,13742,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,United States Representative District 4,,Write-In,,65,53,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Washington Township Board Member,,Adam C. Jones,D,131,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Washington Township Board Member,,Angela (Angie) Moody,R,280,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Washington Township Board Member,,Diana L. Freeman,R,227,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Washington Township Board Member,,Kirt Adams,R,265,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Washington Township Trustee,,Gordon Brindle,D,137,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Washington Township Trustee,,Michael (Mike) Baird,R,316,1,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Western Boone SB Clinton Township,,Shane Steimel,,1736,9,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Western Boone Sch Corp Harrison Twp,,Melissa Smith,R,1954,9,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Western Boone Sch Corp Jackson Twp,,Phillip Foster,R,1946,9,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Western Boone Sch Corp Sugar Creek Twp,,Dennis J. Reagan,,1800,9,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Worth Township Board Member,,Daniel Travis,R,874,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Worth Township Board Member,,Richard Michael (Mike) Hancock,R,1084,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Worth Township Board Member,,Shelby Hasz,R,1048,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Worth Township Trustee,,James (Jim) Baldwin,R,1487,2,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Zionsville School Corp At Large,,Christina Wessel-Powell,,8273,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Zionsville School Corp At Large,,Thomas (Tom) Trupe,R,6563,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Zionsville School Corp Eagle Twp,,Melissa Waters,R,6674,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Zionsville School Corp Eagle Twp,,Michael Berg,,8091,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Zionsville School Corp Union Twp,,Jennifer Valentine,,8723,22,True,verified,True
+2026-GENERAL,2021-present map,us_house,4,U.S. House 4,Zionsville School Corp Union Twp,,Rachel Brandli,R,6142,22,True,verified,True
 2026-PRIMARY,2021-present map,in_house,24,Indiana House 24,Circuit Court Clerk,D,Monica Leigh White,D,154,4,True,verified,True
 2026-PRIMARY,2021-present map,in_house,24,Indiana House 24,Circuit Court Clerk,R,Lisa L. Bruder,R,259,4,True,verified,True
 2026-PRIMARY,2021-present map,in_house,24,Indiana House 24,Circuit Court Clerk,R,Yvonne Martinez,R,78,4,True,verified,True

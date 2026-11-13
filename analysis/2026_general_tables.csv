@@ -1,0 +1,124 @@
+section,item,field,value
+turnout,Boone County,2022 turnout %,44.1501
+turnout,Boone County,2026 turnout %,48.0564
+turnout,Boone County,2026 ballots,29015
+turnout,Indiana House 24,2022 turnout %,49.4108
+turnout,Indiana House 24,2026 turnout %,49.7855
+turnout,Indiana House 24,2026 ballots,1857
+turnout,Indiana House 25,2022 turnout %,47.9695
+turnout,Indiana House 25,2026 turnout %,52.5408
+turnout,Indiana House 25,2026 ballots,19304
+turnout,Indiana House 28,2022 turnout %,41.3713
+turnout,Indiana House 28,2026 turnout %,41.283
+turnout,Indiana House 28,2026 ballots,1049
+turnout,Indiana House 41,2022 turnout %,36.4035
+turnout,Indiana House 41,2026 turnout %,39.188
+turnout,Indiana House 41,2026 ballots,6805
+turnout,Indiana Senate 7,2022 turnout %,39.9851
+turnout,Indiana Senate 7,2026 turnout %,42.6436
+turnout,Indiana Senate 7,2026 ballots,16692
+turnout,Indiana Senate 29,2022 turnout %,51.4809
+turnout,Indiana Senate 29,2026 turnout %,58.0343
+turnout,Indiana Senate 29,2026 ballots,12323
+county,Secretary of State,2022 margin,10.5187
+county,Secretary of State,2022 other-candidate share %,9.7525
+county,Secretary of State,2026 margin,-13.358
+county,Secretary of State,2026 other-candidate share %,8.9597
+county,Secretary of State,shift,-23.8767
+county,Auditor of State / State Comptroller,2022 margin,27.6233
+county,Auditor of State / State Comptroller,2022 other-candidate share %,4.2098
+county,Auditor of State / State Comptroller,2026 margin,1.1684
+county,Auditor of State / State Comptroller,2026 other-candidate share %,3.1183
+county,Auditor of State / State Comptroller,shift,-26.4549
+county,Treasurer of State,2022 margin,25.5831
+county,Treasurer of State,2022 other-candidate share %,0.0
+county,Treasurer of State,2026 margin,3.7334
+county,Treasurer of State,2026 other-candidate share %,0.0
+county,Treasurer of State,shift,-21.8497
+county,U.S. House District 4,2022 margin,25.5999
+county,U.S. House District 4,2022 other-candidate share %,0.0935
+county,U.S. House District 4,2026 margin,-2.0597
+county,U.S. House District 4,2026 other-candidate share %,0.2311
+county,U.S. House District 4,shift,-27.6597
+district,Secretary of State | Indiana House 24,2022 margin,22.994
+district,Secretary of State | Indiana House 24,2026 margin,6.2837
+district,Secretary of State | Indiana House 24,shift,-16.7103
+district,Secretary of State | Indiana House 25,2022 margin,-3.0045
+district,Secretary of State | Indiana House 25,2026 margin,-23.4182
+district,Secretary of State | Indiana House 25,shift,-20.4137
+district,Secretary of State | Indiana House 28,2022 margin,50.5062
+district,Secretary of State | Indiana House 28,2026 margin,29.1622
+district,Secretary of State | Indiana House 28,shift,-21.3439
+district,Secretary of State | Indiana House 41,2022 margin,34.6368
+district,Secretary of State | Indiana House 41,2026 margin,3.731
+district,Secretary of State | Indiana House 41,shift,-30.9058
+district,Secretary of State | Indiana Senate 7,2022 margin,22.6351
+district,Secretary of State | Indiana Senate 7,2026 margin,-6.1788
+district,Secretary of State | Indiana Senate 7,shift,-28.8139
+district,Secretary of State | Indiana Senate 29,2022 margin,-5.5271
+district,Secretary of State | Indiana Senate 29,2026 margin,-23.0352
+district,Secretary of State | Indiana Senate 29,shift,-17.5081
+district,Auditor of State / State Comptroller | Indiana House 24,2022 margin,39.2617
+district,Auditor of State / State Comptroller | Indiana House 24,2026 margin,19.3439
+district,Auditor of State / State Comptroller | Indiana House 24,shift,-19.9179
+district,Auditor of State / State Comptroller | Indiana House 25,2022 margin,15.5573
+district,Auditor of State / State Comptroller | Indiana House 25,2026 margin,-9.3117
+district,Auditor of State / State Comptroller | Indiana House 25,shift,-24.8691
+district,Auditor of State / State Comptroller | Indiana House 28,2022 margin,64.6202
+district,Auditor of State / State Comptroller | Indiana House 28,2026 margin,45.5487
+district,Auditor of State / State Comptroller | Indiana House 28,shift,-19.0715
+district,Auditor of State / State Comptroller | Indiana House 41,2022 margin,48.2337
+district,Auditor of State / State Comptroller | Indiana House 41,2026 margin,19.9549
+district,Auditor of State / State Comptroller | Indiana House 41,shift,-28.2789
+district,Auditor of State / State Comptroller | Indiana Senate 7,2022 margin,37.3011
+district,Auditor of State / State Comptroller | Indiana Senate 7,2026 margin,7.5854
+district,Auditor of State / State Comptroller | Indiana Senate 7,shift,-29.7157
+district,Auditor of State / State Comptroller | Indiana Senate 29,2022 margin,14.6624
+district,Auditor of State / State Comptroller | Indiana Senate 29,2026 margin,-7.376
+district,Auditor of State / State Comptroller | Indiana Senate 29,shift,-22.0384
+district,Treasurer of State | Indiana House 24,2022 margin,37.987
+district,Treasurer of State | Indiana House 24,2026 margin,22.6593
+district,Treasurer of State | Indiana House 24,shift,-15.3277
+district,Treasurer of State | Indiana House 25,2022 margin,12.8228
+district,Treasurer of State | Indiana House 25,2026 margin,-7.1884
+district,Treasurer of State | Indiana House 25,shift,-20.0112
+district,Treasurer of State | Indiana House 28,2022 margin,62.8489
+district,Treasurer of State | Indiana House 28,2026 margin,47.9208
+district,Treasurer of State | Indiana House 28,shift,-14.9281
+district,Treasurer of State | Indiana House 41,2022 margin,46.9013
+district,Treasurer of State | Indiana House 41,2026 margin,23.1055
+district,Treasurer of State | Indiana House 41,shift,-23.7958
+district,Treasurer of State | Indiana Senate 7,2022 margin,35.7495
+district,Treasurer of State | Indiana Senate 7,2026 margin,10.3547
+district,Treasurer of State | Indiana Senate 7,shift,-25.3948
+district,Treasurer of State | Indiana Senate 29,2022 margin,11.6996
+district,Treasurer of State | Indiana Senate 29,2026 margin,-5.2127
+district,Treasurer of State | Indiana Senate 29,shift,-16.9123
+district,U.S. House District 4 | Indiana House 24,2022 margin,37.4459
+district,U.S. House District 4 | Indiana House 24,2026 margin,16.9231
+district,U.S. House District 4 | Indiana House 24,shift,-20.5228
+district,U.S. House District 4 | Indiana House 25,2022 margin,12.4406
+district,U.S. House District 4 | Indiana House 25,2026 margin,-13.0802
+district,U.S. House District 4 | Indiana House 25,shift,-25.5208
+district,U.S. House District 4 | Indiana House 28,2022 margin,65.7033
+district,U.S. House District 4 | Indiana House 28,2026 margin,44.6429
+district,U.S. House District 4 | Indiana House 28,shift,-21.0604
+district,U.S. House District 4 | Indiana House 41,2022 margin,47.4681
+district,U.S. House District 4 | Indiana House 41,2026 margin,17.0941
+district,U.S. House District 4 | Indiana House 41,shift,-30.3739
+district,U.S. House District 4 | Indiana Senate 7,2022 margin,36.4333
+district,U.S. House District 4 | Indiana Senate 7,2026 margin,5.3467
+district,U.S. House District 4 | Indiana Senate 7,shift,-31.0866
+district,U.S. House District 4 | Indiana Senate 29,2022 margin,10.7511
+district,U.S. House District 4 | Indiana Senate 29,2026 margin,-12.0603
+district,U.S. House District 4 | Indiana Senate 29,shift,-22.8114
+secretary_of_state,Boone County,2010 margin,49.8659
+secretary_of_state,Boone County,2014 margin,45.7089
+secretary_of_state,Boone County,2018 margin,33.1031
+secretary_of_state,Boone County,2022 margin,10.5187
+secretary_of_state,Boone County,2026 margin,-13.358
+precinct_shift,Secretary of State,precincts toward Democratic,53
+precinct_shift,Secretary of State,precincts toward Republican,0
+precinct_shift,Secretary of State,median shift,-23.2707
+validation,2026 general,single-winner contests,1246
+validation,2026 general,contests whose totals equal VOTES=,1246

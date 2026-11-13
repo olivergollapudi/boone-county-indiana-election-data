@@ -16,7 +16,7 @@ that contest.** Anything that failed that test was left out and written to a doc
 "omitted" list instead of being guessed at.
 
 That test — "the parts equal the whole the source itself states" — is what "validated"
-means here, and it was applied to all 20,670 single-winner contests in the file, which
+means here, and it was applied to all 21,935 single-winner contests in the file, which
 all passed.
 
 ---
@@ -48,7 +48,7 @@ both a precinct breakdown *and* a separate countywide summary), we add a stronge
 
 - **Independent countywide cross-check** — sum our precinct rows per candidate and confirm
   they equal the Clerk's separate summary, candidate by candidate. Two different documents,
-  same source, agreeing. Six elections have a clean summary and all six reconcile with
+  same source, agreeing. Seven elections have a clean summary and all seven reconcile with
   **zero mismatches**.
 
 So: one validation layer everywhere, two layers where a second document exists.
@@ -59,7 +59,7 @@ So: one validation layer everywhere, two layers where a second document exists.
 
 - **Source:** the Boone County Clerk "Election Results History" page — and *only* that.
   No OpenElections, no third parties. One source = one provenance chain to defend.
-- **Coverage:** 28 elections, 2008–2026 (generals, primaries, odd-year municipals,
+- **Coverage:** 29 elections, 2008–2026 (generals, primaries, odd-year municipals,
   and one 2017 special).
 - **Format:** one long "spine" — **one row per election × precinct × contest ×
   candidate** — so every messy race type (multi-seat, yes/no referendum, nonpartisan,
@@ -117,7 +117,7 @@ summary independently and compares, candidate by candidate, against our summed p
 rows. Result: **2022 general (116), 2023 general (44), 2023 primary (38), 2024 general
 (66), 2024 primary (260), 2026 primary (216) — 0 mismatches total.**
 
-At this point the 25 text elections are done and doubly-checked.
+At this point the 26 text elections are done and doubly-checked.
 
 ### Stage 4 — The scanned reports: why they were hard
 2008 general and 2022 primary are scans (images). Two OCR attempts had already been tried
@@ -224,15 +224,15 @@ wherever they sit on the page). Two built-in validations mirror the results chec
 - **splits:** the ballot-type counts must sum to the public count; a single OCR-dropped
   split is recovered from the public count, and any remaining gap is flagged, not guessed.
 
-Result: **1,245 rows across 27 elections; the core turnout identity passes on all 1,189
-checkable precincts (0 failures)**, and the ballot-type breakdown reconciles for 1,187 of
+Result: **1,299 rows across 28 elections; the core turnout identity passes on all 1,243
+checkable precincts (0 failures)**, and the ballot-type breakdown reconciles for 1,241 of
 them. The 2008 *primary* has no precinct-level turnout (summary-only), and the 2020
 *primary* reports print registered voters / turnout % as zero at the source — both documented, not
 errors on our side.
 
 ### Stage 8 — Assemble the workbook
 **Script:** `build_workbook.py`
-**How:** it concatenates the 25 embedded elections + the two OCR clean sets + the 2008
+**How:** it concatenates the 26 embedded elections + the two OCR clean sets + the 2008
 countywide rows into the long spine, then builds the seven tabs — including
 Source_Provenance (how each election was parsed and its validation status),
 Validation (the checksum + cross-check results), and Coverage_Inventory (row counts and
@@ -247,8 +247,8 @@ from the finished `Results_Long` tab** — not from intermediate files — keyin
 by (election, precinct, office, ballot party):
 
 ```
-checkable single-winner contests: 20,670
-PASS: 20,670    FAIL: 0
+checkable single-winner contests: 21,935
+PASS: 21,935    FAIL: 0
 ```
 
 Every single-winner contest in the delivered file reconciles to the Clerk's own reported
@@ -258,7 +258,7 @@ the proof the workbook is validated.
 ### How to re-verify it yourself (nothing to take on faith)
 ```bash
 # from the repository root, after: pip install -r requirements.txt
-python3 scripts/parse_all.py       # re-parses the 25 text elections; every 'vf1-bad' prints 0
+python3 scripts/parse_all.py       # re-parses the 26 text elections; every 'vf1-bad' prints 0
 python3 scripts/reconcile_all.py   # independent cross-check; TOTAL mismatches must be 0
 python3 scripts/geometry_parse.py 2008-general-precinct   # re-runs OCR reconstruction + checksum
 python3 scripts/geometry_parse.py 2022-primary-precinct
@@ -303,8 +303,8 @@ written to be read.
   vote count, or a vote count read as the office title. A second "label" gate that
   excludes those contests is being finalized. Until it lands, every row from these two
   elections is marked `data_quality = ocr_labels_unverified` in the normalized outputs,
-  and they should not be used for candidate-level conclusions. The 25 text-based
-  precinct elections pass the same label rules with zero failures (21,185 contests).
+  and they should not be used for candidate-level conclusions. When measured (before the 2026 general was added), the 25
+  text-based precinct elections passed the same label rules with zero failures (21,185 contests).
 
 The first five items define the file's edges; the last is an open defect, disclosed here
 until it is fixed.
@@ -314,7 +314,7 @@ until it is fixed.
 ## 6. Why you can trust it, in three sentences
 
 Every value is machine-derived from a single official source and traceable to its PDF.
-Every included contest passes the report's own internal arithmetic, and six elections
+Every included contest passes the report's own internal arithmetic, and seven elections
 additionally agree with a second independent document — all with zero discrepancies.
 Anything that couldn't meet that bar was excluded and written down rather than guessed,
 so the master contains only defensible, reconciling data.
@@ -397,10 +397,10 @@ one district of each type (check V4 below).
 | Check | What it proves | Result |
 |---|---|---|
 | V1 | Every precinct's shares sum to 1 for each district type | PASS (471 pairs) |
-| V2 | Every reported precinct matched a map shape (or is listed as set aside) | PASS (1,238 of 1,238 matched; 0 set aside) |
-| V3 | For every election × contest × candidate and every district type, allocated votes + set-aside votes = Results_Long | PASS (2,863 × 3; largest difference 6×10⁻¹⁴ votes) |
+| V2 | Every reported precinct matched a map shape (or is listed as set aside) | PASS (1,291 of 1,291 matched; 0 set aside) |
+| V3 | For every election × contest × candidate and every district type, allocated votes + set-aside votes = Results_Long | PASS (2,986 × 3; largest difference 6×10⁻¹⁴ votes) |
 | V4 | Each 2024 precinct lies 100% inside the districts its own map record names | PASS (53 × 3) |
-| V5 | The district number printed on each precinct's own ballot (State Rep, State Senate, U.S. Rep) matches the map, 2022 onward | PASS (630 checks, 0 mismatches) |
+| V5 | The district number printed on each precinct's own ballot (State Rep, State Senate, U.S. Rep) matches the map, 2022 onward | PASS (753 checks, 0 mismatches) |
 
 V5 is the strongest: the Clerk's ballots and IndianaMap's district codes are independent
 sources, and they agree for every precinct. Results are in
@@ -452,5 +452,7 @@ Republican. House 41 and Senate 29 changed little (within 4 points). The
   total with coverage below 1 describes only part of the district.
 - **OCR elections.** 2008 general and 2022 primary rows carry
   `data_quality = ocr_labels_unverified` (see §5).
-- **2026 is provisional** until the county certifies; rows carry `provisional = True`.
+- **2026 (primary and general) is provisional** until the county certifies: both reports
+  were printed before certification (the general is the election-night count). Rows carry
+  `provisional = True`; the list is `scripts/provisional.py`.
 - **County council districts** are not included: no map of them is available.
