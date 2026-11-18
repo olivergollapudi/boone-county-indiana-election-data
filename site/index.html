@@ -77,6 +77,7 @@
     <label>Map <select id="measure">
       <option value="margin">How it voted (two-party margin)</option>
       <option value="margin_change">Change in margin since an earlier election</option>
+      <option value="contest_diff">Compare two races in the same year</option>
       <option value="turnout">Turnout</option>
       <option value="turnout_change">Change in turnout since an earlier election</option>
       <option value="share_e">Share who voted on election day</option>
@@ -85,7 +86,7 @@
     </select></label>
     <label id="contest-wrap">Contest <select id="contest"></select></label>
     <label>Year <select id="year"></select></label>
-    <label id="base-wrap" hidden>Compared with <select id="base"></select></label>
+    <label id="base-wrap" hidden><span id="base-label">Compared with</span> <select id="base"></select></label>
     <label>Areas <select id="view">
       <option value="precincts">Precincts (as reported)</option>
       <option value="in_house">Today's Indiana House districts</option>
@@ -115,13 +116,14 @@
 <script>
 // Every number shown comes from data/ (written and checked by scripts/build_site.py). This page
 // only divides counts it is given (turnout = ballots / registered, share = method / ballots),
-// subtracts two years for the change maps, and formats. Color bins match the static maps.
+// subtracts two years (change maps) or two races on the same ballot (comparison map), and formats. Color bins match the static maps.
 const $ = id => document.getElementById(id);
 let DATA, SHAPES = {}, DISTRICTS, map, popup;
 
 const MEASURES = {
   margin:         {kind: "vote"},
   margin_change:  {kind: "vote", change: true},
+  contest_diff:   {kind: "vote", vs: true},        // this race minus another race, same election
   turnout:        {kind: "turnout"},
   turnout_change: {kind: "turnout", change: true},
   share_e:        {kind: "method", f: "e", what: "on election day"},
@@ -136,6 +138,9 @@ const fmtMargin = m => m == null ? "no two-party votes"
 const fmtShift = d => d == null ? "not comparable"
   : Math.abs(d) < 0.05 ? "No change"
   : `${Math.abs(d).toFixed(1)} points toward ${d > 0 ? "Republican" : "Democratic"}`;
+const fmtVs = (d, other) => d == null ? "not comparable"
+  : Math.abs(d) < 0.05 ? `same margin as ${other}`
+  : `${Math.abs(d).toFixed(1)} points more ${d > 0 ? "Republican" : "Democratic"} than ${other}`;
 const fmtPct = p => p == null ? "n/a" : `${p.toFixed(1)}%`;
 const fmtPts = d => d == null ? "not comparable"
   : Math.abs(d) < 0.05 ? "No change" : `${d > 0 ? "Up" : "Down"} ${Math.abs(d).toFixed(1)} points`;
@@ -145,11 +150,11 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">"
 const areaName = (view, id, rec) => view === "precincts" ? (rec && rec.name) || id : `${DATA.district_types[view]} ${id}`;
 
 // ---- where the numbers come from -----------------------------------------------------------
-function yearData(sel, year) {           // the per-year block for the selected measure
-  return MEASURES[sel.measure].kind === "vote" ? DATA.contests[sel.contest].years[year] : DATA.turnout[year];
+function yearData(sel, year, contest = sel.contest) {   // the per-year block for the selected measure
+  return MEASURES[sel.measure].kind === "vote" ? DATA.contests[contest].years[year] : DATA.turnout[year];
 }
-function records(sel, year) {            // id -> record, for the chosen areas
-  const y = yearData(sel, year);
+function records(sel, year, contest = sel.contest) {    // id -> record, for the chosen areas
+  const y = yearData(sel, year, contest);
   if (!y) return {};
   return (sel.view === "precincts" ? y.precincts : y.districts[sel.view]) || {};
 }
@@ -164,6 +169,10 @@ const baseMeasure = m => ({margin_change: "margin", turnout_change: "turnout"})[
 function value(sel, id) {
   const bm = baseMeasure(sel.measure);
   const now = valueOf(bm, records(sel, sel.year)[id]);
+  if (MEASURES[sel.measure].vs) {                        // same election, another race
+    const other = sel.base ? valueOf("margin", records(sel, sel.year, sel.base)[id]) : null;
+    return now == null || other == null ? null : now - other;
+  }
   if (!MEASURES[sel.measure].change) return now;
   if (!sel.base) return null;
   const then = valueOf(bm, records(sel, sel.base)[id]);
@@ -173,6 +182,14 @@ function countyValue(sel, year) {
   const bm = baseMeasure(sel.measure), y = yearData(sel, year);
   return MEASURES[bm].kind === "vote" ? y.county_margin : valueOf(bm, y.county);
 }
+// what the map is compared against: an earlier year (change maps) or another race (comparison)
+const baseBlock = sel => !sel.base ? null
+  : MEASURES[sel.measure].vs ? yearData(sel, sel.year, sel.base) : yearData(sel, sel.base);
+const baseRecords = sel => !sel.base ? {}
+  : MEASURES[sel.measure].vs ? records(sel, sel.year, sel.base) : records(sel, sel.base);
+// contest name without its menu note, e.g. "County Commissioner District 1", for use in sentences
+const shortLabel = k => DATA.contests[k].label.replace(/\s*\(.*\)$/, "");
+const otherLabel = sel => sel.base ? shortLabel(sel.base) : "the other race";
 function basisFor(year) {               // map-basis wording, written per year by build_site.py
   for (const c of Object.values(DATA.contests)) if (c.years[year]) return c.years[year].basis;
   return "";
@@ -185,14 +202,16 @@ function scale(measure) {
     ["step", ["get", "v"], colors[0], ...cuts.flatMap((c, i) => [c, colors[i + 1]])]];
   const range = (e, i) => i === 0 ? `0–${e[0]}` : i < e.length ? `${e[i - 1]}–${e[i]}` : `${e[e.length - 1]}+`;
   const pctLabels = e => [`Under ${e[0]}%`, ...e.slice(1).map((x, i) => `${e[i]}–${x}%`), `${e[e.length - 1]}% or more`];
-  if (measure === "margin" || measure === "margin_change") {
+  if (measure === "margin" || measure === "margin_change" || measure === "contest_diff") {
     const e = P.edges, b = P.blue, r = P.red;           // e = [5, 10, 20, 30]
     const colors = [b[4], b[3], b[2], b[1], b[0], r[0], r[1], r[2], r[3], r[4]];
     const cuts = [-e[3], -e[2], -e[1], -e[0], 0, e[0], e[1], e[2], e[3]];
-    const pre = measure === "margin" ? ["Republican", "Democratic"] : ["Toward Republican", "Toward Democratic"];
+    const pre = {margin: ["Republican", "Democratic"], margin_change: ["Toward Republican", "Toward Democratic"],
+                 contest_diff: ["More Republican", "More Democratic"]}[measure];
     const items = r.map((c, i) => [c, `${pre[0]} ${range(e, i)}`]).reverse()
       .concat(b.map((c, i) => [c, `${pre[1]} ${range(e, i)}`]));
-    return {title: measure === "margin" ? "Two-party margin (points)" : "Change in two-party margin (points)",
+    return {title: {margin: "Two-party margin (points)", margin_change: "Change in two-party margin (points)",
+                    contest_diff: "Margin compared with the other race (points)"}[measure],
             expr: steps(colors, cuts), items};
   }
   if (measure === "turnout") {
@@ -234,7 +253,8 @@ let GEN = 0;        // drawing version: features carry it, and the tooltip ignor
 
 function yearsFor(measure, contest) {
   const M = MEASURES[measure];
-  if (M.kind === "vote") return Object.keys(DATA.contests[contest].years);
+  if (M.kind === "vote") return Object.keys(DATA.contests[contest].years)   // comparison: years with another race
+    .filter(y => !M.vs || Object.keys(DATA.contests).some(k => k !== contest && DATA.contests[k].years[y]));
   return Object.keys(DATA.turnout).filter(y => M.kind === "turnout" || DATA.turnout[y].method);
 }
 function baseYearsFor(sel) {
@@ -267,13 +287,19 @@ function countRows(r) {
 }
 function tooltip(id) {
   const sel = SHOWN, M = MEASURES[sel.measure], y = yearData(sel, sel.year);
-  const r = records(sel, sel.year)[id], rb = sel.base ? records(sel, sel.base)[id] : null;
+  const r = records(sel, sel.year)[id], rb = baseRecords(sel)[id];
   const name = areaName(sel.view, id, r || rb) + (sel.view === "precincts" ? "" : " (Boone County part)");
   if (!r && !rb) return `<div class="tip"><h3>${esc(name)}</h3><p>No reported result.</p></div>`;
   const where = sel.view === "precincts" ? `precinct “${esc((r || rb).name)}”`
     : `allocated from precincts to today's lines (METHODOLOGY.md §7)`;
   let head, body = "", src;
-  if (M.kind === "vote" && !M.change) {
+  if (M.vs) {
+    const yo = baseBlock(sel);
+    head = `${esc(shortLabel(sel.contest))}: ${fmtVs(value(sel, id), esc(otherLabel(sel)))}`;
+    body = `<table><tr><td>${esc(shortLabel(sel.contest))}</td><td class="v">${fmtMargin(r ? r.m : null)}</td></tr>
+                   <tr><td>${esc(otherLabel(sel))}</td><td class="v">${fmtMargin(rb ? rb.m : null)}</td></tr></table>`;
+    src = `Results_Long, ${esc(y.source)}, offices “${esc(y.office)}” and “${esc(yo ? yo.office : "")}”, ${where}.`;
+  } else if (M.kind === "vote" && !M.change) {
     head = fmtMargin(r.m); body = `<table>${candRows(r.c)}</table>`;
     src = sel.view === "precincts"
       ? `Source rows: Results_Long, ${esc(y.source)}, office “${esc(y.office)}”, ${where}.`
@@ -300,11 +326,14 @@ function tooltip(id) {
 // ---- table ---------------------------------------------------------------------------------
 function updateTable() {
   const sel = SHOWN, M = MEASURES[sel.measure];
-  const now = records(sel, sel.year), then = sel.base ? records(sel, sel.base) : {};
+  const now = records(sel, sel.year), then = baseRecords(sel);
   const ids = [...new Set([...Object.keys(now), ...Object.keys(then)])];
   const area = sel.view === "precincts" ? "Precinct" : "District (Boone part)";
   let head, row;
-  if (M.kind === "vote" && !M.change) {
+  if (M.vs) {
+    head = [`${shortLabel(sel.contest)} margin`, `${otherLabel(sel)} margin`, "Difference"];
+    row = id => [fmtMargin(now[id] ? now[id].m : null), fmtMargin(then[id] ? then[id].m : null), fmtVs(value(sel, id), otherLabel(sel))];
+  } else if (M.kind === "vote" && !M.change) {
     head = ["Republican votes", "Democratic votes", "Two-party margin"];
     const sum = (c, p) => c.filter(x => x[1] === p).reduce((s, x) => s + x[2], 0);
     row = id => { const r = now[id]; return r ? [fmtVotes(sum(r.c, "R")), fmtVotes(sum(r.c, "D")), fmtMargin(r.m)] : ["", "", "no result"]; };
@@ -331,14 +360,17 @@ function updateTable() {
 
 // ---- summary box and caption ---------------------------------------------------------------
 function updateText(sel) {
-  const M = MEASURES[sel.measure], y = yearData(sel, sel.year), yb = sel.base ? yearData(sel, sel.base) : null;
+  const M = MEASURES[sel.measure], y = yearData(sel, sel.year), yb = baseBlock(sel);
   const what = M.kind === "vote" ? DATA.contests[sel.contest].label : "General election";
   const prov = [y, yb].filter(Boolean).map(x => x.provisional).filter(Boolean);
-  const cv = countyValue(sel, sel.year), cb = sel.base ? countyValue(sel, sel.base) : null;
+  const cv = countyValue(sel, sel.year), cb = !sel.base ? null : M.vs ? yb.county_margin : countyValue(sel, sel.base);
   let line = "";
   if (sel.measure === "margin") line = `Boone County: ${fmtMargin(cv)}`;
   else if (sel.measure === "turnout") line = `Boone County turnout: ${fmtPct(cv)}`;
   else if (M.kind === "method") line = `Boone County: ${fmtPct(cv)} voted ${M.what}`;
+  else if (sel.base && M.vs)
+    line = `Boone County: ${esc(shortLabel(sel.contest))} ${fmtMargin(cv)}; ${esc(otherLabel(sel))} ${fmtMargin(cb)}. ` +
+           `${esc(shortLabel(sel.contest))} ran ${fmtVs(cv - cb, esc(otherLabel(sel)))}.`;
   else if (sel.base && M.kind === "vote")
     line = `Boone County: ${fmtMargin(cb)} in ${sel.base} → ${fmtMargin(cv)} in ${sel.year} (${fmtShift(cv - cb)})`;
   else if (sel.base)
@@ -347,7 +379,7 @@ function updateText(sel) {
     line = `<span class="note">No earlier ${M.kind === "vote" ? "election for this contest" : "general election"}` +
       (sel.view === "precincts" ? " on the same precinct map. To compare across precinct maps, choose one of today's districts under Areas."
                                 : " in the data.") + `</span>`;
-  $("county").innerHTML = `<strong>${esc(what)}, ${sel.year}${M.change && sel.base ? ` vs ${sel.base}` : ""}</strong><br>${line}` +
+  $("county").innerHTML = `<strong>${esc(what)}, ${sel.year}${M.change && sel.base ? ` vs ${sel.base}` : ""}${M.vs && sel.base ? ` vs ${esc(otherLabel(sel))}` : ""}</strong><br>${line}` +
     (prov.length ? `<br><span class="prov">Provisional — not yet certified</span>` : "");
 
   const areas = sel.view === "precincts"
@@ -357,10 +389,13 @@ function updateText(sel) {
   let src, method, caveat;
   if (M.kind === "vote") {
     src = M.change ? `Results_Long, ${DATA.contests[sel.contest].label}, ${sel.base || "–"} and ${sel.year} general elections`
-                   : `Results_Long, ${y.source}, “${y.office}”`;
+        : M.vs ? `Results_Long, ${y.source}, “${y.office}” and “${yb ? yb.office : "–"}”`
+        : `Results_Long, ${y.source}, “${y.office}”`;
     method = `margin = (Republican − Democratic) ÷ (Republican + Democratic) votes` +
-      (M.change ? `; change = ${sel.year} margin minus ${sel.base || "the earlier"} margin, in points${compared}` : "") + "; ";
-    caveat = "third-party and write-in votes are not in the margin.";
+      (M.change ? `; change = ${sel.year} margin minus ${sel.base || "the earlier"} margin, in points${compared}` : "") +
+      (M.vs ? `; difference = ${shortLabel(sel.contest)} margin minus ${otherLabel(sel)} margin, same election and same precincts, in points` : "") + "; ";
+    caveat = M.vs ? "the two races have different candidates, and some voters skip a race or vote for different parties in different races, so a difference describes how the same ballots treated two contests; third-party and write-in votes are not in the margin."
+                  : "third-party and write-in votes are not in the margin.";
   } else if (M.kind === "turnout") {
     src = M.change ? `Turnout_Long, ${sel.base || "–"} and ${sel.year} general elections` : `Turnout_Long, ${y.source}`;
     method = `turnout = ballots cast ÷ registered voters, as printed in the Clerk's report` +
@@ -398,12 +433,19 @@ function refresh(level) {
   // level = which selector changed ("measure" | "contest" | "year" | "view"); what depends on it is re-derived
   const measure = $("measure").value, M = MEASURES[measure];
   $("contest-wrap").hidden = M.kind !== "vote";
-  $("base-wrap").hidden = !M.change;
+  $("base-wrap").hidden = !(M.change || M.vs);
+  $("base-label").textContent = M.vs ? "Compared with race" : "Compared with year";
   if (level === "measure" || level === "contest") {
     const ys = yearsFor(measure, $("contest").value);
     setOptions($("year"), ys, $("year").value, ys[ys.length - 1]);
   }
-  if (M.change) {
+  if (M.vs) {
+    // the other races on the same ballot (same year); keep the current choice when it still applies
+    const keep = $("base").value, sel = current();
+    const others = Object.entries(DATA.contests).filter(([k, c]) => k !== sel.contest && c.years[sel.year]);
+    $("base").innerHTML = others.map(([k, c]) => `<option value="${k}">${esc(c.label)}</option>`).join("");
+    $("base").value = others.some(([k]) => k === keep) ? keep : others[0][0];
+  } else if (M.change) {
     const keep = $("base").value, sel = current();
     const bs = baseYearsFor(sel);
     const fourBack = String(+sel.year - 4);

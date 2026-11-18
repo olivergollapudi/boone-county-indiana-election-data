@@ -15,7 +15,8 @@ district's history can be compared on today's lines. That layer is kept separate
 the master (`data/normalized/`) and documented in METHODOLOGY.md §7.
 
 **Interactive map:** <https://olivergollapudi.github.io/boone-county-indiana-election-data/>
-— map how a race voted, how that changed since an earlier election, turnout and its
+— map how a race voted, how that changed since an earlier election, how it compared with
+another race on the same ballot (for example County Commissioner vs Secretary of State), turnout and its
 change, or how people voted (election day, mail, early in person; 2020 onward), by
 precinct as reported or on today's districts, and hover any area to see the rows it is
 built from. It opens on the newest election (2026, provisional).
