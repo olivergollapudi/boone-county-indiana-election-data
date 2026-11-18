@@ -21,6 +21,14 @@
   nav.site a:hover { color: var(--ink); }
   header h1 { font-size: 22px; margin: 14px 0 4px; }
   header p { margin: 0 0 12px; color: var(--ink-2); max-width: 75ch; }
+  .pickers { margin: 8px 0 4px; }
+  .pick { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+  .pick button { font: inherit; font-size: 14px; color: var(--ink); background: var(--panel);
+                 border: 1px solid #c9c8c2; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .pick button:hover { border-color: var(--ink-2); }
+  .pick button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .pick.sub button { font-size: 13px; padding: 4px 12px; }
+  .pick.sub button[aria-pressed="true"] { background: #ecebe7; color: var(--ink); border-color: var(--ink-2); font-weight: 600; }
   .controls { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; margin: 8px 0 12px; }
   .controls label { display: flex; flex-direction: column; font-size: 13px; color: var(--ink-2); gap: 4px; }
   .controls label[hidden] { display: none; }
@@ -65,16 +73,16 @@
     <a href="https://github.com/olivergollapudi/boone-county-indiana-election-data">Data &amp; method</a>
   </nav>
   <h1>Boone County, Indiana: election results map</h1>
-  <p>General-election results by precinct, as reported by the Boone County Clerk, or re-expressed
-     on today's (2021-enacted) Indiana House, Indiana Senate and U.S. House districts. Map how a
-     race voted, how that changed since an earlier election, turnout, or how people cast their
-     ballots (election day, mail, early in person). Hover or tap any area to see the numbers it
-     is built from. Secretary of State is on every midterm ballot, so it is the race to compare
-     years without a President, Governor or U.S. Senate contest (such as 2026).</p>
+  <p>General-election results for Boone County by precinct, as reported by the County Clerk,
+     or on today's Indiana House, Indiana Senate and U.S. House districts. Choose what to show,
+     then hover or tap any area for the numbers behind it. Tip: Secretary of State is on every
+     midterm ballot, so it is the race for comparing years like 2026.</p>
 </header>
 <main>
-  <div class="controls">
-    <label>Map <select id="measure">
+  <div class="pickers">
+    <div class="pick" id="topic" role="group" aria-label="What to show"></div>
+    <div class="pick sub" id="mode" role="group" aria-label="How to show it"></div>
+    <select id="measure" hidden aria-hidden="true">
       <option value="margin">How it voted (two-party margin)</option>
       <option value="margin_change">Change in margin since an earlier election</option>
       <option value="contest_diff">Compare two races in the same year</option>
@@ -83,7 +91,10 @@
       <option value="share_e">Share who voted on election day</option>
       <option value="share_a">Share who voted by mail</option>
       <option value="share_w">Share who voted early in person</option>
-    </select></label>
+    </select>
+  </div>
+  <div class="controls">
+
     <label id="contest-wrap">Contest <select id="contest"></select></label>
     <label>Year <select id="year"></select></label>
     <label id="base-wrap" hidden><span id="base-label">Compared with</span> <select id="base"></select></label>
@@ -429,9 +440,37 @@ function setOptions(el, values, keep, fallback) {
   el.innerHTML = values.map(v => `<option>${v}</option>`).join("");
   el.value = values.includes(keep) ? keep : fallback;
 }
+// The two button rows: what to show, then how. Each button just sets the hidden #measure select,
+// so every view keeps working exactly as before.
+const TOPICS = [
+  ["results", "Election results", [["margin", "This election"], ["margin_change", "Change since an earlier election"],
+                                    ["contest_diff", "Compared with another race"]]],
+  ["turnout", "Turnout", [["turnout", "This election"], ["turnout_change", "Change since an earlier election"]]],
+  ["method", "How people voted", [["share_e", "On election day"], ["share_a", "By mail"], ["share_w", "Early in person"]]],
+];
+function setMeasure(m) {
+  $("measure").value = m;
+  $("measure").dispatchEvent(new Event("change"));
+}
+function drawPickers() {
+  const m = $("measure").value;
+  const [topic, , modes] = TOPICS.find(t => t[2].some(([k]) => k === m));
+  $("topic").innerHTML = TOPICS.map(([k, label]) =>
+    `<button type="button" data-topic="${k}" aria-pressed="${k === topic}">${label}</button>`).join("");
+  $("mode").innerHTML = modes.map(([k, label]) =>
+    `<button type="button" data-m="${k}" aria-pressed="${k === m}">${label}</button>`).join("");
+}
+function pickTopic(k) {
+  // switching topic keeps "change since an earlier election" when the new topic has it
+  const modes = TOPICS.find(t => t[0] === k)[2];
+  const wantChange = $("measure").value.endsWith("_change");
+  setMeasure(((wantChange && modes.find(([m]) => m.endsWith("_change"))) || modes[0])[0]);
+}
+
 function refresh(level) {
   // level = which selector changed ("measure" | "contest" | "year" | "view"); what depends on it is re-derived
   const measure = $("measure").value, M = MEASURES[measure];
+  drawPickers();
   $("contest-wrap").hidden = M.kind !== "vote";
   $("base-wrap").hidden = !(M.change || M.vs);
   $("base-label").textContent = M.vs ? "Compared with race" : "Compared with year";
@@ -465,6 +504,9 @@ function fillSelectors() {
   $("contest").value = Object.keys(DATA.contests).find(k => last(k) === newest);
   const ys = yearsFor("margin", $("contest").value);
   setOptions($("year"), ys, null, ys[ys.length - 1]);
+  $("topic").addEventListener("click", e => { const b = e.target.closest("button"); if (b) pickTopic(b.dataset.topic); });
+  $("mode").addEventListener("click", e => { const b = e.target.closest("button"); if (b) setMeasure(b.dataset.m); });
+  drawPickers();
   // listen to both events: some browsers / assistive tech fire only "input" on a select
   for (const ev of ["change", "input"]) {
     $("measure").addEventListener(ev, () => refresh("measure"));
