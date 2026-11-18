@@ -201,6 +201,19 @@ def build_gallery():
             for sid, title, intro, files in GALLERY]
 
 
+# Contests on the website. The static maps' list (make_maps.CONTESTS) plus local races that
+# only the interactive map shows, so make_maps.py draws no extra images for them.
+SITE_CONTESTS = {
+    **CONTESTS,
+    # elected countywide (the district is where the commissioner must live, not who votes),
+    # so every precinct votes. Only these three general elections had candidates of both
+    # parties; every other one since 2012 had a single candidate, and 2008 is excluded with
+    # the other scanned-report contests until the OCR label fix lands.
+    "commissioner_1": ("County Commissioner District 1 (elected countywide)",
+                       r"^(?:COUNTY|CO)\.?\s+COMMISSIONER\s+DISTRICT\s+1$", ["2018", "2022", "2026"]),
+}
+
+
 def margin(R, D):
     return round(100 * (R - D) / (R + D), 2) if (R + D) > 0 else None
 
@@ -220,7 +233,7 @@ def main():
                         "layers": LAYER_PALETTE},
             "district_types": DISTRICT_TYPES, "contests": {}}
     problems = []
-    for slug, (label, pattern, years) in CONTESTS.items():
+    for slug, (label, pattern, years) in SITE_CONTESTS.items():
         data["contests"][slug] = {"label": label, "years": {}}
         for year in years:
             rows, office = contest_rows(results, year, pattern)
